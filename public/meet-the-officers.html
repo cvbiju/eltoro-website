@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the officers | El Toro Battalion</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts exactly like the original -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        brandBlack: '#000000', 
+                        brandRed: '#BE1E2E', 
+                        brandRedHover: '#9A1623',
+                        brandGrayDark: '#1a1a1a',
+                        brandGrayLight: '#f4f4f4' 
+                    },
+                    fontFamily: { 
+                        sans: ['Montserrat', 'sans-serif'], 
+                        heading: ['Oswald', 'sans-serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        
+        .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
+        
+        /* Dropdown Styles */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 100;
+            border-top: 3px solid #BE1E2E;
+        }
+        .dropdown-menu a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s, padding-left 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: none;
+            font-weight: 500;
+        }
+        .dropdown-menu a:hover {
+            background-color: #BE1E2E;
+            padding-left: 25px;
+        }
+        
+        .nav-link { position: relative; padding-bottom: 5px; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #BE1E2E;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Main Button */
+        .btn-red {
+            background-color: #BE1E2E;
+            color: white;
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        .btn-red:hover { background-color: #9A1623; }
+        
+        /* content styling */
+        .page-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 4px solid #BE1E2E;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .wp-content h1, .wp-content h2, .wp-content h3 {
+            color: #000000;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .wp-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="header-bg sticky top-0 z-50 w-full transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center h-full py-2">
+                    <a href="/" class="flex h-full items-center">
+                        <img src="/assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="/" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Home</a>
+                    <a href="/calendar.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Calendar</a>
+                    <a href="/programs.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Programs</a>
+                    
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="/about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0">
+                            <a href="/meet-the-officers.html">Meet the officers</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="/cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0">
+                            <a href="/general-knowledge.html">General Knowledge</a>
+                            <a href="/physical-fitness.html">Physical Fitness</a>
+                            <a href="/grooming-uniform.html">Grooming & Uniform</a>
+                        </div>
+                    </div>
+                    
+                    <a href="/parents.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Parents</a>
+                    <a href="/gallery.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Gallery</a>
+                    <a href="/enrollment.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Enrollment</a>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red text-sm">Donate</a>
+                </nav>
+                
+                <!-- Mobile button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed focus:outline-none">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brandBlack border-t border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a href="/" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Home</a>
+                <a href="/calendar.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Calendar</a>
+                <a href="/programs.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Programs</a>
+                <a href="/about-us.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">About Us</a>
+                <a href="/meet-the-officers.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Meet the officers</a>
+                <a href="/cadet-mess.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Cadet Mess</a>
+                <a href="/general-knowledge.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- General Knowledge</a>
+                <a href="/physical-fitness.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Physical Fitness</a>
+                <a href="/grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming & Uniform</a>
+                <a href="/parents.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Parents</a>
+                <a href="/gallery.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Gallery</a>
+                <a href="/enrollment.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Enrollment</a>
+                <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="block text-brandRed uppercase font-heading text-lg font-bold">Donate</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+
+    <div class="page-header">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="uppercase tracking-widest text-4xl">Meet the Officers</h1>
+        </div>
+    </div>
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Officer 1 -->
+                <div class="bg-brandGrayLight p-8 text-center border-t-4 border-brandRed shadow-lg">
+                    <img src="/assets/images/6.png" alt="ENS Suzy Werts" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md" onerror="this.src='/assets/images/image-asset.jpg'">
+                    <h3 class="text-2xl font-heading font-bold text-brandBlack uppercase">ENS Suzy Werts</h3>
+                    <p class="text-brandRed font-sans font-semibold text-sm uppercase tracking-wide mt-2 mb-4">Commanding Officer<br>& PAO/Social Media</p>
+                    <a href="mailto:werts@seacadet.org" class="text-gray-600 hover:text-brandRed transition-colors block"><i class="fas fa-envelope mr-2 text-brandRed"></i> werts@seacadet.org</a>
+                </div>
+
+                <!-- Officer 2 -->
+                <div class="bg-brandGrayLight p-8 text-center border-t-4 border-brandRed shadow-lg">
+                    <img src="/assets/images/biju2.jpg" alt="ENS Biju Chandrasekharan" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md" onerror="this.src='/assets/images/image-asset.jpg'">
+                    <h3 class="text-2xl font-heading font-bold text-brandBlack uppercase">ENS Biju Chandrasekharan</h3>
+                    <p class="text-brandRed font-sans font-semibold text-sm uppercase tracking-wide mt-2 mb-4">Executive Officer<br>& Finance Officer</p>
+                    <a href="mailto:biju@seacadets.org" class="text-gray-600 hover:text-brandRed transition-colors block"><i class="fas fa-envelope mr-2 text-brandRed"></i> biju@seacadets.org</a>
+                </div>
+
+                <!-- Officer 3 -->
+                <div class="bg-brandGrayLight p-8 text-center border-t-4 border-brandRed shadow-lg">
+                    <img src="/assets/images/5.png" alt="MIDN Phillips Boyes" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md" onerror="this.src='/assets/images/image-asset.jpg'">
+                    <h3 class="text-2xl font-heading font-bold text-brandBlack uppercase">MIDN Phillips Boyes</h3>
+                    <p class="text-brandRed font-sans font-semibold text-sm uppercase tracking-wide mt-2 mb-4">Operations Officer</p>
+                    <a href="mailto:P.boyes@seacadet.org" class="text-gray-600 hover:text-brandRed transition-colors block"><i class="fas fa-envelope mr-2 text-brandRed"></i> P.boyes@seacadet.org</a>
+                </div>
+                
+                <!-- Officer 4 -->
+                <div class="bg-brandGrayLight p-8 text-center border-t-4 border-brandRed shadow-lg">
+                    <img src="/assets/images/WhatsApp-Image-2024-12-30-at-1.09.21-PM.jpeg" alt="ENS Zane Chang" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md" onerror="this.src='/assets/images/image-asset.jpg'">
+                    <h3 class="text-2xl font-heading font-bold text-brandBlack uppercase">ENS Zane Chang</h3>
+                    <p class="text-brandRed font-sans font-semibold text-sm uppercase tracking-wide mt-2 mb-4">Admin Officer</p>
+                    <a href="mailto:zchang@seacadets.org" class="text-gray-600 hover:text-brandRed transition-colors block mb-2"><i class="fas fa-envelope mr-2 text-brandRed"></i> zchang@seacadets.org</a>
+                    <a href="tel:415-993-0799" class="text-gray-600 hover:text-brandRed transition-colors block"><i class="fas fa-phone mr-2 text-brandRed"></i> 415-993-0799</a>
+                </div>
+
+                <!-- Officer 5 -->
+                <div class="bg-brandGrayLight p-8 text-center border-t-4 border-brandRed shadow-lg">
+                    <img src="/assets/images/slazzer-edit-image-1.png" alt="INST Cesar Franco" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md" onerror="this.src='/assets/images/image-asset.jpg'">
+                    <h3 class="text-2xl font-heading font-bold text-brandBlack uppercase">INST Cesar Franco</h3>
+                    <p class="text-brandRed font-sans font-semibold text-sm uppercase tracking-wide mt-2 mb-4">Recruitment Officer<br>& Supply Officer</p>
+                    <a href="mailto:c.franco@seacadets.org" class="text-gray-600 hover:text-brandRed transition-colors block mb-2"><i class="fas fa-envelope mr-2 text-brandRed"></i> c.franco@seacadets.org</a>
+                    <a href="tel:949-759-2265" class="text-gray-600 hover:text-brandRed transition-colors block"><i class="fas fa-phone mr-2 text-brandRed"></i> 949-759-2265</a>
+                </div>
+
+                <!-- Officer 6 -->
+                <div class="bg-brandGrayLight p-8 text-center border-t-4 border-brandRed shadow-lg">
+                    <img src="/assets/images/NewProject4.png" alt="WO Terry Ginsburg" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md" onerror="this.src='/assets/images/image-asset.jpg'">
+                    <h3 class="text-2xl font-heading font-bold text-brandBlack uppercase">WO Terry Ginsburg</h3>
+                    <p class="text-brandRed font-sans font-semibold text-sm uppercase tracking-wide mt-2 mb-4">Cyber Patriot Officer</p>
+                    <a href="mailto:Arturo.gins@gmail.com" class="text-gray-600 hover:text-brandRed transition-colors block mb-2"><i class="fas fa-envelope mr-2 text-brandRed"></i> Arturo.gins@gmail.com</a>
+                    <a href="tel:714-931-7905" class="text-gray-600 hover:text-brandRed transition-colors block"><i class="fas fa-phone mr-2 text-brandRed"></i> 714-931-7905</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- Footer mirroring the live site 4-columns -->
+    <footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 scroll-mt-24">
+                
+                <!-- Column 1: Logo and Address -->
+                <div class="col-span-1">
+                    <img src="/assets/images/SCCNewLogo7-1.png" alt="El Toro Logo" class="w-32 mb-6">
+                    <h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
+                    <p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
+                    <p class="text-sm leading-loose mb-2">Since 1958, the USNSCC has been committed to providing American youth with a drug-and alcohol-free environment...</p>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
+                    <ul class="space-y-3 text-sm font-semibold">
+                        <li><a href="/" class="hover:text-brandRed transition-colors">> Home</a></li>
+                        <li><a href="/about-us.html" class="hover:text-brandRed transition-colors">> About Us</a></li>
+                        <li><a href="/programs.html" class="hover:text-brandRed transition-colors">> Programs</a></li>
+                        <li><a href="/enrollment.html" class="hover:text-brandRed transition-colors">> Enrollment</a></li>
+                        <li><a href="/gallery.html" class="hover:text-brandRed transition-colors">> Gallery</a></li>
+                        <li><a href="/calendar.html" class="hover:text-brandRed transition-colors">> Calendar</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
+                    
+                    <div class="mb-6">
+                        <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Wetrs</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:swerts@seacadets.org" class="hover:text-white">swerts@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-613-1586</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:v.chandrasekharan@seacadets.org" class="hover:text-white">v.chandrasekharan@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
+                    </div>
+                </div>
+
+                <!-- Column 4: Follow Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
+                    <div class="flex space-x-3 mb-10">
+                        <a href="https://www.facebook.com/eltoro.battalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fas fa-anchor"></i></a>
+                    </div>
+                    
+                    <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="/parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg">MAKE A DONATION</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2026 El Toro Battalion. All Rights Reserved.</p>
+                <p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+    </script>
+</body>
+</html>

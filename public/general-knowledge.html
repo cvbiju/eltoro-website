@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>General Knowledge | El Toro Battalion</title>
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts exactly like the original -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Oswald:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- FontAwesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        brandBlack: '#000000', 
+                        brandRed: '#BE1E2E', 
+                        brandRedHover: '#9A1623',
+                        brandGrayDark: '#1a1a1a',
+                        brandGrayLight: '#f4f4f4' 
+                    },
+                    fontFamily: { 
+                        sans: ['Montserrat', 'sans-serif'], 
+                        heading: ['Oswald', 'sans-serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        
+        .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
+        
+        /* Dropdown Styles */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 100;
+            border-top: 3px solid #BE1E2E;
+        }
+        .dropdown-menu a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s, padding-left 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: none;
+            font-weight: 500;
+        }
+        .dropdown-menu a:hover {
+            background-color: #BE1E2E;
+            padding-left: 25px;
+        }
+        
+        .nav-link { position: relative; padding-bottom: 5px; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #BE1E2E;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Main Button */
+        .btn-red {
+            background-color: #BE1E2E;
+            color: white;
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        .btn-red:hover { background-color: #9A1623; }
+        
+        /* content styling */
+        .page-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 4px solid #BE1E2E;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .wp-content h1, .wp-content h2, .wp-content h3 {
+            color: #000000;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .wp-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+    
+            .prose h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #000000; font-size: 2rem; border-bottom: 2px solid #BE1E2E; padding-bottom: 0.5rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+            .prose h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #BE1E2E; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+            .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #333; }
+            .prose ul:not(.space-y-4) { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.5rem; }
+            .prose ul:not(.space-y-4) li { margin-bottom: 0.5rem; color: #444; }
+            .prose ul:not(.space-y-4) li svg { display: none; /* Hide the weird random SVGs inside the content ul, use standard bullets instead */ }
+        
+            .exact-sidebar-link {
+                color: #FFFFFF;
+                display: flex;
+                align-items: center;
+                padding: 15px 20px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 15px;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                transition: background-color 0.3s ease;
+            }
+            .exact-sidebar-link:hover {
+                background-color: #921635;
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+            /* Match the content header colors too */
+            .prose h2 { color: #B41C44 !important; }
+            .prose h4 { color: #000000 !important; font-weight: bold; }
+        
+        /* Force Sidebar override against .wp-content bleeding */
+        .wp-content .exact-sidebar-title {
+            color: #FFFFFF !important;
+        }
+        .wp-content a.exact-sidebar-link {
+            color: #FFFFFF !important;
+            text-decoration: none !important;
+        }
+        .wp-content a.exact-sidebar-link:hover {
+            color: #FFFFFF !important;
+        }
+        </style>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+<!-- Header -->
+<header class="header-bg sticky top-0 z-50 w-full transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center h-full py-2">
+                    <a href="/" class="flex h-full items-center">
+                        <img src="/assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/">Home</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/calendar.html">Calendar</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/programs.html">Programs</a>
+<div class="relative dropdown h-full flex items-center">
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" href="/about-us.html">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+<div class="dropdown-menu top-[100%] left-0">
+<a href="/meet-the-officers.html">Meet the officers</a>
+</div>
+</div>
+<div class="relative dropdown h-full flex items-center">
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" href="/cadet-mess.html">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+<div class="dropdown-menu top-[100%] left-0">
+<a href="/general-knowledge.html">General Knowledge</a>
+<a href="/physical-fitness.html">Physical Fitness</a>
+<a href="/grooming-uniform.html">Grooming &amp; Uniform</a>
+</div>
+</div>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/parents.html">Parents</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/gallery.html">Gallery</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/enrollment.html">Enrollment</a>
+<a class="btn-red text-sm" href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank">Donate</a>
+</nav>
+<!-- Mobile button -->
+<div class="lg:hidden flex items-center">
+<button class="text-white hover:text-brandRed focus:outline-none" id="mobile-menu-btn">
+<i class="fas fa-bars text-3xl"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation Menu -->
+<div class="hidden lg:hidden bg-brandBlack border-t border-gray-800" id="mobile-menu">
+<div class="px-4 py-4 space-y-3">
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/">Home</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/calendar.html">Calendar</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/programs.html">Programs</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/about-us.html">About Us</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/meet-the-officers.html">- Meet the officers</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/cadet-mess.html">Cadet Mess</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/general-knowledge.html">- General Knowledge</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/physical-fitness.html">- Physical Fitness</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/grooming-uniform.html">- Grooming &amp; Uniform</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/parents.html">Parents</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/gallery.html">Gallery</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/enrollment.html">Enrollment</a>
+<a class="block text-brandRed uppercase font-heading text-lg font-bold" href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank">Donate</a>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<div class="page-header">
+<div class="max-w-7xl mx-auto px-4">
+<h1 class="uppercase tracking-widest">General Knowledge</h1>
+</div>
+</div>
+<div class="bg-white py-16">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 wp-content"><div class="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start"><div class="col-span-1 lg:col-span-1 p-6 h-min sticky top-32" style="background-color: #B41C44; padding: 30px; border-radius: 4px;"><h3 class="text-white font-sans font-bold text-xl mb-6 exact-sidebar-title" style='font-family: "Montserrat", sans-serif; font-size: 22px; line-height: 1.2; text-transform: none;'>General Knowledge</h3><ul class="flex flex-col">
+<li>
+<a class="exact-sidebar-link" href="#sec1">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										COTC’s Top 6
+											</a>
+</li>
+<li>
+<a class="exact-sidebar-link" href="#sec2">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										Sailor’s Creed
+											</a>
+</li>
+<li>
+<a class="exact-sidebar-link" href="#sec3">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										Sea Cadet Oath
+											</a>
+</li>
+<li>
+<a class="exact-sidebar-link" href="#sec4">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										11 General Orders 
+											</a>
+</li>
+<li>
+<a class="exact-sidebar-link" href="#sec5">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										Anchors Aweigh
+											</a>
+</li>
+<li>
+<a class="exact-sidebar-link" href="#sec6">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										Phonetic Alphabet 
+											</a>
+</li>
+<li>
+<a class="exact-sidebar-link" href="#sec7">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										Navy Enlisted Rates &amp; Officer Ranks
+											</a>
+</li>
+</ul></div><div class="col-span-1 lg:col-span-3 prose prose-lg max-w-none text-gray-800">
+<h2>COTC’s Top 6</h2>
+<p>Violating COTC’s Top 6 will be grounds for severe consequences: demotion in ranks, termination from the unit, termination from the USNSCC program, Captain’s Mast, and more.</p>
+<ul>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										No Discrimination
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										No Hazing
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										No Sexual Harassment
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										No Fraternization
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										No Cadet-to-Cadet Contact
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										No Substance Abuse
+									</li>
+</ul>
+<p><strong>Discrimination:</strong> We are a color-blind, gender-blind organization. There is no place in Sea Cadets for ignorant biases, racism, sexism, or bigotry. Discrimination of any kind does not belong here and is not tolerated.</p><p><strong>Hazing:</strong> Hazing is conduct that causes a Cadet to suffer or be exposed to any activity that is abusive, humiliating, oppressive, or harmful, even if the victim is a willing participant. This kind of behavior is unacceptable.</p><p><strong>Sexual Harassment:</strong> Sexual harassment is a form of discrimination that involves unwelcome sexual advances, requests for sexual favors, or other verbal or physical contact of a sexual nature that interferes with an individual’s performance, or creates an intimidating or hostile work environment. This policy is gender neutral and applies the same way to males or females at the training. This is not the place for jokes, kidding, teasing about sexuality, flirting, or connecting on Facebook for dates later. Leave that at home; it’s not what you’re here for.</p><p><strong>Fraternization:</strong> Fraternization is an unduly familiar relationship between superiors and subordinates that is prejudicial to good order and discipline. Fraternization weakens the chain of command by creating favoritism, or the appearance of favoritism in our training environment. Everyone here has a job to do; your job is to learn everything that is taught to you, and the best way for all of us to succeed at our jobs is to be professional.</p><p><strong>Cadet-to-Cadet Contact:</strong> There is to be no cadet-to-cadet contact; keep your hands to yourself! Any relationships between Cadets must be professional in all respects. Focus on your mission, and focus on your division’s success<br/></p><p><strong>Substance Abuse:</strong> We have a zero-tolerance policy that covers illegal drugs, as well as prescription and over-the-counter medications. During trainings, all medications will be turned in at check-in and you cannot take any medication unless it is prescribed to you and administered by adult staff. Sharing your medications with other Cadets is also strictly prohibited.</p>
+<h2>Sailor’s Creed</h2>
+<p>“I am a United States Sailor.</p><p>I will support and defend the Constitution of the United States of America and I will obey the orders of those appointed over me.</p><p>I represent the fighting spirit of the Navy and those who have gone before me to defend freedom and democracy around the world.”</p><p>I proudly serve my country’s navy combat team with HONOR, COURAGE, and COMMITMENT.</p><p>I am committed to excellence and the fair treatment of all.</p>
+<h2>Sea Cadet Oath</h2>
+<p>“I promise to serve God, honor our flag, abide by the Naval Sea Cadet Corps regulations and carry out the orders of the officers appointed over me, and so conduct myself as to be a credit to myself, my unit, the Naval Sea Cadet Corps, the Navy, and my country.”</p>
+<h2>11 General Orders</h2>
+<ul>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To take charge of this post and all government property in view.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To walk my post in a military manner, keeping always on the alert and observing everything that takes place within sight or hearing.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To report all violations of orders I am instructed to enforce.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To repeat all calls from posts more distant from the guard house than my own.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To quit my post only when properly relieved.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To receive, obey, and pass on to the sentry who relieves me all orders from the Commanding Officer, Command Duty Officer, Officer of the Deck, and officers and petty officers of the watch only.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To talk to no one except in the line of duty.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To give the alarm in case of fire or disorder.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To call the Officer of the Deck in any case not covered by instructions.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To salute all officers and all colors and standards not cased.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"></path></svg>						
+										To be especially watchful at night, and during the time for challenging, to challenge all persons on or near my post, and to allow no one to pass without proper authority.
+									</li>
+</ul>
+<p>“I promise to serve God, honor our flag, abide by the Naval Sea Cadet Corps regulations and carry out the orders of the officers appointed over me, and so conduct myself as to be a credit to myself, my unit, the Naval Sea Cadet Corps, the Navy, and my country.”</p>
+<h2>Anchors Aweigh</h2>
+<h4>Verse 1</h4>
+<ul>
+<li>
+										Stand Navy out to sea,  
+									</li>
+<li>
+										Fight our battle cry; 
+									</li>
+<li>
+										We'll never change our course,  
+									</li>
+<li>
+										So vicious foe steer shy-y-y-y.  
+									</li>
+<li>
+										Roll out the TNT (Boom!), 
+									</li>
+<li>
+										 Anchors Aweigh.  
+									</li>
+<li>
+										Sail on to victory  
+									</li>
+<li>
+										And sink their bones to Davy Jones, hooray!
+									</li>
+</ul>
+<h4>Verse 2</h4>
+<ul>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Anchors Aweigh, my boys,
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										 Anchors Aweigh.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Farewell to foreign shores, 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										We sail at break of day-ay-ay-ay. 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Through our last night ashore, 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Drink to the foam, 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Until we meet once more. 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Here's wishing you a happy voyage home.
+									</li>
+</ul>
+<h4>Verse 3</h4>
+<ul>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Blue of the mighty deep: 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Gold of God's great sun.
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										 Let these our colors be 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Till all of time be done, done, done, done. 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										On seven seas we learn 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Navy's stern call: 
+									</li>
+<li>
+<svg aria-hidden="true" class="w-5 h-5 inline-block mr-2 text-brandRed" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						
+										Faith, courage, service true, With honor, over honor, over all.
+									</li>
+</ul>
+		<div class="aspect-w-16 aspect-h-9 my-8 w-full max-w-3xl">
+    <iframe class="w-full h-[400px] shadow-lg rounded border-4 border-brandRed" src="https://www.youtube.com/embed/2ieZ2sWoGkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+			<h2>Phonetic Alphabet</h2>
+<img alt="" class="max-w-full h-auto rounded shadow-sm my-6" height="1800" sizes="(max-width: 1200px) 100vw, 1200px" src="/assets/images/Phonetic-Alphabet.png" srcset="/assets/images/Phonetic-Alphabet.png 1200w, /assets/images/Phonetic-Alphabet-200x300.png 200w, /assets/images/Phonetic-Alphabet-683x1024.png 683w, /assets/images/Phonetic-Alphabet-768x1152.png 768w, /assets/images/Phonetic-Alphabet-1024x1536.png 1024w" width="1200"/>
+<h2>Navy Enlisted Rates &amp; Officer Ranks</h2>
+<img alt="" class="max-w-full h-auto rounded shadow-sm my-6" height="1941" sizes="(max-width: 1500px) 100vw, 1500px" src="/assets/images/Sea-Cadet-Rankings.jpg" srcset="/assets/images/Sea-Cadet-Rankings.jpg 1500w, /assets/images/Sea-Cadet-Rankings-232x300.jpg 232w, /assets/images/Sea-Cadet-Rankings-791x1024.jpg 791w, /assets/images/Sea-Cadet-Rankings-768x994.jpg 768w, /assets/images/Sea-Cadet-Rankings-1187x1536.jpg 1187w" width="1500"/>
+</div></div></div>
+</div>
+</main>
+<!-- Footer mirroring the live site 4-columns -->
+<footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 scroll-mt-24">
+<!-- Column 1: Logo and Address -->
+<div class="col-span-1">
+<img alt="El Toro Logo" class="w-32 mb-6" src="/assets/images/SCCNewLogo7-1.png"/>
+<h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
+<p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
+<p class="text-sm leading-loose mb-2">Since 1958, the USNSCC has been committed to providing American youth with a drug-and alcohol-free environment...</p>
+</div>
+<!-- Column 2: Quick Links -->
+<div class="col-span-1">
+<h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
+<ul class="space-y-3 text-sm font-semibold">
+<li><a class="hover:text-brandRed transition-colors" href="/">&gt; Home</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/about-us.html">&gt; About Us</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/programs.html">&gt; Programs</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/enrollment.html">&gt; Enrollment</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/gallery.html">&gt; Gallery</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/calendar.html">&gt; Calendar</a></li>
+</ul>
+</div>
+<!-- Column 3: Contact Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
+                    
+                    <div class="mb-6">
+                        <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Wetrs</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:swerts@seacadets.org" class="hover:text-white">swerts@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-613-1586</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:v.chandrasekharan@seacadets.org" class="hover:text-white">v.chandrasekharan@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
+                    </div>
+                </div>
+
+                <!-- Column 4: Follow Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
+                    <div class="flex space-x-3 mb-10">
+                        <a href="https://www.facebook.com/eltoro.battalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fas fa-anchor"></i></a>
+                    </div>
+                    
+                    <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="/parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg">MAKE A DONATION</a>
+                </div>
+            </div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2026 El Toro Battalion. All Rights Reserved.</p>
+<p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
+</div>
+</div>
+</footer>
+<!-- Mobile Menu Script -->
+<script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+    </script>
+</body>
+</html>

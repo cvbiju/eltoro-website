@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | El Toro Battalion</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts exactly like the original -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        brandBlack: '#000000', 
+                        brandRed: '#BE1E2E', 
+                        brandRedHover: '#9A1623',
+                        brandGrayDark: '#1a1a1a',
+                        brandGrayLight: '#f4f4f4' 
+                    },
+                    fontFamily: { 
+                        sans: ['Montserrat', 'sans-serif'], 
+                        heading: ['Oswald', 'sans-serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        
+        .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
+        
+        /* Dropdown Styles */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 100;
+            border-top: 3px solid #BE1E2E;
+        }
+        .dropdown-menu a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s, padding-left 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: none;
+            font-weight: 500;
+        }
+        .dropdown-menu a:hover {
+            background-color: #BE1E2E;
+            padding-left: 25px;
+        }
+        
+        .nav-link { position: relative; padding-bottom: 5px; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #BE1E2E;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Main Button */
+        .btn-red {
+            background-color: #BE1E2E;
+            color: white;
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        .btn-red:hover { background-color: #9A1623; }
+        
+        /* content styling */
+        .page-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 4px solid #BE1E2E;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .wp-content h1, .wp-content h2, .wp-content h3 {
+            color: #000000;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .wp-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="header-bg sticky top-0 z-50 w-full transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center h-full py-2">
+                    <a href="/" class="flex h-full items-center">
+                        <img src="/assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="/" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Home</a>
+                    <a href="/calendar.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Calendar</a>
+                    <a href="/programs.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Programs</a>
+                    
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="/about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0">
+                            <a href="/meet-the-officers.html">Meet the officers</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="/cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0">
+                            <a href="/general-knowledge.html">General Knowledge</a>
+                            <a href="/physical-fitness.html">Physical Fitness</a>
+                            <a href="/grooming-uniform.html">Grooming & Uniform</a>
+                        </div>
+                    </div>
+                    
+                    <a href="/parents.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Parents</a>
+                    <a href="/gallery.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Gallery</a>
+                    <a href="/enrollment.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Enrollment</a>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red text-sm">Donate</a>
+                </nav>
+                
+                <!-- Mobile button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed focus:outline-none">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brandBlack border-t border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a href="/" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Home</a>
+                <a href="/calendar.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Calendar</a>
+                <a href="/programs.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Programs</a>
+                <a href="/about-us.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">About Us</a>
+                <a href="/meet-the-officers.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Meet the officers</a>
+                <a href="/cadet-mess.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Cadet Mess</a>
+                <a href="/general-knowledge.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- General Knowledge</a>
+                <a href="/physical-fitness.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Physical Fitness</a>
+                <a href="/grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming & Uniform</a>
+                <a href="/parents.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Parents</a>
+                <a href="/gallery.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Gallery</a>
+                <a href="/enrollment.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Enrollment</a>
+                <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="block text-brandRed uppercase font-heading text-lg font-bold">Donate</a>
+            </div>
+        </div>
+    </header>
+
+<main id="content" class="site-main post-451 page type-page status-publish hentry" role="main">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div id="gallery-grid" class="gap-4 text-center" style="display: flex !important; flex-wrap: wrap; justify-content: center; width: 100% !important; clear: both;">
+            <!-- Images will be injected here via JS -->
+        </div>
+        <div id="loading-spinner" class="flex justify-center items-center py-20">
+            <i class="fas fa-circle-notch fa-spin text-4xl text-brandRed"></i>
+        </div>
+        <div id="error-message" class="hidden text-center py-20">
+            <div class="inline-block bg-red-100 border-l-4 border-brandRed text-red-700 p-4 rounded shadow">
+                <p class="font-bold flex items-center justify-center"><i class="fas fa-exclamation-triangle mr-2"></i> Error</p>
+                <p id="error-text">Failed to load gallery images.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <!-- Lightbox -->
+
+    <div id="lightbox" class="fixed inset-0 z-[60] bg-brandBlack/95 hidden items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:text-brandRed transition-colors duration-300 z-[70] p-2" aria-label="Close Lightbox">
+            <i class="fas fa-times"></i>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-brandRed transition-colors duration-300 z-[70] p-4 hidden md:block" aria-label="Previous Image">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-brandRed transition-colors duration-300 z-[70] p-4 hidden md:block" aria-label="Next Image">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="relative max-w-7xl max-h-[90vh] w-full px-4 md:px-16 flex items-center justify-center">
+            <div id="lightbox-loading" class="absolute inset-0 flex items-center justify-center hidden">
+                <i class="fas fa-circle-notch fa-spin text-5xl text-white"></i>
+            </div>
+            <img id="lightbox-img" src="" alt="Gallery Image" class="max-h-[90vh] max-w-full object-contain shadow-2xl transition-all duration-300 transform scale-95 opacity-0">
+        </div>
+    </div>
+
+    <script>
+        const FOLDER_ID = '1Y0uWE60pYLVFaOKMQLIeYzUdCa25cD66';
+        const API_KEY = 'AIzaSyBQKSzsRbkW5HFs9TFY46Zb8CvnOslC1kU';
+        const API_URL = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents+and+mimeType+contains+'image/'&key=${API_KEY}&fields=files(id,name,mimeType,thumbnailLink,webContentLink)&pageSize=200&orderBy=createdTime+desc`;
+
+        const galleryGrid = document.getElementById('gallery-grid');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+
+        let imageList = [];
+        let currentIndex = 0;
+
+        async function fetchImages() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                if (data.files && data.files.length > 0) {
+                    imageList = data.files.filter(file => file.thumbnailLink);
+                    
+                    // Sort by numerical extract from the filename, e.g gallery-img1.jpeg -> 1
+                    imageList.sort((a, b) => {
+                        const numA = parseInt(a.name.match(/\d+/g)?.pop() || "0", 10);
+                        const numB = parseInt(b.name.match(/\d+/g)?.pop() || "0", 10);
+                        return numA - numB;
+                    });
+                    
+                    renderGallery(imageList);
+                } else {
+                    showError('No images found in the specified gallery folder.');
+                }
+            } catch (error) {
+                console.error('Error fetching images:', error);
+                showError('Failed to load gallery images. Note: Google Drive API blocks direct origin access via local IP depending on project settings. Try running through localhost directly.');
+            }
+        }
+
+        function renderGallery(images) {
+            loadingSpinner.classList.add('hidden');
+            galleryGrid.innerHTML = '';
+            
+
+
+            images.forEach((file, index) => {
+                const highResThumb = file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+$/, '=s600') : '';
+                
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'relative group overflow-hidden bg-gray-200 cursor-pointer shadow-md fade-in hover:shadow-xl transition-all duration-300 rounded';
+                // Use a calculated flex basis. 2 cols on mobile, 4 on desktop.
+                imgContainer.style.flex = '1 0 calc(25% - 1rem)'; // 4 columns
+                imgContainer.style.minWidth = '200px'; 
+                imgContainer.style.maxWidth = '300px';
+                imgContainer.style.aspectRatio = '1 / 1'; 
+                
+                imgContainer.innerHTML = `
+                    <img src="${highResThumb}" alt="${file.name}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 will-change-transform" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
+                    <div class="absolute inset-0 bg-brandBlack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm pointer-events-none">
+                        <i class="fas fa-search-plus text-white text-3xl transform scale-50 group-hover:scale-100 transition-transform duration-300"></i>
+                    </div>
+                `;
+                
+                imgContainer.addEventListener('click', () => openLightbox(index));
+                galleryGrid.appendChild(imgContainer);
+            });
+        }
+
+        function showError(msg) {
+            loadingSpinner.classList.add('hidden');
+            errorMessage.classList.remove('hidden');
+            errorText.textContent = msg;
+        }
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const lightboxLoading = document.getElementById('lightbox-loading');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            void lightbox.offsetWidth;
+            lightbox.classList.remove('opacity-0');
+            updateLightboxImage();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        function updateLightboxImage() {
+            lightboxImg.classList.add('opacity-0', 'scale-95');
+            lightboxLoading.classList.remove('hidden');
+            
+            const file = imageList[currentIndex];
+            const highResUrl = file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+$/, '=s2048') : '';
+            
+            const tmpImg = new Image();
+            tmpImg.crossOrigin = "anonymous";
+            tmpImg.onload = () => {
+                lightboxImg.src = tmpImg.src;
+                lightboxLoading.classList.add('hidden');
+                setTimeout(() => {
+                    lightboxImg.classList.remove('opacity-0', 'scale-95');
+                    lightboxImg.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            };
+            tmpImg.onerror = () => {
+                const thumbUrl = file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+$/, '=s1024') : '';
+                lightboxImg.src = thumbUrl;
+                lightboxLoading.classList.add('hidden');
+                setTimeout(() => {
+                    lightboxImg.classList.remove('opacity-0', 'scale-95');
+                    lightboxImg.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            };
+            tmpImg.src = highResUrl;
+            
+            lightboxPrev.style.display = currentIndex > 0 ? 'block' : 'none';
+            lightboxNext.style.display = currentIndex < imageList.length - 1 ? 'block' : 'none';
+        }
+
+        function showPrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateLightboxImage();
+            }
+        }
+
+        function showNext() {
+            if (currentIndex < imageList.length - 1) {
+                currentIndex++;
+                updateLightboxImage();
+            }
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', showPrev);
+        lightboxNext.addEventListener('click', showNext);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowLeft') showPrev();
+                else if (e.key === 'ArrowRight') showNext();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', fetchImages);
+    </script>
+
+    <footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 scroll-mt-24">
+                
+                <!-- Column 1: Logo and Address -->
+                <div class="col-span-1">
+                    <img src="/assets/images/SCCNewLogo7-1.png" alt="El Toro Logo" class="w-32 mb-6">
+                    <h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
+                    <p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
+                    <p class="text-sm leading-loose mb-2">Since 1958, the USNSCC has been committed to providing American youth with a drug-and alcohol-free environment...</p>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
+                    <ul class="space-y-3 text-sm font-semibold">
+                        <li><a href="/" class="hover:text-brandRed transition-colors">> Home</a></li>
+                        <li><a href="/about-us.html" class="hover:text-brandRed transition-colors">> About Us</a></li>
+                        <li><a href="/programs.html" class="hover:text-brandRed transition-colors">> Programs</a></li>
+                        <li><a href="/enrollment.html" class="hover:text-brandRed transition-colors">> Enrollment</a></li>
+                        <li><a href="/gallery.html" class="hover:text-brandRed transition-colors">> Gallery</a></li>
+                        <li><a href="/calendar.html" class="hover:text-brandRed transition-colors">> Calendar</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
+                    
+                    <div class="mb-6">
+                        <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Wetrs</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:swerts@seacadets.org" class="hover:text-white">swerts@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-613-1586</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:v.chandrasekharan@seacadets.org" class="hover:text-white">v.chandrasekharan@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
+                    </div>
+                </div>
+
+                <!-- Column 4: Follow Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
+                    <div class="flex space-x-3 mb-10">
+                        <a href="https://www.facebook.com/eltoro.battalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fas fa-anchor"></i></a>
+                    </div>
+                    
+                    <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="/parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg">MAKE A DONATION</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2026 El Toro Battalion. All Rights Reserved.</p>
+                <p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+    </script>
+</body>
+</html>

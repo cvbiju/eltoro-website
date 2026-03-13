@@ -1,0 +1,12 @@
+node_modules/
+venv/
+env/
+.env
+.venv
+__pycache__/
+*.zip
+*.tar.gz
+*.log
+*.sqlite3
+db.sqlite3
+.DS_Store

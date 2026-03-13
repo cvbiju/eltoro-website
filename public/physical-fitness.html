@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Physical Fitness | El Toro Battalion</title>
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts exactly like the original -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Oswald:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- FontAwesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        brandBlack: '#000000', 
+                        brandRed: '#BE1E2E', 
+                        brandRedHover: '#9A1623',
+                        brandGrayDark: '#1a1a1a',
+                        brandGrayLight: '#f4f4f4' 
+                    },
+                    fontFamily: { 
+                        sans: ['Montserrat', 'sans-serif'], 
+                        heading: ['Oswald', 'sans-serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        
+        .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
+        
+        /* Dropdown Styles */
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 100;
+            border-top: 3px solid #BE1E2E;
+        }
+        .dropdown-menu a {
+            color: #ffffff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s, padding-left 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: none;
+            font-weight: 500;
+        }
+        .dropdown-menu a:hover {
+            background-color: #BE1E2E;
+            padding-left: 25px;
+        }
+        
+        .nav-link { position: relative; padding-bottom: 5px; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #BE1E2E;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Main Button */
+        .btn-red {
+            background-color: #BE1E2E;
+            color: white;
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        .btn-red:hover { background-color: #9A1623; }
+        
+        /* content styling */
+        .page-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 4px solid #BE1E2E;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .wp-content h1, .wp-content h2, .wp-content h3 {
+            color: #000000;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .wp-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+    
+            .prose h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #000000; font-size: 2rem; border-bottom: 2px solid #BE1E2E; padding-bottom: 0.5rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+            .prose h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #BE1E2E; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+            .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #333; }
+            .prose ul:not(.space-y-4) { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.5rem; }
+            .prose ul:not(.space-y-4) li { margin-bottom: 0.5rem; color: #444; }
+            .prose ul:not(.space-y-4) li svg { display: none; /* Hide the weird random SVGs inside the content ul, use standard bullets instead */ }
+        
+            .exact-sidebar-link {
+                color: #FFFFFF;
+                display: flex;
+                align-items: center;
+                padding: 15px 20px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 15px;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                transition: background-color 0.3s ease;
+            }
+            .exact-sidebar-link:hover {
+                background-color: #921635;
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+            /* Match the content header colors too */
+            .prose h2 { color: #B41C44 !important; }
+            .prose h4 { color: #000000 !important; font-weight: bold; }
+        
+        /* Force Sidebar override against .wp-content bleeding */
+        .wp-content .exact-sidebar-title {
+            color: #FFFFFF !important;
+        }
+        .wp-content a.exact-sidebar-link {
+            color: #FFFFFF !important;
+            text-decoration: none !important;
+        }
+        .wp-content a.exact-sidebar-link:hover {
+            color: #FFFFFF !important;
+        }
+        </style>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+<!-- Header -->
+<header class="header-bg sticky top-0 z-50 w-full transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center h-full py-2">
+                    <a href="/" class="flex h-full items-center">
+                        <img src="/assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/">Home</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/calendar.html">Calendar</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/programs.html">Programs</a>
+<div class="relative dropdown h-full flex items-center">
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" href="/about-us.html">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+<div class="dropdown-menu top-[100%] left-0">
+<a href="/meet-the-officers.html">Meet the officers</a>
+</div>
+</div>
+<div class="relative dropdown h-full flex items-center">
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" href="/cadet-mess.html">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
+<div class="dropdown-menu top-[100%] left-0">
+<a href="/general-knowledge.html">General Knowledge</a>
+<a href="/physical-fitness.html">Physical Fitness</a>
+<a href="/grooming-uniform.html">Grooming &amp; Uniform</a>
+</div>
+</div>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/parents.html">Parents</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/gallery.html">Gallery</a>
+<a class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200" href="/enrollment.html">Enrollment</a>
+<a class="btn-red text-sm" href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank">Donate</a>
+</nav>
+<!-- Mobile button -->
+<div class="lg:hidden flex items-center">
+<button class="text-white hover:text-brandRed focus:outline-none" id="mobile-menu-btn">
+<i class="fas fa-bars text-3xl"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation Menu -->
+<div class="hidden lg:hidden bg-brandBlack border-t border-gray-800" id="mobile-menu">
+<div class="px-4 py-4 space-y-3">
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/">Home</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/calendar.html">Calendar</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/programs.html">Programs</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/about-us.html">About Us</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/meet-the-officers.html">- Meet the officers</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/cadet-mess.html">Cadet Mess</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/general-knowledge.html">- General Knowledge</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/physical-fitness.html">- Physical Fitness</a>
+<a class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2" href="/grooming-uniform.html">- Grooming &amp; Uniform</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/parents.html">Parents</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/gallery.html">Gallery</a>
+<a class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2" href="/enrollment.html">Enrollment</a>
+<a class="block text-brandRed uppercase font-heading text-lg font-bold" href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank">Donate</a>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<div class="page-header">
+<div class="max-w-7xl mx-auto px-4">
+<h1 class="uppercase tracking-widest">Physical Fitness</h1>
+</div>
+</div>
+<div class="bg-white py-16">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 wp-content"><div class="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start"><div class="col-span-1 lg:col-span-1 p-6 h-min sticky top-32" style="background-color: #B41C44; padding: 30px; border-radius: 4px;"><h3 class="text-white font-sans font-bold text-xl mb-6 exact-sidebar-title" style='font-family: "Montserrat", sans-serif; font-size: 22px; line-height: 1.2; text-transform: none;'>Physical Fitness</h3><ul class="flex flex-col">
+<li>
+<a class="exact-sidebar-link" href="#sec1">
+<svg aria-hidden="true" class="w-3 h-3 mr-3 flex-shrink-0" style="fill: #FFFFFF;" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>						
+										Navy Sea Cadet Fitness Requirements
+											</a>
+</li>
+</ul></div><div class="col-span-1 lg:col-span-3 prose prose-lg max-w-none text-gray-800">
+<h2>NAVY SEA CADET FITNESS REQUIREMENTS</h2>
+<p>A requirement in the USNSCC is for cadets to take the PRT (Physical Readiness Test) two times a year, once in the spring and once in the winter. Cadets must pass their PRT to stay in the program and attend summer/winter training.</p><p>The PRT tests cadets on 3 exercises: pushups, plank, and a 1-mile run. Each cadet will perform as many pushups (with the correct form) as possible within 1 minute. Each cadet will hold the correct position of plank for as long as possible (capped at 3 minutes 30 seconds). Each cadet will complete a 1-mile run (passing times are indicated below).</p><p>The physical standards vary by age and are categorized into 5 levels. Level 2 is the minimum level to join the program, and it is highlighted in blue on the standards chart. See below for more details on the levels.</p><p>During drills, cadets participate in physical training (PT). However, this is not enough to prepare for the PRT. Cadets are strongly encouraged to practice pushups, plank, and running outside of drill - especially when nearing the PRT dates.</p>
+<img alt="" class="max-w-full h-auto rounded shadow-sm my-6" height="776" sizes="(max-width: 600px) 100vw, 600px" src="/assets/images/PRT-Standards.jpg" srcset="/assets/images/PRT-Standards.jpg 600w, /assets/images/PRT-Standards-232x300.jpg 232w" width="600"/>
+<p>The overall fitness level will be determined by the lowest score in three physical challenges: planks, pushups, and the mile run. </p><p><strong>Level 1:</strong> This represents any cadet who hasn't met all three requirements for Level 2 or higher. If your PRT is over six months old, you'll also be considered Level 1 until you retest and achieve a new score. </p><p><strong>Level 2 (Progressing)</strong>: This is designed as a transition phase for our newer cadets who may need more time to reach Level 3 but are otherwise ready to attend Recruit Training (RT). To attend RT and advance to Seaman Apprentice (SA), cadets only need a Level 2 score. </p><p><strong>Level 3,</strong> satisfactory, or higher is required to advance to SN and above and attend any advanced training. At this time, we have only added a new PRT level between Failed and Satisfactory. The current levels of Satisfactory (level 3), Good (level 4), and Excellent (level 5) are the same. </p><p><strong>Level 3 (Satisfactory) or higher:</strong> Level 3 is required to progress to Seaman (SN) or higher. Level 3 is required to attend advanced training. The standards for "Satisfactory" (Level 3), "Good" (Level 4), and "Excellent" (Level 5) have not changed. The complete PRT standards</p>
+<div class="aspect-w-16 aspect-h-9 my-8 w-full">
+    <iframe class="w-full h-[400px] shadow-lg rounded border-4 border-brandRed" src="https://www.youtube.com/embed/Get-JgZvI0A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+			<h5>PUSHUPS:
+</h5>
+<ul><li aria-level="1" style="font-weight: 400;">Cadets must place hands directly beneath shoulders or slightly wider<ul><li aria-level="2" style="font-weight: 400;">Wide pushups (placing hands too wide, outside of shoulders) will not be counted</li></ul></li><li aria-level="1" style="font-weight: 400;">The body must be completely flat (head, shoulders, back, and hip aligned in one horizontal line)<ul><li aria-level="2" style="font-weight: 400;">Dipping or raising the head, torso, hips, knees, etc will not be counted</li></ul></li><li aria-level="1" style="font-weight: 400;">Arms must BREAK NINETY DEGREES - NO EXCEPTIONS</li><li aria-level="1" style="font-weight: 400;">If any one of your knees touches the ground, your pushup count will have ended (you are finished exercising and cannot resume or continue)</li></ul>
+</div></div></div>
+</div>
+</main>
+<!-- Footer mirroring the live site 4-columns -->
+<footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 scroll-mt-24">
+<!-- Column 1: Logo and Address -->
+<div class="col-span-1">
+<img alt="El Toro Logo" class="w-32 mb-6" src="/assets/images/SCCNewLogo7-1.png"/>
+<h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
+<p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
+<p class="text-sm leading-loose mb-2">Since 1958, the USNSCC has been committed to providing American youth with a drug-and alcohol-free environment...</p>
+</div>
+<!-- Column 2: Quick Links -->
+<div class="col-span-1">
+<h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
+<ul class="space-y-3 text-sm font-semibold">
+<li><a class="hover:text-brandRed transition-colors" href="/">&gt; Home</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/about-us.html">&gt; About Us</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/programs.html">&gt; Programs</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/enrollment.html">&gt; Enrollment</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/gallery.html">&gt; Gallery</a></li>
+<li><a class="hover:text-brandRed transition-colors" href="/calendar.html">&gt; Calendar</a></li>
+</ul>
+</div>
+<!-- Column 3: Contact Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
+                    
+                    <div class="mb-6">
+                        <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Wetrs</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:swerts@seacadets.org" class="hover:text-white">swerts@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-613-1586</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:v.chandrasekharan@seacadets.org" class="hover:text-white">v.chandrasekharan@seacadets.org</a></p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
+                    </div>
+                </div>
+
+                <!-- Column 4: Follow Us -->
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
+                    <div class="flex space-x-3 mb-10">
+                        <a href="https://www.facebook.com/eltoro.battalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl"><i class="fas fa-anchor"></i></a>
+                    </div>
+                    
+                    <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="/parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg">MAKE A DONATION</a>
+                </div>
+            </div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2026 El Toro Battalion. All Rights Reserved.</p>
+<p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
+</div>
+</div>
+</footer>
+<!-- Mobile Menu Script -->
+<script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+    </script>
+</body>
+</html>
