@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: cvbiju/eltoro-website # The GitHub repository
+  branch: main # Branch to update
+  # Optional: use a specific sub-directory if the admin shouldn't have access to the whole repo
+  # base_url: https://my-custom-auth-server.com # Required for GitHub OAuth if not using Netlify Identity
+
+# This folder is where uploaded files will be saved relative to where the site is built
+media_folder: "public/assets/images"
+# This is the path the front-end code will use to reference the uploaded files
+public_folder: "./assets/images"
+
+collections:
+  - name: "homepage" # Used in routes, e.g., /admin/collections/homepage
+    label: "Home Page Settings" # Used in the UI
+    file: "public/index.html" # The file being edited
+    fields:
+      - {label: "Hero Background Image", name: "hero_bg", widget: "image", required: false}
+      
+  - name: "who_we_are"
+    label: "Who We Are Section"
+    file: "public/index.html"
+    fields:
+      - {label: "Who We Are Main Image", name: "who_we_are_img", widget: "image"}
+      
+  # Example for a specific image replacement
+  - name: "what_we_do"
+    label: "What We Do Images"
+    files:
+      - label: "Cadet Expectations Card"
+        name: "card_1"
+        file: "public/index.html"
+        fields:
+          - {label: "Image", name: "image", widget: "image"}
