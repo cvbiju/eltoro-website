@@ -11,24 +11,13 @@ media_folder: "public/assets/images"
 public_folder: "./assets/images"
 
 collections:
-  - name: "homepage" # Used in routes, e.g., /admin/collections/homepage
-    label: "Home Page Settings" # Used in the UI
-    file: "public/index.html" # The file being edited
-    fields:
-      - {label: "Hero Background Image", name: "hero_bg", widget: "image", required: false}
-      
-  - name: "who_we_are"
-    label: "Who We Are Section"
-    file: "public/index.html"
-    fields:
-      - {label: "Who We Are Main Image", name: "who_we_are_img", widget: "image"}
-      
-  # Example for a specific image replacement
-  - name: "what_we_do"
-    label: "What We Do Images"
+  - name: "pages"
+    label: "Pages"
     files:
-      - label: "Cadet Expectations Card"
-        name: "card_1"
-        file: "public/index.html"
+      - label: "Home Page Settings"
+        name: "homepage"
+        file: "public/admin/settings.json"
         fields:
-          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Hero Background Image", name: "hero_bg", widget: "image", required: false}
+          - {label: "Who We Are Main Image", name: "who_we_are_img", widget: "image"}
+
