@@ -199,7 +199,7 @@
     <main class="flex-grow">
 
     <!-- Hero Section -->
-    <div class="relative w-full flex items-center justify-center bg-black bg-opacity-40 bg-blend-overlay" style="min-height: 800px; padding: 200px 20px; background-image: url('./assets/images/media_bg.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div id="hero-section" class="relative w-full flex items-center justify-center bg-black bg-opacity-40 bg-blend-overlay" style="min-height: 800px; padding: 200px 20px; background-image: url('./assets/images/media_bg.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="text-center px-4 w-full relative z-10">
             <h1 class="text-white font-medium font-heading uppercase" style="font-size: clamp(40px, 8vw, 80px); line-height: 1.2;">El Toro Battalion<br>TS Vammen</h1>
         </div>
@@ -211,7 +211,7 @@
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <!-- Image Left -->
                 <div class="w-full md:w-1/2">
-                    <img src="./assets/images/model-3_70.jpg" alt="Who We Are" class="w-full h-auto shadow-lg">
+                    <img id="who-we-are-image" src="./assets/images/model-3_70.jpg" alt="Who We Are" class="w-full h-auto shadow-lg">
                 </div>
                 
                 <!-- Text Right -->
@@ -464,6 +464,30 @@
                 icon.classList.add('fa-times');
             }
         });
+    </script>
+    <script>
+        // Load Decap CMS Settings dynamically
+        fetch('/admin/settings.json')
+            .then(response => {
+                if(response.ok) return response.json();
+                throw new Error("Settings not found");
+            })
+            .then(settings => {
+                // Apply Hero Background if provided
+                if(settings.hero_bg && settings.hero_bg.trim() !== "") {
+                    // Ensure the path is correct depending on where the CMS saved it.
+                    // The CMS saves as "assets/images/X", so we append a leading slash or dot.
+                    let bgPath = settings.hero_bg.startsWith('http') ? settings.hero_bg : './' + settings.hero_bg;
+                    document.getElementById('hero-section').style.backgroundImage = `url('${bgPath}')`;
+                }
+                
+                // Apply Who We Are image if provided
+                if(settings.who_we_are_img && settings.who_we_are_img.trim() !== "") {
+                    let imgPath = settings.who_we_are_img.startsWith('http') ? settings.who_we_are_img : './' + settings.who_we_are_img;
+                    document.getElementById('who-we-are-image').src = imgPath;
+                }
+            })
+            .catch(error => console.log("CMS Settings loading error:", error));
     </script>
 </body>
 </html>
