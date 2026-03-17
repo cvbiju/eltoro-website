@@ -292,12 +292,13 @@
                 async function fetchUpcomingEvents() {
                     // We must use a CORS proxy to fetch the .ics file directly from the browser
                     const googleIcalUrl = 'https://calendar.google.com/calendar/ical/c_1f7d35ad6a311671c073b76b093bf270a300743fc0e3c4777b9fd6bcf404ef57%40group.calendar.google.com/public/basic.ics';
-                    const icalUrl = 'https://corsproxy.io/?' + encodeURIComponent(googleIcalUrl);
+                    const icalUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(googleIcalUrl);
                     
                     try {
                         const response = await fetch(icalUrl);
                         if (!response.ok) throw new Error("Network response was not ok");
-                        const data = await response.text();
+                        const json = await response.json();
+                        const data = json.contents;
                         
                         const events = parseICal(data);
                         
