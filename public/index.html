@@ -334,7 +334,7 @@
                         if (line === 'BEGIN:VEVENT') {
                             currentEvent = {};
                         } else if (line === 'END:VEVENT' && currentEvent) {
-                            if (currentEvent.start) {
+                            if (currentEvent.date) {
                                 events.push(currentEvent);
                             }
                             currentEvent = null;
