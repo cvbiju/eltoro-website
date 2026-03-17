@@ -290,15 +290,13 @@
             
             <script>
                 async function fetchUpcomingEvents() {
-                    // We must use a CORS proxy to fetch the .ics file directly from the browser
                     const googleIcalUrl = 'https://calendar.google.com/calendar/ical/c_1f7d35ad6a311671c073b76b093bf270a300743fc0e3c4777b9fd6bcf404ef57%40group.calendar.google.com/public/basic.ics';
-                    const icalUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(googleIcalUrl);
+                    const icalUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(googleIcalUrl);
                     
                     try {
                         const response = await fetch(icalUrl);
                         if (!response.ok) throw new Error("Network response was not ok");
-                        const json = await response.json();
-                        const data = json.contents;
+                        const data = await response.text();
                         
                         const events = parseICal(data);
                         
@@ -315,7 +313,7 @@
                         renderEvents(upcoming);
                     } catch (error) {
                         console.error('Error fetching calendar events:', error);
-                        document.getElementById('events-loading').innerHTML = '<p class="text-xl font-heading text-brandRed uppercase">Unable to auto-load events. Please check the calendar page.</p>';
+                        document.getElementById('events-loading').innerHTML = '<p class="text-xl font-heading text-brandRed uppercase">Unable to load live events. Please check the calendar page.</p>';
                     }
                 }
                 
