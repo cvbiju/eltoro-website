@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: cvbiju/eltoro-website # The GitHub repository
+  name: git-gateway
   branch: main # Branch to update
-  # Optional: use a specific sub-directory if the admin shouldn't have access to the whole repo
-  # base_url: https://my-custom-auth-server.com # Required for GitHub OAuth if not using Netlify Identity
 
 # This folder is where uploaded files will be saved relative to where the site is built
 media_folder: "public/assets/images"
