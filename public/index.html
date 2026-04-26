@@ -201,9 +201,14 @@
     <main class="flex-grow">
 
     <!-- Hero Section -->
-    <div id="hero-section" class="relative w-full flex items-center justify-center bg-black bg-opacity-40 bg-blend-overlay" style="min-height: calc(100vh - 96px); padding: 2rem 20px; background-image: url('./assets/images/media_bg.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div id="hero-section" class="relative w-full flex items-center justify-center overflow-hidden" style="min-height: calc(100vh - 96px); padding: 2rem 20px;">
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none">
+            <source src="./assets/videos/hero-background.mov" type="video/mp4" />
+        </video>
+        <!-- Overlay to ensure text legibility -->
+        <div class="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
         <div class="text-center px-4 w-full relative z-10">
-            <h1 class="text-white font-medium font-heading uppercase" style="font-size: clamp(40px, 8vw, 80px); line-height: 1.2;">El Toro Battalion<br>TS Vammen</h1>
+            <h1 class="text-white font-medium font-heading uppercase tracking-wide" style="font-size: clamp(40px, 8vw, 80px); line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">El Toro Battalion<br>TS Vammen</h1>
         </div>
     </div>
 
