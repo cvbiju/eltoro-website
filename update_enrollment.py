@@ -1,213 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrollment | El Toro Battalion</title>
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts exactly like the original -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 
-                        brandBlack: '#000000', 
-                        brandRed: '#BE1E2E', 
-                        brandRedHover: '#9A1623',
-                        brandGrayDark: '#1a1a1a',
-                        brandGrayLight: '#f4f4f4' 
-                    },
-                    fontFamily: { 
-                        sans: ['Montserrat', 'sans-serif'], 
-                        heading: ['Oswald', 'sans-serif'] 
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Montserrat', sans-serif; }
-        h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
-        
-        .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
-        
-        /* Dropdown Styles */
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            position: absolute;
-            background-color: #1a1a1a;
-            min-width: 250px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-            z-index: 100;
-            border-top: 3px solid #BE1E2E;
-        }
-        .dropdown-menu a {
-            color: #ffffff;
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #333;
-            transition: background 0.3s, padding-left 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: none;
-            font-weight: 500;
-        }
-        .dropdown-menu a:hover {
-            background-color: #BE1E2E;
-            padding-left: 25px;
-        }
-        
-        .nav-link { position: relative; padding-bottom: 5px; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #BE1E2E;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-        
-        /* Main Button */
-        .btn-red {
-            background-color: #BE1E2E;
-            color: white;
-            padding: 12px 24px;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: background 0.3s;
-        }
-        .btn-red:hover { background-color: #9A1623; }
-        
-        /* content styling */
-        .page-header {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            border-bottom: 4px solid #BE1E2E;
-        }
-        .page-header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        
-        .wp-content h1, .wp-content h2, .wp-content h3 {
-            color: #000000;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        .wp-content p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
-        .wp-content a:hover { text-decoration: underline; }
-    </style>
-</head>
-<body class="bg-white text-gray-800 flex flex-col min-h-screen">
-    <!-- Header -->
-    <header class="header-bg sticky top-0 z-50 w-full transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center h-full py-2">
-                    <a href="./index.html" class="flex h-full items-center">
-                        <img src="./assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
-                    </a>
-                </div>
-                
-                <!-- Navigation -->
-                <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="./index.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Home</a>
-                    <a href="./calendar.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Calendar</a>
-                    <a href="./programs.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Programs</a>
-                    
-                    <div class="relative dropdown h-full flex items-center">
-                        <a href="./about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
-                        <div class="dropdown-menu top-[100%] left-0">
-                            <a href="./meet-the-officers.html">Meet the officers</a>
-                        </div>
-                    </div>
-                    
-                    <div class="relative dropdown h-full flex items-center">
-                        <a href="./cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
-                        <div class="dropdown-menu top-[100%] left-0">
-                            <a href="./general-knowledge.html">General Knowledge</a>
-                            <a href="./physical-fitness.html">Physical Fitness</a>
-                            <a href="./grooming-uniform.html">Grooming & Uniform</a>
-                        </div>
-                    </div>
-                    
-                    <a href="./parents.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Parents</a>
-                    <a href="./gallery.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Gallery</a>
-                    <a href="./enrollment.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Enrollment</a>
-                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red text-sm" rel="noopener noreferrer">Donate</a>
-                </nav>
-                
-                <!-- Mobile button -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed focus:outline-none">
-                        <i class="fas fa-bars text-3xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-brandBlack border-t border-gray-800">
-            <div class="px-4 py-4 space-y-3">
-                <a href="./index.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Home</a>
-                <a href="./calendar.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Calendar</a>
-                <a href="./programs.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Programs</a>
-                <a href="./about-us.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">About Us</a>
-                <a href="./meet-the-officers.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Meet the officers</a>
-                <a href="./cadet-mess.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Cadet Mess</a>
-                <a href="./general-knowledge.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- General Knowledge</a>
-                <a href="./physical-fitness.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Physical Fitness</a>
-                <a href="./grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming & Uniform</a>
-                <a href="./parents.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Parents</a>
-                <a href="./gallery.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Gallery</a>
-                <a href="./enrollment.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Enrollment</a>
-                <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="block text-brandRed uppercase font-heading text-lg font-bold" rel="noopener noreferrer">Donate</a>
-            </div>
-        </div>
-    </header>
+import re
 
-    <!-- Main Content -->
-    <main class="flex-grow">
+with open("public/enrollment.html", "r") as f:
+    html = f.read()
 
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    <!-- Main Content -->
+new_main = """<!-- Main Content -->
     <main class="flex-grow bg-gray-50">
         
         <!-- Premium Hero Header -->
@@ -343,9 +139,6 @@
                         <div class="p-8 lg:p-12">
                             <form action="https://api.web3forms.com/submit" method="POST" id="enrollmentForm" class="elementor-form">
                                 <input type="hidden" name="access_key" value="0fbe9077-aea2-4c34-af94-000cd7678747">
-                                <!-- Web3Forms Honeypot -->
-                                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                                
                                 <input type="hidden" name="subject" value="New message from El Toro Battalion Enrollment Form">
                                 <input type="hidden" name="redirect" value="https://web3forms.com/success">
                                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -360,8 +153,8 @@
                                         </div>
                                         <div class="grid grid-cols-3 gap-4">
                                             <div class="relative col-span-1">
-                                                <input type="text" name="form_fields[minitial_family]" placeholder="M.I." class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
-                                                <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">M.I.</label>
+                                                <input type="text" name="form_fields[minitial_family]" placeholder="M.I. *" required class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
+                                                <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">M.I. *</label>
                                             </div>
                                             <div class="relative col-span-2">
                                                 <input type="text" name="form_fields[lname_family]" placeholder="Last Name *" required class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
@@ -412,24 +205,24 @@
                                         </div>
                                         <div class="grid grid-cols-3 gap-4">
                                             <div class="relative col-span-1">
-                                                <input type="text" name="form_fields[minitial_cadet]" placeholder="M.I." class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
-                                                <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">M.I.</label>
+                                                <input type="text" name="form_fields[minitial_cadet]" placeholder="M.I. *" required class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
+                                                <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">M.I. *</label>
                                             </div>
                                             <div class="relative col-span-2">
                                                 <input type="text" name="form_fields[lname_cadet]" placeholder="Last Name *" required class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
                                                 <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">Cadet Last Name *</label>
                                             </div>
                                         </div>
-                                        <div class="grid grid-cols-2 gap-4">
-                                            <div class="relative col-span-1">
+                                        <div class="relative grid grid-cols-2 gap-4">
+                                            <div class="col-span-1">
                                                 <input type="text" name="form_fields[gender_cadet]" placeholder="Gender *" required class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
                                                 <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">Gender *</label>
                                             </div>
-                                            <div class="relative col-span-1">
+                                            <div class="col-span-1">
                                                 <input type="text" name="form_fields[ethnicity_cadet]" placeholder="Ethnicity *" required class="peer w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent placeholder-transparent">
-                                                <label class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">Ethnicity *</label>
+                                                <label class="absolute left-0 pl-1 border-gray-200 md:ml-4 -border -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brandRed">Ethnicity *</label>
                                             </div>
-                                        </div> 
+                                        </div>                                        
                                         <div class="relative">
                                             <input type="date" name="form_fields[dob_cadet]" required class="w-full border-b-2 border-gray-200 py-3 text-gray-800 focus:outline-none focus:border-brandRed transition-colors bg-transparent">
                                             <label class="absolute left-0 -top-3.5 text-gray-500 text-sm">Birthdate *</label>
@@ -495,7 +288,7 @@
                                     
                                     <div class="bg-red-50 border-l-4 border-brandRed p-5 rounded">
                                         <h4 class="font-bold text-brandRed mb-1"><i class="fas fa-info-circle mr-2"></i> Almost Done</h4>
-                                        <p class="text-sm text-gray-700">By submitting this form, you acknowledge that all information provided is accurate and you understand the requirements for joining the El Toro Battalion. An officer will be in touch shortly.</p>
+                                        <p class="text-sm text-gray-700">By submitting this form, you acknowledge that all information provided is accurate and you understand the requirements for joining the El Toro Battalion. A commanding officer will be in touch shortly.</p>
                                     </div>
                                 </div>
 
@@ -517,92 +310,12 @@
             </div>
         </div>
     </main>
+"""
 
-    <!-- Footer mirroring the live site 4-columns -->
-    <footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 scroll-mt-24">
-                
-                <!-- Column 1: Logo and Address -->
-                <div class="col-span-1">
-                    <img src="./assets/images/SCCNewLogo7-1.png" alt="El Toro Logo" class="w-32 mb-6">
-                    <h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
-                    <p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
-                    
-                </div>
-                
-                <!-- Column 2: Quick Links -->
-                <div class="col-span-1">
-                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
-                    <ul class="space-y-3 text-sm font-semibold">
-                        <li><a href="./index.html" class="hover:text-brandRed transition-colors">> Home</a></li>
-                        <li><a href="./about-us.html" class="hover:text-brandRed transition-colors">> About Us</a></li>
-                        <li><a href="./programs.html" class="hover:text-brandRed transition-colors">> Programs</a></li>
-                        <li><a href="./enrollment.html" class="hover:text-brandRed transition-colors">> Enrollment</a></li>
-                        <li><a href="./gallery.html" class="hover:text-brandRed transition-colors">> Gallery</a></li>
-                        <li><a href="./calendar.html" class="hover:text-brandRed transition-colors">> Calendar</a></li>
-                    </ul>
-                </div>
+new_html = re.sub(r"<!-- Hero Section -->.*?<!-- Footer mirroring the live site 4-columns -->", new_main + "\n    <!-- Footer mirroring the live site 4-columns -->", html, flags=re.DOTALL)
 
-                <!-- Column 3: Contact Us -->
-                <div class="col-span-1">
-                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
-                    
-                    <div class="mb-6">
-                        <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Werts</p>
-                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:swerts@seacadets.org" class="hover:text-white">swerts@seacadets.org</a></p>
-                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-415-0781</p>
-                    </div>
-                    
-                    <div>
-                        <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
-                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> <a href="mailto:v.chandrasekharan@seacadets.org" class="hover:text-white">v.chandrasekharan@seacadets.org</a></p>
-                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
-                    </div>
-                </div>
-
-                <!-- Column 4: Follow Us -->
-                <div class="col-span-1">
-                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
-                    <div class="flex space-x-3 mb-10">
-                        <a href="https://www.facebook.com/eltoro.battalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fas fa-anchor"></i></a>
-                    </div>
-                    
-                    <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="./parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
-                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg" rel="noopener noreferrer">MAKE A DONATION</a>
-                </div>
-            </div>
-            
-            
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center mx-auto max-w-5xl">
-                <p class="text-sm leading-relaxed text-gray-400 font-light italic">"Since 1958, the Naval Sea Cadet Corps has been committed to providing American youth with a drug and alcohol free environment to foster their leadership abilities, broaden their horizons through hands-on training and guide them to becoming mature young adults."</p>
-            </div>
-            
-            <div class="mt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2026 El Toro Battalion. All Rights Reserved.</p>
-                <p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Menu Script -->
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            var icon = this.querySelector('i');
-            menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
-    </script>
-
+# Insert the Multi-step JS
+multi_step_js = """
 <script>
     // Multi-Step Form Logic
     document.addEventListener('DOMContentLoaded', function() {
@@ -615,18 +328,22 @@
         let currentStep = 0;
 
         function updateForm() {
+            // Update visibility of steps
             steps.forEach((step, index) => {
                 if(index === currentStep) {
                     step.classList.remove('hidden');
+                    // Slight delay for fade in effect
                     setTimeout(() => step.classList.remove('opacity-0'), 50);
                 } else {
                     step.classList.add('hidden', 'opacity-0');
                 }
             });
 
+            // Update Progress Bar (0%, 50%, 100%)
             const progress = (currentStep / (steps.length - 1)) * 100;
             progressBar.style.width = `${progress}%`;
 
+            // Update Indicators
             indicators.forEach((indicator, index) => {
                 const circle = indicator.querySelector('div');
                 const text = indicator.querySelector('span');
@@ -641,6 +358,7 @@
                 }
             });
 
+            // Update Buttons
             if (currentStep === 0) {
                 prevBtn.classList.add('hidden');
                 nextBtn.classList.remove('hidden');
@@ -660,21 +378,12 @@
             const currentStepEl = steps[currentStep];
             const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
             let isValid = true;
-            let firstInvalid = null;
-            
             inputs.forEach(input => {
-                input.classList.remove('border-red-500', 'border-b-red-500'); // clear UI errors
-                
                 if (!input.checkValidity()) {
-                    input.classList.add('border-b-[3px]', 'border-b-red-500', 'bg-red-50', 'bg-opacity-50'); // Highlight error field visually with stronger borders
-                    if (!firstInvalid) firstInvalid = input;
+                    input.reportValidity();
                     isValid = false;
                 }
             });
-            
-            if (firstInvalid) {
-                firstInvalid.reportValidity();
-            }
             return isValid;
         }
 
@@ -682,6 +391,7 @@
             if(validateCurrentStep()) {
                 currentStep++;
                 updateForm();
+                // Scroll to top of form section smoothly
                 document.getElementById('enrollment-form-section').scrollIntoView({behavior: 'smooth'});
             }
         });
@@ -694,58 +404,11 @@
 
         // Initialize Form
         updateForm();
-        
-        // Remove error classes on input
-        document.querySelectorAll('input, select').forEach(el => {
-            el.addEventListener('input', () => {
-                el.classList.remove('border-b-[3px]', 'border-b-red-500', 'bg-red-50', 'bg-opacity-50');
-            });
-        });
     });
 </script>
+"""
 
-<script>
-    const form = document.getElementById('enrollmentForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerText;
-            submitButton.innerText = "SENDING...";
-            submitButton.disabled = true;
+new_html = re.sub(r"    <script>\n        const form = document", multi_step_js + "\n    <script>\n        const form = document", new_html)
 
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    alert("Thank you! Your enrollment application has been successfully submitted.");
-                    form.reset();
-                } else {
-                    console.error(response);
-                    alert("Something went wrong! Please try again later.");
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert("Something went wrong! Please try again later.");
-            })
-            .finally(() => {
-                submitButton.innerText = originalText;
-                submitButton.disabled = false;
-            });
-        });
-    }
-</script>
-\n</body>
-</html>
+with open("public/enrollment.html", "w") as f:
+    f.write(new_html)

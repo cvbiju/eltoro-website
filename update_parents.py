@@ -1,0 +1,126 @@
+import re
+
+with open("public/parents.html", "r") as f:
+    html = f.read()
+
+new_main = """<!-- Main Content -->
+<main class="flex-grow bg-gray-50">
+    <!-- Hero Header -->
+    <div class="relative bg-[radial-gradient(circle_at_center,_#2a2a2a_0%,_#000000_100%)] text-white py-20 text-center border-b-4 border-brandRed overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(190,30,46,0.2)_0%,_transparent_50%)] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <h1 class="font-heading text-5xl md:text-6xl font-bold tracking-[0.2em] uppercase">Parents Hub</h1>
+            <p class="mt-4 text-gray-300 max-w-2xl mx-auto text-lg">Essential resources and guides for El Toro Battalion families.</p>
+        </div>
+    </div>
+
+    <div class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="Sea Cadet Family Handbook" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/Sea-Cadet.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">Sea Cadet Family Handbook</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Welcome to the U.S. Naval Sea Cadet Corps! Your child is embarking on a personal and professional development journey. Exciting adventures await full of hands-on learning...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/Sea-Cadet-Family-Handbook.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="PQS Guide" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/7.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">Download the PQS Guide</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Help your Sea Cadet stay on track and excel in their training with our updated Personnel Qualification Standards (PQS) Guide. This essential tool outlines the knowledge...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/7.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="Goal Planning" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/6.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">Goals Planning Worksheet</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Every Sea Cadet’s journey is unique, and having a clear plan can make all the difference. Our Goal Planning Worksheet is designed to help your child set meaningful goals...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/6.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="National Postcards" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/5.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">National Promo Postcards</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Spread the word about the exciting opportunities with the U.S. Naval Sea Cadet Corps! Our National Promo Postcards are perfect for sharing the values and benefits...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/5.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="Discover the Challenge" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/4.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">Discover the Challenge</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Ready to challenge yourself and grow as a leader? The U.S. Naval Sea Cadet Corps offers middle and high school students unique opportunities for hands-on training...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/4.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="Advancement Guide" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/Core-Values.png"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">Advancement Guide</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Take the next step in your Sea Cadet journey by mastering the advancement process. Our detailed Advancement Summary outlines the rank structure, requirements...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="https://eltorobattalion.org/parents/" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="Explore the Sea Cadets" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/2.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">Explore the Sea Cadets</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Discover how the U.S. Naval Sea Cadet Corps is shaping the leaders of tomorrow. Our comprehensive program overview highlights the incredible journey of cadets...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/2.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+                
+                <!-- Card 8 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group">
+                    <div class="w-full pt-8 px-8 flex justify-center h-48 items-center bg-gray-50 rounded-t-xl group-hover:bg-red-50 transition-colors">
+                        <img alt="By The Numbers" class="w-auto max-h-[160px] object-contain drop-shadow-md" src="./assets/images/1.jpg"/>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 class="font-heading text-xl font-bold tracking-wide uppercase text-brandBlack mb-4 group-hover:text-brandRed transition-colors">National By The Numbers</h3>
+                        <p class="text-gray-600 text-sm mb-8 flex-grow leading-relaxed">Explore the impressive achievements of Sea Cadets and learn how they are making a difference in their communities in physical fitness and academic excellence...</p>
+                        <a class="w-full text-center bg-brandRed hover:bg-brandRedHover text-white font-bold uppercase tracking-widest text-sm px-5 py-3 shadow transition-colors" href="./assets/images/1.pdf" target="_blank"><i class="fas fa-file-pdf mr-2"></i> PDF Guide</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+"""
+
+new_html = re.sub(r"<!-- Main Content -->.*?<!-- Footer mirroring the live site 4-columns -->", new_main + "\n<!-- Footer mirroring the live site 4-columns -->", html, flags=re.DOTALL)
+
+with open("public/parents.html", "w") as f:
+    f.write(new_html)
