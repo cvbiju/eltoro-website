@@ -99,16 +99,27 @@
         
         /* content styling */
         .page-header {
-            background-color: #1a1a1a;
+            background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
             color: white;
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
             border-bottom: 4px solid #BE1E2E;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(190, 30, 46, 0.2) 0%, transparent 50%);
+            pointer-events: none;
         }
         .page-header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 10;
         }
         
         .wp-content h1, .wp-content h2, .wp-content h3 {
@@ -205,8 +216,103 @@
         </div>
         <div class="bg-white py-16">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 wp-content">
-                <h2>THE UNITED STATES NAVAL SEA CADET CORPS (USNSCC)</h2>		
-		Cadets are young men and women aged 10 through the end of high school who choose adventure, seek challenges, and step outside of their comfort zones. There are two programs within Sea Cadets.  The Navy League Cadet Corps (NLCC) is for middle school students aged 10 to 13. The Naval Sea Cadet Corps (NSCC) is for ages 13 through the end of high school. <p><b>Navy League Cadet Corps</b><br />Our “League Cadets” are middle school-aged students who participate in our introductory program.  League Cadets wear uniforms, train in a disciplined environment, and advance through ranks that mirror the Navy and Merchant Marines. League Cadets may participate in a wide variety of training opportunities to introduce them to the maritime services and a variety of career fields.  There is an optional week-long “Navy League Orientation” available to these young men and women.<br /><b><br />Naval Sea Cadet Corps</b><br />Sea Cadets are high school-aged students who participate in our advanced program.  There is no requirement to have been a League Cadet prior to joining Sea Cadets.  Sea Cadets wear uniforms, learn about the maritime services and a wide variety of career fields, and advance through ranks that mirror the U.S. Navy and U.S. Coast Guard.</p> <p><b>WHAT WE DO</b></p><ul><li>Participate in a local Unit Drill: typically meeting one weekend a month.</li><li>We have 400 units across the United States and in Guam and Puerto Rico.</li><li>Graduate Recruit Training or Orientation (bootcamp): a fast-paced 7-14 day training focused on basic military instruction and team building.</li><li>Participate in International Exchange IEP.</li><li>Attend Advanced training camps every summer and winter break.</li></ul><p>Sea Cadets instills values of discipline, accountability, and teamwork in a safe environment. We give cadets a chance to step outside of their comfort zones with dynamic challenges. We help our cadets thrive with humility and confidence.</p>
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-heading font-bold text-brandBlack uppercase mb-6 tracking-wide">The United States Naval Sea Cadet Corps</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">Cadets are young men and women aged 10 through the end of high school who choose adventure, seek challenges, and step outside of their comfort zones. There are two exceptional programs within our ranks designed to foster leadership and growth.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                    <!-- NLCC Card -->
+                    <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-t-4 border-gray-400 overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                        <div class="bg-gray-50 p-6 text-center border-b border-gray-100">
+                            <h3 class="font-heading text-2xl font-bold text-gray-800 uppercase m-0">Navy League Cadet Corps</h3>
+                            <span class="inline-block px-4 py-1 mt-3 rounded-full bg-gray-200 text-gray-700 font-semibold text-sm tracking-widest uppercase shadow-sm">Ages 10 - 13</span>
+                        </div>
+                        <div class="p-8">
+                            <p class="text-gray-600 leading-relaxed mb-6 font-medium">Our "League Cadets" are middle school-aged students who participate in our introductory program. They train in a disciplined environment and advance through ranks.</p>
+                            <ul class="space-y-4 text-sm text-gray-600">
+                                <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Introduction to maritime services and career fields.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Discipline and team-building in a safe environment.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Optional week-long “Navy League Orientation” training.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- NSCC Card -->
+                    <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-t-4 border-brandRed overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                        <div class="bg-gray-50 p-6 text-center border-b border-gray-100">
+                            <h3 class="font-heading text-2xl font-bold text-gray-800 uppercase m-0">Naval Sea Cadet Corps</h3>
+                            <span class="inline-block px-4 py-1 mt-3 rounded-full bg-red-100 text-brandRed font-semibold text-sm tracking-widest uppercase shadow-sm">Ages 13 - 18</span>
+                        </div>
+                        <div class="p-8">
+                            <p class="text-gray-600 leading-relaxed mb-6 font-medium">Sea Cadets are high school-aged students in our advanced program. There is no requirement to have been a League Cadet prior to joining.</p>
+                            <ul class="space-y-4 text-sm text-gray-600">
+                                <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Advance through ranks mirroring the U.S. Navy and Coast Guard.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Leadership opportunities and advanced technical training.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Rigorous physical fitness and international exchange programs.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+<div class="mt-16 mb-12">
+    <h3 class="font-heading text-3xl font-bold uppercase mb-8 text-brandBlack border-l-4 border-brandRed pl-4">What We Do</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <!-- Feature 1 -->
+        <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-brandRed text-3xl mb-4"><i class="fas fa-calendar-alt"></i></div>
+            <h4 class="font-heading text-xl font-semibold mb-2 uppercase">Local Unit Drill</h4>
+            <p class="text-gray-600 text-sm leading-relaxed">Participate in local Unit Drills, typically meeting one weekend a month. We have over 400 units across the United States, Guam, and Puerto Rico.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-brandRed text-3xl mb-4"><i class="fas fa-campground"></i></div>
+            <h4 class="font-heading text-xl font-semibold mb-2 uppercase">Bootcamp & Orientation</h4>
+            <p class="text-gray-600 text-sm leading-relaxed">Graduate Recruit Training (bootcamp): a fast-paced 7-14 day training focused on basic military instruction and team building across the country.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+            <div class="text-brandRed text-3xl mb-4"><i class="fas fa-globe-americas"></i></div>
+            <h4 class="font-heading text-xl font-semibold mb-2 uppercase">International Exchange (IEP)</h4>
+            <p class="text-gray-600 text-sm leading-relaxed">Selected cadets have the unique opportunity to participate in the International Exchange Program (IEP), building relationships with international sea cadets abroad.</p>
+        </div>
+    </div>
+    
+    <div class="bg-white border text-center p-8 rounded-xl shadow-sm mb-12 relative overflow-hidden">
+        <h4 class="font-heading text-2xl font-bold mb-6 text-brandBlack uppercase relative z-10">Advanced Training Camps</h4>
+        <p class="text-gray-600 text-sm mb-8 max-w-2xl mx-auto relative z-10">Our cadets attend immersive advanced training camps every summer and winter break across dozens of specialties, including:</p>
+        
+        <div class="flex flex-wrap justify-center gap-3 relative z-10">
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">SEALs</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Robotics</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">SCUBA</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Submarine Training</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Culinary Arts</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Cyber Security</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Field Operations</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Maritime Interdiction</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Special Warfare Combat</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Master-at-Arms</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Space Camp</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Leadership</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Medical Training</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Music & Band</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">History & Heritage</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Photojournalism</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Search & Rescue</span>
+            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Marksmanship</span>
+        </div>
+    </div>
+    
+    <div class="relative bg-gradient-to-r from-gray-50 to-white p-10 rounded-xl shadow-md text-center border-l-4 border-brandRed overflow-hidden">
+        <i class="fas fa-quote-left absolute opacity-[0.03] text-8xl -top-2 -left-2 text-brandRed"></i>
+        <p class="text-gray-800 text-lg md:text-xl font-medium leading-relaxed max-w-4xl mx-auto italic relative z-10">
+            "Sea Cadets instills values of discipline, accountability, and teamwork in a safe environment. We give cadets a chance to step outside of their comfort zones with dynamic challenges. We help our cadets thrive with humility and confidence."
+        </p>
+    </div>
+</div>
         
         <div class="my-10 relative">
             <h3 class="font-heading text-2xl font-bold uppercase mb-4 text-brandBlack border-l-4 border-brandRed pl-3">Training In Action</h3>
@@ -246,7 +352,14 @@
             </a>
         </div>
         
-		<p>The USNSCC Cadet Code of Conduct is a set of rules and guidelines that all cadets in the United States Naval Sea Cadet Corps (USNSCC) must adhere to. These rules are designed to promote discipline, respect, and responsibility among cadets, and outline the behavior expected of them while participating in USNSCC activities. The code of conduct includes rules regarding personal conduct, respect for others, adherence to orders, and representing the USNSCC in a positive manner. Violations of the code of conduct can result in disciplinary action, up to and including dismissal from the program. It is essential for all cadets to understand and follow the USNSCC Cadet Code of Conduct in order to maintain a safe and respectful environment for all participants.</p>		
+        <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-6 my-12 shadow-sm relative">
+            <div class="absolute top-6 left-6 text-blue-500 text-3xl hidden sm:block"><i class="fas fa-shield-alt"></i></div>
+            <div class="sm:pl-16">
+                <h4 class="font-heading text-xl font-bold text-gray-800 uppercase mb-3"><i class="fas fa-shield-alt text-blue-500 mr-2 sm:hidden"></i> Cadet Code of Conduct</h4>
+                <p class="text-gray-700 text-sm leading-relaxed mb-4">The USNSCC Cadet Code of Conduct is a rigorous set of rules and guidelines that all cadets must adhere to. These standards promote discipline, respect, and responsibility, thoroughly outlining the honorable behavior expected while participating in USNSCC activities.</p>
+                <p class="text-gray-700 text-sm leading-relaxed mb-0">The code covers personal conduct, absolute respect for others, strict adherence to orders, and proudly representing the USNSCC in a positive manner. It is essential for all cadets to understand and follow the Code of Conduct to maintain a safe, disciplined, and respectful environment. Violations can result in disciplinary action up to and including dismissal from the elite program.</p>
+            </div>
+        </div>
         <div class="my-6 text-center md:text-left">
             <a href="https://www.seacadets.org/" target="_blank" class="inline-block btn-red shadow-lg transform hover:-translate-y-1 transition duration-300">
                 seacadets.org <i class="fas fa-external-link-alt ml-1 text-sm"></i>
