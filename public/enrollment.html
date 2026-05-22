@@ -306,8 +306,23 @@
                 <!-- Pre-Form Anchor -->
                 <div id="enrollment-form-section" class="scroll-mt-32"></div>
 
+                <!-- Form Success State -->
+                <div id="form-success" class="hidden max-w-4xl mx-auto mt-24 bg-white rounded-2xl shadow-xl border border-gray-200 p-12 text-center">
+                    <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check text-green-600 text-3xl"></i>
+                    </div>
+                    <h2 class="font-heading text-3xl font-bold text-brandBlack uppercase mb-4">Application Submitted!</h2>
+                    <p class="text-gray-500 text-lg mb-8 max-w-lg mx-auto">Thank you for applying to the El Toro Battalion. A commanding officer will review your application and be in touch shortly.</p>
+                    <a href="./index.html" class="btn-red inline-block px-10 py-4 font-heading font-bold text-lg rounded">Return to Home</a>
+                </div>
+
+                <!-- Form Error Banner -->
+                <div id="form-error" class="hidden max-w-4xl mx-auto mt-4 bg-red-50 border-l-4 border-brandRed p-5 rounded">
+                    <p class="text-brandRed font-semibold"><i class="fas fa-exclamation-triangle mr-2"></i> Submission failed. Please try again or contact us directly at <a href="mailto:swerts@seacadets.org" class="underline">swerts@seacadets.org</a>.</p>
+                </div>
+
                 <!-- Multi-Step Application Form -->
-                <div class="max-w-4xl mx-auto mt-24">
+                <div id="form-container" class="max-w-4xl mx-auto mt-24">
                     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
                         <!-- Form Header with Progress -->
                         <div class="bg-[#1a1a1a] p-8 border-b-4 border-brandRed relative">
@@ -348,7 +363,6 @@
                                 
                                 <input type="hidden" name="subject" value="New message from El Toro Battalion Enrollment Form">
                                 <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                                 <!-- STEP 1: Family Info -->
                                 <div id="form-step-1" class="form-step transition-opacity duration-300">
@@ -493,6 +507,16 @@
                                         </div>
                                     </div>
                                     
+                                    <!-- Privacy / COPPA Notice -->
+                                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                                        <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2"><i class="fas fa-shield-alt text-brandRed"></i> Privacy & Data Notice</h4>
+                                        <p class="text-sm text-gray-600 mb-3">This form collects personal information about a minor applicant (name, date of birth, address, and school data) on behalf of the El Toro Battalion, a unit of the U.S. Naval Sea Cadet Corps (USNSCC). Submitted information is transmitted securely to the unit's Commanding Officer for enrollment processing only and is not shared with third parties. For full details, see the <a href="https://www.seacadets.org/privacy-policy/" target="_blank" rel="noopener noreferrer" class="text-brandRed font-semibold underline">USNSCC Privacy Policy</a>.</p>
+                                        <label class="inline-flex items-start gap-3 cursor-pointer group">
+                                            <input type="checkbox" name="form_fields[guardian_confirm]" required class="mt-1 w-5 h-5 text-brandRed border-gray-300 rounded focus:ring-brandRed shrink-0">
+                                            <span class="text-sm text-gray-700 font-medium">I confirm that I am the parent or legal guardian of the cadet applicant and I consent to the collection of their personal information as described above. <span class="text-brandRed">*</span></span>
+                                        </label>
+                                    </div>
+
                                     <div class="bg-red-50 border-l-4 border-brandRed p-5 rounded">
                                         <h4 class="font-bold text-brandRed mb-1"><i class="fas fa-info-circle mr-2"></i> Almost Done</h4>
                                         <p class="text-sm text-gray-700">By submitting this form, you acknowledge that all information provided is accurate and you understand the requirements for joining the El Toro Battalion. An officer will be in touch shortly.</p>
@@ -732,6 +756,10 @@
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
+            const formContainer = document.getElementById('form-container');
+            const successEl = document.getElementById('form-success');
+            const errorEl = document.getElementById('form-error');
+
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
@@ -743,18 +771,22 @@
             .then(async (response) => {
                 let json = await response.json();
                 if (response.status == 200) {
-                    alert("Thank you! Your enrollment application has been successfully submitted.");
-                    form.reset();
+                    formContainer.classList.add('hidden');
+                    errorEl.classList.add('hidden');
+                    successEl.classList.remove('hidden');
+                    successEl.scrollIntoView({ behavior: 'smooth' });
                 } else {
                     console.error(response);
-                    alert("Something went wrong! Please try again later.");
+                    errorEl.classList.remove('hidden');
+                    errorEl.scrollIntoView({ behavior: 'smooth' });
+                    submitButton.innerText = originalText;
+                    submitButton.disabled = false;
                 }
             })
             .catch(error => {
                 console.error(error);
-                alert("Something went wrong! Please try again later.");
-            })
-            .finally(() => {
+                errorEl.classList.remove('hidden');
+                errorEl.scrollIntoView({ behavior: 'smooth' });
                 submitButton.innerText = originalText;
                 submitButton.disabled = false;
             });
