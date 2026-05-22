@@ -1,0 +1,45 @@
+{
+  "updated": "May 22, 2026",
+  "magazines": [
+    {
+      "title": "Summer Training 2026",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2026/04/Sea-Cadets-Training-Catalog-2026.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2026/04/Sea-Cadets-Training-Catalog-2026.pdf"
+    },
+    {
+      "title": "August 2025",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/08/Seafarer-Magazine-Aug-2025-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/08/Seafarer-Magazine-Aug-2025.pdf"
+    },
+    {
+      "title": "December 2024",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/06/Seafarer-Dec-2024-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/06/Seafarer-Dec-2024.pdf"
+    },
+    {
+      "title": "July 2024",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/06/Seafarer-Jul-2024-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/06/Seafarer-Jul-2024.pdf"
+    },
+    {
+      "title": "April 2024",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/06/Seafarer-Apr-2024-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/06/Seafarer-Apr-2024.pdf"
+    },
+    {
+      "title": "December 2022",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/05/2022_DEC_Seafarer-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/05/2022_DEC_Seafarer.pdf"
+    },
+    {
+      "title": "September 2018",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/05/Sea-Cadet-Quarterly-September-2018-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/05/Sea-Cadet-Quarterly-September-2018-Final.pdf"
+    },
+    {
+      "title": "June 2018",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/05/June-2018-Sea-Cade-Quarterly-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/05/June-2018-Sea-Cade-Quarterly.pdf"
+    }
+  ]
+}

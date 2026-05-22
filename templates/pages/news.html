@@ -1,0 +1,156 @@
+{% extends "_base.html" %}
+{% block page_title %}National News | El Toro Battalion{% endblock %}
+{% block seo %}
+<meta name="description" content="Latest national news and updates from the U.S. Naval Sea Cadet Corps, sourced directly from seacadets.org.">
+<meta property="og:site_name" content="El Toro Battalion">
+<meta property="og:title" content="National News | El Toro Battalion">
+<meta property="og:description" content="Latest national news and updates from the U.S. Naval Sea Cadet Corps.">
+<meta property="og:image" content="https://eltorobattalion.org/assets/images/new-logo-navy.png">
+<meta property="og:type" content="website">
+{% endblock %}
+{% block content %}
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>National News</h1>
+        <p class="text-gray-400 mt-3 font-sans text-base font-normal normal-case tracking-normal">Latest updates from U.S. Naval Sea Cadet Corps</p>
+    </div>
+
+    <!-- News Section -->
+    <div class="bg-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Loading state -->
+            <div id="news-loading" class="text-center py-16">
+                <i class="fas fa-anchor text-brandRed text-4xl animate-spin mb-4" style="animation-duration:2s;"></i>
+                <p class="text-gray-500 font-sans">Loading latest news…</p>
+            </div>
+
+            <!-- Error state (hidden by default) -->
+            <div id="news-error" class="hidden text-center py-16">
+                <i class="fas fa-exclamation-circle text-brandRed text-4xl mb-4"></i>
+                <p class="text-gray-600 font-sans">Unable to load news right now. Please visit <a href="https://www.seacadets.org" target="_blank" rel="noopener noreferrer" class="text-brandRed font-semibold hover:underline">seacadets.org</a> directly.</p>
+            </div>
+
+            <!-- News cards (populated by JS) -->
+            <div id="news-list" class="hidden space-y-8"></div>
+
+            <!-- News attribution -->
+            <div id="news-footer" class="hidden mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-sm text-gray-400 font-sans">
+                    Content sourced from <a href="https://www.seacadets.org" target="_blank" rel="noopener noreferrer" class="text-brandRed hover:underline font-semibold">seacadets.org</a>
+                </p>
+                <p id="news-updated" class="text-sm text-gray-400 font-sans"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seafarer Magazines Section -->
+    <div class="bg-gray-50 py-20 border-t-4 border-brandRed">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-brandBlack uppercase mb-3">Seafarer Magazine</h2>
+            <p class="text-gray-500 font-sans text-base mb-12">Official publication of the U.S. Naval Sea Cadet Corps</p>
+
+            <!-- Loading -->
+            <div id="mag-loading" class="text-center py-10">
+                <i class="fas fa-anchor text-brandRed text-3xl animate-spin mb-3" style="animation-duration:2s;"></i>
+                <p class="text-gray-400 font-sans text-sm">Loading magazines…</p>
+            </div>
+
+            <!-- Error -->
+            <div id="mag-error" class="hidden text-center py-10">
+                <p class="text-gray-500 font-sans">Unable to load magazines. Visit <a href="https://www.seacadets.org/newsroom/seafarer-magazines/" target="_blank" rel="noopener noreferrer" class="text-brandRed hover:underline font-semibold">seacadets.org</a> directly.</p>
+            </div>
+
+            <!-- Magazine grid -->
+            <div id="mag-grid" class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"></div>
+
+            <p id="mag-updated" class="hidden mt-10 text-xs text-gray-400 font-sans text-right"></p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    fetch('./seacadets-news.json')
+        .then(r => {
+            if (!r.ok) throw new Error('fetch failed');
+            return r.json();
+        })
+        .then(data => {
+            document.getElementById('news-loading').classList.add('hidden');
+
+            const list = document.getElementById('news-list');
+            data.items.forEach(item => {
+                const desc = item.description
+                    ? `<p class="text-gray-600 font-sans text-base leading-relaxed mb-5">${item.description}</p>`
+                    : '';
+                list.insertAdjacentHTML('beforeend', `
+                    <article class="border-l-4 border-brandRed bg-gray-50 rounded-r-lg p-7 hover:bg-gray-100 transition-colors duration-200">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-brandRed font-sans mb-2">${item.date}</p>
+                        <h2 class="font-heading text-2xl font-bold text-brandBlack mb-3 leading-snug normal-case">${item.title}</h2>
+                        ${desc}
+                        <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-brandRed font-semibold font-sans text-sm hover:underline">
+                            Read full story <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </article>
+                `);
+            });
+
+            list.classList.remove('hidden');
+
+            const footer = document.getElementById('news-footer');
+            footer.classList.remove('hidden');
+            if (data.updated) {
+                document.getElementById('news-updated').textContent = 'Last updated: ' + data.updated;
+            }
+        })
+        .catch(() => {
+            document.getElementById('news-loading').classList.add('hidden');
+            document.getElementById('news-error').classList.remove('hidden');
+        });
+
+    fetch('./seacadets-magazines.json')
+        .then(r => {
+            if (!r.ok) throw new Error('fetch failed');
+            return r.json();
+        })
+        .then(data => {
+            document.getElementById('mag-loading').classList.add('hidden');
+
+            const grid = document.getElementById('mag-grid');
+            data.magazines.forEach(mag => {
+                grid.insertAdjacentHTML('beforeend', `
+                    <a href="${mag.pdf}" target="_blank" rel="noopener noreferrer"
+                       class="group flex flex-col bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                        <div class="relative overflow-hidden bg-gray-200" style="aspect-ratio:3/4;">
+                            <img src="${mag.cover}" alt="${mag.title} cover"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-brandRed bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-brandRed font-heading font-bold uppercase text-sm px-4 py-2 rounded shadow">
+                                    <i class="fas fa-file-pdf mr-1"></i> Read
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <p class="font-heading font-semibold text-brandBlack text-sm uppercase leading-tight">${mag.title}</p>
+                        </div>
+                    </a>
+                `);
+            });
+
+            grid.classList.remove('hidden');
+
+            if (data.updated) {
+                const el = document.getElementById('mag-updated');
+                el.textContent = 'Last updated: ' + data.updated;
+                el.classList.remove('hidden');
+            }
+        })
+        .catch(() => {
+            document.getElementById('mag-loading').classList.add('hidden');
+            document.getElementById('mag-error').classList.remove('hidden');
+        });
+</script>
+{% endblock %}
