@@ -1,5 +1,13 @@
 {% extends "_base.html" %}
 {% block page_title %}Home | El Toro Battalion{% endblock %}
+{% block seo %}
+<meta name="description" content="El Toro Battalion is an Irvine, CA Sea Cadet unit offering middle and high school students hands-on Navy training, leadership development, and career preparation.">
+<meta property="og:site_name" content="El Toro Battalion">
+<meta property="og:title" content="El Toro Battalion | U.S. Naval Sea Cadet Corps — Irvine, CA">
+<meta property="og:description" content="Hands-on Navy training, leadership development, and career preparation for middle and high school students in Irvine, CA.">
+<meta property="og:image" content="https://eltorobattalion.org/assets/images/new-logo-navy.png">
+<meta property="og:type" content="website">
+{% endblock %}
 {% block netlify_identity %}
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 {% endblock %}

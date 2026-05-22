@@ -13,7 +13,7 @@ db.sqlite3
 
 # WordPress migration source files (not needed for the static site)
 wp-content/
-*.xml
+/*.xml
 
 # Legacy WordPress CSS (Elementor artifact)
 public/post-1107.css

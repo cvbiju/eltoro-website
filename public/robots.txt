@@ -1,8 +1,5 @@
 User-agent: *
-Disallow: /compare_report/
-Disallow: /enrollment_dump.html
-Disallow: /live_about.html
-Disallow: /live_enrollment.html
-Disallow: /cadet-mess-live.html
 Disallow: /admin/
 Allow: /
+
+Sitemap: https://eltorobattalion.org/sitemap.xml
