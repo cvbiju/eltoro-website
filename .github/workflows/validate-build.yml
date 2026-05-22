@@ -1,0 +1,54 @@
+name: Validate Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "templates/**"
+      - "build.py"
+      - "requirements.txt"
+  pull_request:
+    branches: [main]
+    paths:
+      - "templates/**"
+      - "build.py"
+      - "requirements.txt"
+
+jobs:
+  build:
+    name: Build & Verify Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build site
+        run: python3 build.py
+
+      - name: Verify all expected pages were generated
+        run: |
+          expected=(
+            index about-us calendar cadet-mess enrollment gallery
+            general-knowledge grooming-uniform meet-the-officers
+            parents physical-fitness programs 404
+          )
+          missing=()
+          for page in "${expected[@]}"; do
+            if [ ! -f "public/${page}.html" ]; then
+              missing+=("${page}.html")
+            fi
+          done
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "ERROR: Missing expected output pages: ${missing[*]}"
+            exit 1
+          fi
+          echo "✓ All ${#expected[@]} pages generated successfully."
