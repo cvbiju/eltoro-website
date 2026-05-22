@@ -52,8 +52,7 @@ python3 build.py                    # generates all pages in public/
 python3 scripts/serve_local.py      # local dev server on :8000
 ```
 
-Netlify build command: `pip3 install -r requirements.txt && python3 build.py`
-Netlify publish directory: `public`
+GitHub Pages deploys the `public/` directory automatically on every push to `main`.
 
 ---
 
@@ -106,23 +105,6 @@ Use `/project:new-page` for a guided scaffold.
 
 ---
 
-## Content Security Policy (CSP)
-
-Defined in `netlify.toml` under `[[headers]]`. **Only enforced on Netlify — not locally.**
-
-When adding a new external resource (script, stylesheet, iframe, API call), you **must**
-add its domain to the correct CSP directive, or it will fail silently in production.
-Run `/project:check-csp` to audit the current state.
-
-| Directive | Allowed domains |
-|---|---|
-| `script-src` | `cdn.tailwindcss.com`, `identity.netlify.com`, `cdnjs.cloudflare.com` |
-| `style-src` | `fonts.googleapis.com`, `cdnjs.cloudflare.com` |
-| `font-src` | `fonts.gstatic.com`, `cdnjs.cloudflare.com` |
-| `frame-src` | `www.youtube.com`, `calendar.google.com` |
-| `connect-src` | `api.web3forms.com`, `identity.netlify.com`, `www.googleapis.com` |
-| `img-src` | `'self' data: https:` |
-
 ---
 
 ## Third-Party Services
@@ -144,11 +126,10 @@ update the allowed referrers: `*eltorobattalion.org/*`, `*.netlify.app/*`, `loca
 ## Deployment Workflow
 
 1. Create a `feature/` branch
-2. Push → Netlify auto-creates a deploy preview (CSP is enforced here — test here, not locally)
-3. Open a PR against `main`
-4. Merge → Netlify deploys to production automatically
+2. Push → open a PR against `main`
+3. Merge → GitHub Pages deploys `public/` to `eltorobattalion.org` automatically (~1 min)
 
-GitHub Pages auto-deploy is **disabled** (manual `workflow_dispatch` only).
+To deploy without a PR, push directly to `main`.
 
 ---
 
