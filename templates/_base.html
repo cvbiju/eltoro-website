@@ -39,7 +39,8 @@
         body { font-family: 'Montserrat', sans-serif; }
         h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
-        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown:hover .dropdown-menu,
+        .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown-menu {
             opacity: 0; visibility: hidden; transform: translateY(10px);
             transition: all 0.3s ease; position: absolute; background-color: #1a1a1a;
@@ -52,7 +53,9 @@
             transition: background 0.3s, padding-left 0.3s;
             font-family: 'Montserrat', sans-serif; text-transform: none; font-weight: 500;
         }
-        .dropdown-menu a:hover { background-color: #BE1E2E; padding-left: 25px; }
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus-visible { background-color: #BE1E2E; padding-left: 25px; outline: none; }
+        a:focus-visible, button:focus-visible { outline: 2px solid #BE1E2E; outline-offset: 2px; }
         .nav-link { position: relative; padding-bottom: 5px; }
         .nav-link::after {
             content: ''; position: absolute; width: 0; height: 2px;
@@ -128,22 +131,22 @@
                         <img src="./assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
                     </a>
                 </div>
-                <nav class="hidden lg:flex items-center space-x-6">
+                <nav class="hidden lg:flex items-center space-x-6" aria-label="Main navigation">
                     <a href="./index.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Home</a>
                     <a href="./calendar.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Calendar</a>
                     <a href="./programs.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Programs</a>
                     <div class="relative dropdown h-full flex items-center">
-                        <a href="./about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
-                        <div class="dropdown-menu top-[100%] left-0">
-                            <a href="./meet-the-officers.html">Meet the Officers</a>
+                        <a href="./about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" aria-haspopup="true" aria-expanded="false">About Us <i class="fas fa-angle-down ml-1 text-xs" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0" role="menu">
+                            <a href="./meet-the-officers.html" role="menuitem">Meet the Officers</a>
                         </div>
                     </div>
                     <div class="relative dropdown h-full flex items-center">
-                        <a href="./cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
-                        <div class="dropdown-menu top-[100%] left-0">
-                            <a href="./general-knowledge.html">General Knowledge</a>
-                            <a href="./physical-fitness.html">Physical Fitness</a>
-                            <a href="./grooming-uniform.html">Grooming & Uniform</a>
+                        <a href="./cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" aria-haspopup="true" aria-expanded="false">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0" role="menu">
+                            <a href="./general-knowledge.html" role="menuitem">General Knowledge</a>
+                            <a href="./physical-fitness.html" role="menuitem">Physical Fitness</a>
+                            <a href="./grooming-uniform.html" role="menuitem">Grooming & Uniform</a>
                         </div>
                     </div>
                     <a href="./parents.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Parents</a>
@@ -152,7 +155,7 @@
                     <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red text-sm" rel="noopener noreferrer">Donate</a>
                 </nav>
                 <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed focus:outline-none" aria-label="Toggle navigation">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
                         <i class="fas fa-bars text-3xl"></i>
                     </button>
                 </div>
@@ -250,12 +253,72 @@
     </footer>
 
     <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        // Mobile menu toggle
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        mobileBtn.addEventListener('click', function() {
             var menu = document.getElementById('mobile-menu');
             var icon = this.querySelector('i');
+            var isOpen = !menu.classList.contains('hidden');
             menu.classList.toggle('hidden');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
+            this.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        // Keyboard-accessible desktop dropdowns
+        document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+            var trigger = dropdown.querySelector('[aria-haspopup]');
+            var menu = dropdown.querySelector('[role="menu"]');
+            var items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+
+            function openMenu() {
+                dropdown.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+            function closeMenu() {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+
+            // Enter / Space / ArrowDown on trigger opens menu
+            trigger.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    openMenu();
+                    items[0] && items[0].focus();
+                }
+            });
+
+            // Arrow keys, Escape, Tab inside menu
+            menu.addEventListener('keydown', function(e) {
+                var idx = items.indexOf(document.activeElement);
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    items[(idx + 1) % items.length].focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (idx === 0) { closeMenu(); trigger.focus(); }
+                    else { items[idx - 1].focus(); }
+                } else if (e.key === 'Escape' || e.key === 'Tab') {
+                    closeMenu();
+                    if (e.key === 'Escape') { e.preventDefault(); trigger.focus(); }
+                }
+            });
+
+            // Close when focus leaves the entire dropdown
+            dropdown.addEventListener('focusout', function(e) {
+                if (!dropdown.contains(e.relatedTarget)) { closeMenu(); }
+            });
+        });
+
+        // Close any open dropdown on Escape from anywhere
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.dropdown.open').forEach(function(d) {
+                    d.classList.remove('open');
+                    d.querySelector('[aria-haspopup]').setAttribute('aria-expanded', 'false');
+                });
+            }
         });
     </script>
     {% block scripts %}{% endblock %}
