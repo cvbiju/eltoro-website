@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -56,9 +57,59 @@
             font-weight: 600; letter-spacing: 1px; transition: background 0.3s;
         }
         .btn-red:hover { background-color: #9A1623; }
+        .btn-red-pulse { position: relative; }
+        .btn-red-pulse::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 4px; box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6);
+            opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none;
+        }
+        .btn-red-pulse:hover::before { opacity: 1; animation: pulse-glow 1.5s infinite; }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6); }
+            50% { box-shadow: 0 0 25px 5px rgba(190, 30, 46, 0.8); }
+            100% { box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6); }
+        }
+        .page-header {
+            background-color: #1a1a1a; color: white; padding: 60px 0;
+            text-align: center; border-bottom: 4px solid #BE1E2E;
+        }
+        .page-header h1 { font-size: 3rem; font-weight: 700; letter-spacing: 2px; }
+        .wp-content h1, .wp-content h2, .wp-content h3 { color: #000000; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .wp-content p { margin-bottom: 1rem; line-height: 1.8; color: #555; }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+        .prose h2 {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: #B41C44 !important; font-size: 2rem; border-bottom: 2px solid #BE1E2E;
+            padding-bottom: 0.5rem; margin-top: 3rem; margin-bottom: 1.5rem;
+        }
+        .prose h4 {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: #000000 !important; font-size: 1.5rem; margin-top: 2rem;
+            margin-bottom: 1rem; font-weight: bold;
+        }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #333; }
+        .prose ul:not(.space-y-4) { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.5rem; }
+        .prose ul:not(.space-y-4) li { margin-bottom: 0.5rem; color: #444; }
+        .prose ul:not(.space-y-4) li svg { display: none; }
+        .exact-sidebar-link {
+            color: #FFFFFF; display: flex; align-items: center; padding: 15px 20px;
+            font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400;
+            border-bottom: 1px solid rgba(255,255,255,0.1); transition: background-color 0.3s ease;
+        }
+        .exact-sidebar-link:hover { background-color: #921635; color: #FFFFFF; text-decoration: none; }
+        .wp-content .exact-sidebar-title { color: #FFFFFF !important; }
+        .wp-content a.exact-sidebar-link { color: #FFFFFF !important; text-decoration: none !important; }
+        .wp-content a.exact-sidebar-link:hover { color: #FFFFFF !important; }
     </style>
+    
 </head>
 <body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Honeypot for bots -->
+    <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+    </div>
 
     <!-- Header -->
     <header class="header-bg sticky top-0 z-50 w-full">
@@ -109,7 +160,7 @@
                 <a href="./cadet-mess.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Cadet Mess</a>
                 <a href="./general-knowledge.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- General Knowledge</a>
                 <a href="./physical-fitness.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Physical Fitness</a>
-                <a href="./grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming & Uniform</a>
+                <a href="./grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming &amp; Uniform</a>
                 <a href="./parents.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Parents</a>
                 <a href="./gallery.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Gallery</a>
                 <a href="./enrollment.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Enrollment</a>
@@ -120,8 +171,8 @@
 
     <!-- Main Content -->
     <main class="flex-grow bg-[#0d0d0d] flex items-center justify-center py-24">
+        
         <div class="text-center px-4">
-            <!-- Large 404 -->
             <p class="font-heading font-bold text-brandRed leading-none mb-2" style="font-size: clamp(120px, 20vw, 200px); opacity: 0.15; line-height: 1;">404</p>
             <div class="-mt-16 relative z-10">
                 <i class="fas fa-anchor text-brandRed text-5xl mb-6 block"></i>
@@ -132,7 +183,9 @@
                 </a>
             </div>
         </div>
+
     </main>
+    
 
     <!-- Footer -->
     <footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
@@ -146,12 +199,12 @@
                 <div class="col-span-1">
                     <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
                     <ul class="space-y-3 text-sm font-semibold">
-                        <li><a href="./index.html" class="hover:text-brandRed transition-colors">> Home</a></li>
-                        <li><a href="./about-us.html" class="hover:text-brandRed transition-colors">> About Us</a></li>
-                        <li><a href="./programs.html" class="hover:text-brandRed transition-colors">> Programs</a></li>
-                        <li><a href="./enrollment.html" class="hover:text-brandRed transition-colors">> Enrollment</a></li>
-                        <li><a href="./gallery.html" class="hover:text-brandRed transition-colors">> Gallery</a></li>
-                        <li><a href="./calendar.html" class="hover:text-brandRed transition-colors">> Calendar</a></li>
+                        <li><a href="./index.html" class="hover:text-brandRed transition-colors">&gt; Home</a></li>
+                        <li><a href="./about-us.html" class="hover:text-brandRed transition-colors">&gt; About Us</a></li>
+                        <li><a href="./programs.html" class="hover:text-brandRed transition-colors">&gt; Programs</a></li>
+                        <li><a href="./enrollment.html" class="hover:text-brandRed transition-colors">&gt; Enrollment</a></li>
+                        <li><a href="./gallery.html" class="hover:text-brandRed transition-colors">&gt; Gallery</a></li>
+                        <li><a href="./calendar.html" class="hover:text-brandRed transition-colors">&gt; Calendar</a></li>
                     </ul>
                 </div>
                 <div class="col-span-1">
@@ -209,5 +262,6 @@
             icon.classList.toggle('fa-times');
         });
     </script>
+    
 </body>
 </html>
