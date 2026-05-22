@@ -10,3 +10,14 @@ __pycache__/
 *.sqlite3
 db.sqlite3
 .DS_Store
+
+# WordPress migration source files (not needed for the static site)
+wp-content/
+*.xml
+
+# Legacy WordPress CSS (Elementor artifact)
+public/post-1107.css
+
+# Test virtualenvs
+tests/venv/
+tests/venv3/
