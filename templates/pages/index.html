@@ -1,0 +1,171 @@
+{% extends "_base.html" %}
+{% block page_title %}Home | El Toro Battalion{% endblock %}
+{% block netlify_identity %}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div id="hero-section" class="relative w-full flex items-center justify-center overflow-hidden" style="min-height: calc(100vh - 96px); padding: 2rem 20px;">
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none">
+            <source src="./assets/videos/hero-background-trimmed.mov" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
+        <div class="text-center px-4 w-full relative z-10">
+            <h1 class="text-white font-medium font-heading uppercase tracking-wide" style="font-size: clamp(40px, 8vw, 80px); line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">El Toro Battalion<br>TS Vammen</h1>
+        </div>
+    </div>
+
+    <!-- Who We Are Section -->
+    <div class="bg-black py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2">
+                    <img id="who-we-are-image" src="./assets/images/model-3_70.jpg" alt="Who We Are" class="animate-on-scroll opacity-0 translate-y-10 transition-all duration-[800ms] ease-out w-full h-auto shadow-lg">
+                </div>
+                <div class="animate-on-scroll opacity-0 translate-y-10 transition-all duration-[800ms] ease-out w-full md:w-1/2 text-left">
+                    <h2 class="text-5xl md:text-[60px] font-heading font-bold text-white bg-black p-4 inline-block mb-6 uppercase leading-tight" style="color: #FFFFFF; background-color: transparent;">WHO WE ARE?</h2>
+                    <div class="text-gray-300 font-sans text-lg mb-8 space-y-4">
+                        <p>El Toro Battalion, located in Irvine, California, is a proud unit of the U.S. Naval Sea Cadet Corps (NSCC). Originally established as the Trieste 2 Division, we transitioned in 2004 to honor the legacy of the men and women who served at the historic El Toro Air Station. With a rich history of excellence, we continue to provide a high-quality youth program for the Orange County community.</p>
+                        <p>Our mission is to inspire discipline, pride, motivation, self-reliance, and self-respect in our cadets.</p>
+                    </div>
+                    <a href="./about-us.html" class="btn-red btn-red-pulse inline-block text-[20px] px-10 py-4 font-medium rounded">READ MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What We Do Section -->
+    <div class="bg-gray-200 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl md:text-[60px] font-heading font-bold text-brandBlack uppercase mb-16 text-left">WHAT WE DO</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-14 text-center">
+                <div class="flex flex-col animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <div class="group relative overflow-hidden h-80 mb-6 cursor-pointer">
+                        <div class="absolute inset-0 bg-black z-10 opacity-20 transition-opacity duration-300 group-hover:opacity-40"></div>
+                        <img src="./assets/images/gallery-img81-1.jpg" alt="Cadet Expectations" class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 z-20 flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="./programs.html" class="bg-brandRed text-white font-heading text-xl uppercase px-8 py-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Learn More</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">Cadet Expectations</h3>
+                </div>
+                <div class="flex flex-col mt-0 md:mt-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <div class="group relative overflow-hidden h-80 mb-6 cursor-pointer">
+                        <div class="absolute inset-0 bg-black z-10 opacity-20 transition-opacity duration-300 group-hover:opacity-40"></div>
+                        <img src="./assets/images/gallery-img21.jpeg" alt="National Trainings" class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 z-20 flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="./programs.html" class="bg-brandRed text-white font-heading text-xl uppercase px-8 py-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Learn More</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">NATIONAL TRAININGS</h3>
+                </div>
+                <div class="flex flex-col mt-0 md:mt-24 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <div class="group relative overflow-hidden h-80 mb-6 cursor-pointer">
+                        <div class="absolute inset-0 bg-black z-10 opacity-20 transition-opacity duration-300 group-hover:opacity-40"></div>
+                        <img src="./assets/images/gallery-img42.jpeg" alt="USNSCC Cadet Code of Conduct" class="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 z-20 flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="./programs.html" class="bg-brandRed text-white font-heading text-xl uppercase px-8 py-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Learn More</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">USNSCC Cadet Code of Conduct</h3>
+                </div>
+            </div>
+            <div class="text-center mt-12 md:hidden">
+                <a href="./enrollment.html" class="btn-red btn-red-pulse inline-block text-[20px] px-10 py-4 font-medium rounded">JOIN TODAY</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left">
+            <h2 class="text-5xl md:text-[60px] font-heading font-bold uppercase mb-16" style="color:#000000; line-height: 1.1;">RESOURCES</h2>
+            <div class="flex flex-wrap justify-center lg:justify-between gap-8">
+                <div class="flex flex-col items-center w-full sm:w-[45%] lg:w-[22%] animate-on-scroll opacity-0 scale-95 transition-all duration-700 ease-out">
+                    <div class="relative rounded-full overflow-hidden w-full max-w-[280px] aspect-square mb-6 group cursor-pointer shadow-lg mx-auto">
+                        <img src="./assets/images/m5.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Become a Cadet">
+                        <div class="absolute inset-0 bg-brandRed bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <a href="./enrollment.html" class="text-white border-2 border-white px-6 py-2 uppercase font-heading font-medium tracking-wide hover:bg-white hover:text-brandRed transition-colors">Join</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">BECOME A CADET</h3>
+                </div>
+                <div class="flex flex-col items-center w-full sm:w-[45%] lg:w-[22%] animate-on-scroll opacity-0 scale-95 transition-all duration-700 ease-out">
+                    <div class="relative rounded-full overflow-hidden w-full max-w-[280px] aspect-square mb-6 group cursor-pointer shadow-lg mx-auto">
+                        <img src="./assets/images/m2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Cadet Mess">
+                        <div class="absolute inset-0 bg-brandRed bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <a href="./cadet-mess.html" class="text-white border-2 border-white px-6 py-2 uppercase font-heading font-medium tracking-wide hover:bg-white hover:text-brandRed transition-colors">View</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">CADET MESS</h3>
+                </div>
+                <div class="flex flex-col items-center w-full sm:w-[45%] lg:w-[22%] animate-on-scroll opacity-0 scale-95 transition-all duration-700 ease-out">
+                    <div class="relative rounded-full overflow-hidden w-full max-w-[280px] aspect-square mb-6 group cursor-pointer shadow-lg mx-auto">
+                        <img src="./assets/images/m8.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Uniforming">
+                        <div class="absolute inset-0 bg-brandRed bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <a href="./grooming-uniform.html" class="text-white border-2 border-white px-6 py-2 uppercase font-heading font-medium tracking-wide hover:bg-white hover:text-brandRed transition-colors">View</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">UNIFORMING</h3>
+                </div>
+                <div class="flex flex-col items-center w-full sm:w-[45%] lg:w-[22%] animate-on-scroll opacity-0 scale-95 transition-all duration-700 ease-out">
+                    <div class="relative rounded-full overflow-hidden w-full max-w-[280px] aspect-square mb-6 group cursor-pointer shadow-lg mx-auto">
+                        <img src="./assets/images/m01.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Cadet Handbook">
+                        <div class="absolute inset-0 bg-brandRed bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <a target="_blank" href="./assets/images/Sea-Cadet-Family-Handbook.pdf" class="text-white border-2 border-white px-6 py-2 uppercase font-heading font-medium tracking-wide hover:bg-white hover:text-brandRed transition-colors" rel="noopener noreferrer">View</a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-brandBlack uppercase">CADET HANDBOOK</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        fetch('/admin/settings.json')
+            .then(response => {
+                if (response.ok) return response.json();
+                throw new Error("Settings not found");
+            })
+            .then(settings => {
+                if (settings.hero_bg && settings.hero_bg.trim() !== "") {
+                    let bgPath = settings.hero_bg.startsWith('http') ? settings.hero_bg : './' + settings.hero_bg;
+                    document.getElementById('hero-section').style.backgroundImage = `url('${bgPath}')`;
+                }
+                if (settings.who_we_are_img && settings.who_we_are_img.trim() !== "") {
+                    let imgPath = settings.who_we_are_img.startsWith('http') ? settings.who_we_are_img : './' + settings.who_we_are_img;
+                    document.getElementById('who-we-are-image').src = imgPath;
+                }
+            })
+            .catch(error => console.log("CMS Settings loading error:", error));
+    </script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+                }
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10', 'scale-95');
+                        entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((elem, index) => {
+                elem.style.transitionDelay = `${(index % 4) * 150}ms`;
+                observer.observe(elem);
+            });
+        });
+    </script>
+{% endblock %}

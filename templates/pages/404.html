@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+{% block page_title %}Page Not Found | El Toro Battalion{% endblock %}
+{% block main_attrs %}class="flex-grow bg-[#0d0d0d] flex items-center justify-center py-24"{% endblock %}
+{% block content %}
+        <div class="text-center px-4">
+            <p class="font-heading font-bold text-brandRed leading-none mb-2" style="font-size: clamp(120px, 20vw, 200px); opacity: 0.15; line-height: 1;">404</p>
+            <div class="-mt-16 relative z-10">
+                <i class="fas fa-anchor text-brandRed text-5xl mb-6 block"></i>
+                <h1 class="font-heading text-4xl md:text-5xl font-bold text-white mb-4 tracking-widest">Page Not Found</h1>
+                <p class="text-gray-400 text-lg mb-10 max-w-md mx-auto">The page you're looking for has gone adrift. Let's get you back on course.</p>
+                <a href="./index.html" class="btn-red inline-block px-10 py-4 font-heading font-bold text-lg rounded">
+                    <i class="fas fa-home mr-2"></i> Return to Home
+                </a>
+            </div>
+        </div>
+{% endblock %}

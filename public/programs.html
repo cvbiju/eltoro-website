@@ -4,27 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programs | El Toro Battalion</title>
-    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts exactly like the original -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { 
-                        brandBlack: '#000000', 
-                        brandRed: '#BE1E2E', 
+                    colors: {
+                        brandBlack: '#000000',
+                        brandRed: '#BE1E2E',
                         brandRedHover: '#9A1623',
                         brandGrayDark: '#1a1a1a',
-                        brandGrayLight: '#f4f4f4' 
+                        brandGrayLight: '#f4f4f4'
                     },
-                    fontFamily: { 
-                        sans: ['Montserrat', 'sans-serif'], 
-                        heading: ['Oswald', 'sans-serif'] 
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif']
                     }
                 }
             }
@@ -33,135 +30,145 @@
     <style>
         body { font-family: 'Montserrat', sans-serif; }
         h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
-        
         .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
-        
-        /* Dropdown Styles */
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            position: absolute;
-            background-color: #1a1a1a;
-            min-width: 250px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-            z-index: 100;
-            border-top: 3px solid #BE1E2E;
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.3s ease; position: absolute; background-color: #1a1a1a;
+            min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 100; border-top: 3px solid #BE1E2E;
         }
         .dropdown-menu a {
-            color: #ffffff;
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #333;
+            color: #ffffff; padding: 12px 20px; text-decoration: none; display: block;
+            font-size: 0.9rem; border-bottom: 1px solid #333;
             transition: background 0.3s, padding-left 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: none;
-            font-weight: 500;
+            font-family: 'Montserrat', sans-serif; text-transform: none; font-weight: 500;
         }
-        .dropdown-menu a:hover {
-            background-color: #BE1E2E;
-            padding-left: 25px;
-        }
-        
+        .dropdown-menu a:hover { background-color: #BE1E2E; padding-left: 25px; }
         .nav-link { position: relative; padding-bottom: 5px; }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #BE1E2E;
-            transition: width 0.3s;
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 0; background-color: #BE1E2E; transition: width 0.3s;
         }
         .nav-link:hover::after { width: 100%; }
-        
-        /* Main Button */
         .btn-red {
-            background-color: #BE1E2E;
-            color: white;
-            padding: 12px 24px;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: background 0.3s;
+            background-color: #BE1E2E; color: white; padding: 12px 24px;
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            font-weight: 600; letter-spacing: 1px; transition: background 0.3s;
         }
         .btn-red:hover { background-color: #9A1623; }
-        
-        /* content styling */
+        .btn-red-pulse { position: relative; }
+        .btn-red-pulse::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 4px; box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6);
+            opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none;
+        }
+        .btn-red-pulse:hover::before { opacity: 1; animation: pulse-glow 1.5s infinite; }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6); }
+            50% { box-shadow: 0 0 25px 5px rgba(190, 30, 46, 0.8); }
+            100% { box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6); }
+        }
         .page-header {
-            background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            border-bottom: 4px solid #BE1E2E;
-            position: relative;
-            overflow: hidden;
+            background-color: #1a1a1a; color: white; padding: 60px 0;
+            text-align: center; border-bottom: 4px solid #BE1E2E;
         }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(190, 30, 46, 0.2) 0%, transparent 50%);
-            pointer-events: none;
+        .page-header h1 { font-size: 3rem; font-weight: 700; letter-spacing: 2px; }
+        .wp-content h1, .wp-content h2, .wp-content h3 { color: #000000; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .wp-content p { margin-bottom: 1rem; line-height: 1.8; color: #555; }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+        .prose h2 {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: #B41C44 !important; font-size: 2rem; border-bottom: 2px solid #BE1E2E;
+            padding-bottom: 0.5rem; margin-top: 3rem; margin-bottom: 1.5rem;
         }
-        .page-header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            position: relative;
-            z-index: 10;
+        .prose h4 {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: #000000 !important; font-size: 1.5rem; margin-top: 2rem;
+            margin-bottom: 1rem; font-weight: bold;
         }
-        
-        .wp-content h1, .wp-content h2, .wp-content h3 {
-            color: #000000;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #333; }
+        .prose ul:not(.space-y-4) { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.5rem; }
+        .prose ul:not(.space-y-4) li { margin-bottom: 0.5rem; color: #444; }
+        .prose ul:not(.space-y-4) li svg { display: none; }
+        .exact-sidebar-link {
+            color: #FFFFFF; display: flex; align-items: center; padding: 15px 20px;
+            font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400;
+            border-bottom: 1px solid rgba(255,255,255,0.1); transition: background-color 0.3s ease;
         }
-        .wp-content p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-        .wp-content a:not(.btn-red) { color: #BE1E2E; text-decoration: none; font-weight: 600; }
-        .wp-content a:not(.btn-red):hover { text-decoration: underline; }
+        .exact-sidebar-link:hover { background-color: #921635; color: #FFFFFF; text-decoration: none; }
+        .wp-content .exact-sidebar-title { color: #FFFFFF !important; }
+        .wp-content a.exact-sidebar-link { color: #FFFFFF !important; text-decoration: none !important; }
+        .wp-content a.exact-sidebar-link:hover { color: #FFFFFF !important; }
     </style>
+    
+<style>
+    .page-header {
+        background: radial-gradient(circle at center, #2a2a2a 0%, #000000 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        border-bottom: 4px solid #BE1E2E;
+        position: relative;
+        overflow: hidden;
+    }
+    .page-header::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(135deg, rgba(190, 30, 46, 0.2) 0%, transparent 50%);
+        pointer-events: none;
+    }
+    .page-header h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        position: relative;
+        z-index: 10;
+    }
+    .wp-content h1, .wp-content h2, .wp-content h3 {
+        color: #000000;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+    .wp-content p {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+    .wp-content a:not(.btn-red) { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+    .wp-content a:not(.btn-red):hover { text-decoration: underline; }
+</style>
+
 </head>
 <body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Honeypot for bots -->
+    <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
     <!-- Header -->
-    <header class="header-bg sticky top-0 z-50 w-full transition-all duration-300">
+    <header class="header-bg sticky top-0 z-50 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
-                                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center h-full py-2">
                     <a href="./index.html" class="flex h-full items-center">
                         <img src="./assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
                     </a>
                 </div>
-                
-                <!-- Navigation -->
                 <nav class="hidden lg:flex items-center space-x-6">
                     <a href="./index.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Home</a>
                     <a href="./calendar.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Calendar</a>
                     <a href="./programs.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Programs</a>
-                    
                     <div class="relative dropdown h-full flex items-center">
                         <a href="./about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">About Us <i class="fas fa-angle-down ml-1 text-xs"></i></a>
                         <div class="dropdown-menu top-[100%] left-0">
-                            <a href="./meet-the-officers.html">Meet the officers</a>
+                            <a href="./meet-the-officers.html">Meet the Officers</a>
                         </div>
                     </div>
-                    
                     <div class="relative dropdown h-full flex items-center">
                         <a href="./cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs"></i></a>
                         <div class="dropdown-menu top-[100%] left-0">
@@ -170,34 +177,29 @@
                             <a href="./grooming-uniform.html">Grooming & Uniform</a>
                         </div>
                     </div>
-                    
                     <a href="./parents.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Parents</a>
                     <a href="./gallery.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Gallery</a>
                     <a href="./enrollment.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Enrollment</a>
                     <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red text-sm" rel="noopener noreferrer">Donate</a>
                 </nav>
-                
-                <!-- Mobile button -->
                 <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed focus:outline-none" aria-label="Toggle navigation">
                         <i class="fas fa-bars text-3xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-brandBlack border-t border-gray-800">
             <div class="px-4 py-4 space-y-3">
                 <a href="./index.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Home</a>
                 <a href="./calendar.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Calendar</a>
                 <a href="./programs.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Programs</a>
                 <a href="./about-us.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">About Us</a>
-                <a href="./meet-the-officers.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Meet the officers</a>
+                <a href="./meet-the-officers.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Meet the Officers</a>
                 <a href="./cadet-mess.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Cadet Mess</a>
                 <a href="./general-knowledge.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- General Knowledge</a>
                 <a href="./physical-fitness.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Physical Fitness</a>
-                <a href="./grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming & Uniform</a>
+                <a href="./grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming &amp; Uniform</a>
                 <a href="./parents.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Parents</a>
                 <a href="./gallery.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Gallery</a>
                 <a href="./enrollment.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Enrollment</a>
@@ -208,227 +210,211 @@
 
     <!-- Main Content -->
     <main class="flex-grow">
-
-        <div class="page-header">
-            <div class="max-w-7xl mx-auto px-4">
-                <h1 class="uppercase tracking-widest">Programs</h1>
-            </div>
+        
+    <div class="page-header">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="uppercase tracking-widest">Programs</h1>
         </div>
-        <div class="bg-white py-16">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 wp-content">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-heading font-bold text-brandBlack uppercase mb-6 tracking-wide">The United States Naval Sea Cadet Corps</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">Cadets are young men and women aged 10 through the end of high school who choose adventure, seek challenges, and step outside of their comfort zones. There are two exceptional programs within our ranks designed to foster leadership and growth.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-                    <!-- NLCC Card -->
-                    <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-t-4 border-gray-400 overflow-hidden transform hover:-translate-y-1 transition duration-300">
-                        <div class="bg-gray-50 p-6 text-center border-b border-gray-100">
-                            <h3 class="font-heading text-2xl font-bold text-gray-800 uppercase m-0">Navy League Cadet Corps</h3>
-                            <span class="inline-block px-4 py-1 mt-3 rounded-full bg-gray-200 text-gray-700 font-semibold text-sm tracking-widest uppercase shadow-sm">Ages 10 - 13</span>
-                        </div>
-                        <div class="p-8">
-                            <p class="text-gray-600 leading-relaxed mb-6 font-medium">Our "League Cadets" are middle school-aged students who participate in our introductory program. They train in a disciplined environment and advance through ranks.</p>
-                            <ul class="space-y-4 text-sm text-gray-600">
-                                <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Introduction to maritime services and career fields.</li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Discipline and team-building in a safe environment.</li>
-                                <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Optional week-long “Navy League Orientation” training.</li>
-                            </ul>
-                        </div>
+    </div>
+
+    <div class="bg-white py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 wp-content">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-bold text-brandBlack uppercase mb-6 tracking-wide">The United States Naval Sea Cadet Corps</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">Cadets are young men and women aged 10 through the end of high school who choose adventure, seek challenges, and step outside of their comfort zones. There are two exceptional programs within our ranks designed to foster leadership and growth.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                <!-- NLCC Card -->
+                <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-t-4 border-gray-400 overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                    <div class="bg-gray-50 p-6 text-center border-b border-gray-100">
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 uppercase m-0">Navy League Cadet Corps</h3>
+                        <span class="inline-block px-4 py-1 mt-3 rounded-full bg-gray-200 text-gray-700 font-semibold text-sm tracking-widest uppercase shadow-sm">Ages 10 - 13</span>
                     </div>
-                    
-                    <!-- NSCC Card -->
-                    <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-t-4 border-brandRed overflow-hidden transform hover:-translate-y-1 transition duration-300">
-                        <div class="bg-gray-50 p-6 text-center border-b border-gray-100">
-                            <h3 class="font-heading text-2xl font-bold text-gray-800 uppercase m-0">Naval Sea Cadet Corps</h3>
-                            <span class="inline-block px-4 py-1 mt-3 rounded-full bg-red-100 text-brandRed font-semibold text-sm tracking-widest uppercase shadow-sm">Ages 13 - 18</span>
-                        </div>
-                        <div class="p-8">
-                            <p class="text-gray-600 leading-relaxed mb-6 font-medium">Sea Cadets are high school-aged students in our advanced program. There is no requirement to have been a League Cadet prior to joining.</p>
-                            <ul class="space-y-4 text-sm text-gray-600">
-                                <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Advance through ranks mirroring the U.S. Navy and Coast Guard.</li>
-                                <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Leadership opportunities and advanced technical training.</li>
-                                <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Rigorous physical fitness and international exchange programs.</li>
-                            </ul>
-                        </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 leading-relaxed mb-6 font-medium">Our "League Cadets" are middle school-aged students who participate in our introductory program. They train in a disciplined environment and advance through ranks.</p>
+                        <ul class="space-y-4 text-sm text-gray-600">
+                            <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Introduction to maritime services and career fields.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Discipline and team-building in a safe environment.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-600 mt-1 mr-3"></i> Optional week-long "Navy League Orientation" training.</li>
+                        </ul>
                     </div>
                 </div>
-<div class="mt-16 mb-12">
-    <h3 class="font-heading text-3xl font-bold uppercase mb-8 text-brandBlack border-l-4 border-brandRed pl-4">What We Do</h3>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-        <!-- Feature 1 -->
-        <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow">
-            <div class="text-brandRed text-3xl mb-4"><i class="fas fa-calendar-alt"></i></div>
-            <h4 class="font-heading text-xl font-semibold mb-2 uppercase">Local Unit Drill</h4>
-            <p class="text-gray-600 text-sm leading-relaxed">Participate in local Unit Drills, typically meeting one weekend a month. We have over 400 units across the United States, Guam, and Puerto Rico.</p>
-        </div>
-        
-        <!-- Feature 2 -->
-        <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow">
-            <div class="text-brandRed text-3xl mb-4"><i class="fas fa-campground"></i></div>
-            <h4 class="font-heading text-xl font-semibold mb-2 uppercase">Bootcamp & Orientation</h4>
-            <p class="text-gray-600 text-sm leading-relaxed">Graduate Recruit Training (bootcamp): a fast-paced 7-14 day training focused on basic military instruction and team building across the country.</p>
-        </div>
-        
-        <!-- Feature 3 -->
-        <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow md:col-span-2">
-            <div class="text-brandRed text-3xl mb-4"><i class="fas fa-globe-americas"></i></div>
-            <h4 class="font-heading text-xl font-semibold mb-2 uppercase">International Exchange (IEP)</h4>
-            <p class="text-gray-600 text-sm leading-relaxed">Selected cadets have the unique opportunity to participate in the International Exchange Program (IEP), building relationships with international sea cadets abroad.</p>
-        </div>
-    </div>
-    
-    <div class="bg-white border text-center p-8 rounded-xl shadow-sm mb-12 relative overflow-hidden">
-        <h4 class="font-heading text-2xl font-bold mb-6 text-brandBlack uppercase relative z-10">Advanced Training Camps</h4>
-        <p class="text-gray-600 text-sm mb-8 max-w-2xl mx-auto relative z-10">Our cadets attend immersive advanced training camps every summer and winter break across dozens of specialties, including:</p>
-        
-        <div class="flex flex-wrap justify-center gap-3 relative z-10">
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">SEALs</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Robotics</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">SCUBA</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Submarine Training</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Culinary Arts</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Cyber Security</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Field Operations</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Maritime Interdiction</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Special Warfare Combat</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Master-at-Arms</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Space Camp</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Leadership</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Medical Training</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Music & Band</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">History & Heritage</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Photojournalism</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Search & Rescue</span>
-            <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Marksmanship</span>
-        </div>
-    </div>
-    
-    <div class="relative bg-gradient-to-r from-gray-50 to-white p-10 rounded-xl shadow-md text-center border-l-4 border-brandRed overflow-hidden">
-        <i class="fas fa-quote-left absolute opacity-[0.03] text-8xl -top-2 -left-2 text-brandRed"></i>
-        <p class="text-gray-800 text-lg md:text-xl font-medium leading-relaxed max-w-4xl mx-auto italic relative z-10">
-            "Sea Cadets instills values of discipline, accountability, and teamwork in a safe environment. We give cadets a chance to step outside of their comfort zones with dynamic challenges. We help our cadets thrive with humility and confidence."
-        </p>
-    </div>
-</div>
-        
-        <div class="my-10 relative">
-            <h3 class="font-heading text-2xl font-bold uppercase mb-4 text-brandBlack border-l-4 border-brandRed pl-3">Training In Action</h3>
-            <!-- Carousel Container -->
-            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 w-full hide-scroll-bar" style="scrollbar-width: thin; scrollbar-color: #BE1E2E #f4f4f4;">
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-1.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-2.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-3.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-4.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-5.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-6.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-7.jpg" alt="Sea Cadets Training" />
-                </div>
-                <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
-                    <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-8.jpg" alt="Sea Cadets Training" />
-                </div>
-            </div>
-            <p class="text-sm text-gray-500 italic mt-2 text-center md:text-left"><i class="fas fa-arrows-alt-h mr-1"></i> Swipe to see more</p>
-        </div>
 
-        <div class="mb-10 text-center md:text-left">
-            <a href="./enrollment.html" class="inline-block btn-red shadow-lg transform hover:-translate-y-1 transition duration-300">
-                Join Now
-            </a>
-        </div>
-        
-        <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-6 my-12 shadow-sm relative">
-            <div class="absolute top-6 left-6 text-blue-500 text-3xl hidden sm:block"><i class="fas fa-shield-alt"></i></div>
-            <div class="sm:pl-16">
-                <h4 class="font-heading text-xl font-bold text-gray-800 uppercase mb-3"><i class="fas fa-shield-alt text-blue-500 mr-2 sm:hidden"></i> Cadet Code of Conduct</h4>
-                <p class="text-gray-700 text-sm leading-relaxed mb-4">The USNSCC Cadet Code of Conduct is a rigorous set of rules and guidelines that all cadets must adhere to. These standards promote discipline, respect, and responsibility, thoroughly outlining the honorable behavior expected while participating in USNSCC activities.</p>
-                <p class="text-gray-700 text-sm leading-relaxed mb-0">The code covers personal conduct, absolute respect for others, strict adherence to orders, and proudly representing the USNSCC in a positive manner. It is essential for all cadets to understand and follow the Code of Conduct to maintain a safe, disciplined, and respectful environment. Violations can result in disciplinary action up to and including dismissal from the elite program.</p>
+                <!-- NSCC Card -->
+                <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-t-4 border-brandRed overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                    <div class="bg-gray-50 p-6 text-center border-b border-gray-100">
+                        <h3 class="font-heading text-2xl font-bold text-gray-800 uppercase m-0">Naval Sea Cadet Corps</h3>
+                        <span class="inline-block px-4 py-1 mt-3 rounded-full bg-red-100 text-brandRed font-semibold text-sm tracking-widest uppercase shadow-sm">Ages 13 - 18</span>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-gray-600 leading-relaxed mb-6 font-medium">Sea Cadets are high school-aged students in our advanced program. There is no requirement to have been a League Cadet prior to joining.</p>
+                        <ul class="space-y-4 text-sm text-gray-600">
+                            <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Advance through ranks mirroring the U.S. Navy and Coast Guard.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Leadership opportunities and advanced technical training.</li>
+                            <li class="flex items-start"><i class="fas fa-check text-brandRed mt-1 mr-3"></i> Rigorous physical fitness and international exchange programs.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="my-6 text-center md:text-left">
-            <a href="https://www.seacadets.org/" target="_blank" class="inline-block btn-red shadow-lg transform hover:-translate-y-1 transition duration-300" rel="noopener noreferrer">
-                seacadets.org <i class="fas fa-external-link-alt ml-1 text-sm"></i>
-            </a>
-        </div>
-													<img width="650" height="746" src="./assets/images/usnscc.jpg" alt="" srcset="/assets/images/usnscc.jpg 650w, /assets/images/usnscc-261x300.jpg 261w" sizes="(max-width: 650px) 100vw, 650px" />
+
+            <div class="mt-16 mb-12">
+                <h3 class="font-heading text-3xl font-bold uppercase mb-8 text-brandBlack border-l-4 border-brandRed pl-4">What We Do</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-brandRed text-3xl mb-4"><i class="fas fa-calendar-alt"></i></div>
+                        <h4 class="font-heading text-xl font-semibold mb-2 uppercase">Local Unit Drill</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">Participate in local Unit Drills, typically meeting one weekend a month. We have over 400 units across the United States, Guam, and Puerto Rico.</p>
+                    </div>
+
+                    <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-brandRed text-3xl mb-4"><i class="fas fa-campground"></i></div>
+                        <h4 class="font-heading text-xl font-semibold mb-2 uppercase">Bootcamp &amp; Orientation</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">Graduate Recruit Training (bootcamp): a fast-paced 7-14 day training focused on basic military instruction and team building across the country.</p>
+                    </div>
+
+                    <div class="bg-brandGrayLight p-6 rounded-lg border-t-4 border-brandRed shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+                        <div class="text-brandRed text-3xl mb-4"><i class="fas fa-globe-americas"></i></div>
+                        <h4 class="font-heading text-xl font-semibold mb-2 uppercase">International Exchange (IEP)</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">Selected cadets have the unique opportunity to participate in the International Exchange Program (IEP), building relationships with international sea cadets abroad.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border text-center p-8 rounded-xl shadow-sm mb-12 relative overflow-hidden">
+                    <h4 class="font-heading text-2xl font-bold mb-6 text-brandBlack uppercase relative z-10">Advanced Training Camps</h4>
+                    <p class="text-gray-600 text-sm mb-8 max-w-2xl mx-auto relative z-10">Our cadets attend immersive advanced training camps every summer and winter break across dozens of specialties, including:</p>
+
+                    <div class="flex flex-wrap justify-center gap-3 relative z-10">
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">SEALs</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Robotics</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">SCUBA</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Submarine Training</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Culinary Arts</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Cyber Security</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Field Operations</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Maritime Interdiction</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Special Warfare Combat</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Master-at-Arms</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Space Camp</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Leadership</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Medical Training</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Music &amp; Band</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">History &amp; Heritage</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Photojournalism</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Search &amp; Rescue</span>
+                        <span class="px-4 py-2 bg-brandGrayLight text-brandRed font-semibold text-xs uppercase tracking-wider rounded-full shadow-sm border border-gray-200">Marksmanship</span>
+                    </div>
+                </div>
+
+                <div class="relative bg-gradient-to-r from-gray-50 to-white p-10 rounded-xl shadow-md text-center border-l-4 border-brandRed overflow-hidden">
+                    <i class="fas fa-quote-left absolute opacity-[0.03] text-8xl -top-2 -left-2 text-brandRed"></i>
+                    <p class="text-gray-800 text-lg md:text-xl font-medium leading-relaxed max-w-4xl mx-auto italic relative z-10">
+                        "Sea Cadets instills values of discipline, accountability, and teamwork in a safe environment. We give cadets a chance to step outside of their comfort zones with dynamic challenges. We help our cadets thrive with humility and confidence."
+                    </p>
+                </div>
             </div>
+
+            <div class="my-10 relative">
+                <h3 class="font-heading text-2xl font-bold uppercase mb-4 text-brandBlack border-l-4 border-brandRed pl-3">Training In Action</h3>
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 w-full" style="scrollbar-width: thin; scrollbar-color: #BE1E2E #f4f4f4;">
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-1.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-2.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-3.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-4.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-5.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-6.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-7.jpg" alt="Sea Cadets Training" />
+                    </div>
+                    <div class="snap-center shrink-0 w-[85%] sm:w-[60%] lg:w-[45%]">
+                        <img class="w-full h-80 object-cover rounded shadow-md border border-gray-200" src="./assets/images/training-8.jpg" alt="Sea Cadets Training" />
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 italic mt-2 text-center md:text-left"><i class="fas fa-arrows-alt-h mr-1"></i> Swipe to see more</p>
+            </div>
+
+            <div class="mb-10 text-center md:text-left">
+                <a href="./enrollment.html" class="inline-block btn-red shadow-lg transform hover:-translate-y-1 transition duration-300">Join Now</a>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-6 my-12 shadow-sm relative">
+                <div class="absolute top-6 left-6 text-blue-500 text-3xl hidden sm:block"><i class="fas fa-shield-alt"></i></div>
+                <div class="sm:pl-16">
+                    <h4 class="font-heading text-xl font-bold text-gray-800 uppercase mb-3"><i class="fas fa-shield-alt text-blue-500 mr-2 sm:hidden"></i> Cadet Code of Conduct</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4">The USNSCC Cadet Code of Conduct is a rigorous set of rules and guidelines that all cadets must adhere to. These standards promote discipline, respect, and responsibility, thoroughly outlining the honorable behavior expected while participating in USNSCC activities.</p>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-0">The code covers personal conduct, absolute respect for others, strict adherence to orders, and proudly representing the USNSCC in a positive manner. It is essential for all cadets to understand and follow the Code of Conduct to maintain a safe, disciplined, and respectful environment. Violations can result in disciplinary action up to and including dismissal from the elite program.</p>
+                </div>
+            </div>
+
+            <div class="my-6 text-center md:text-left">
+                <a href="https://www.seacadets.org/" target="_blank" class="inline-block btn-red shadow-lg transform hover:-translate-y-1 transition duration-300" rel="noopener noreferrer">seacadets.org <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
+            </div>
+
+            <img width="650" height="746" src="./assets/images/usnscc.jpg" alt="USNSCC" srcset="./assets/images/usnscc.jpg 650w, ./assets/images/usnscc-261x300.jpg 261w" sizes="(max-width: 650px) 100vw, 650px" />
         </div>
-            
+    </div>
+
     </main>
+    
 
-    <!-- Footer mirroring the live site 4-columns -->
+    <!-- Footer -->
     <footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 scroll-mt-24">
-                
-                <!-- Column 1: Logo and Address -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
                 <div class="col-span-1">
                     <img src="./assets/images/SCCNewLogo7-1.png" alt="El Toro Logo" class="w-32 mb-6">
                     <h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
                     <p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
-                    
                 </div>
-                
-                <!-- Column 2: Quick Links -->
                 <div class="col-span-1">
                     <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
                     <ul class="space-y-3 text-sm font-semibold">
-                        <li><a href="./index.html" class="hover:text-brandRed transition-colors">> Home</a></li>
-                        <li><a href="./about-us.html" class="hover:text-brandRed transition-colors">> About Us</a></li>
-                        <li><a href="./programs.html" class="hover:text-brandRed transition-colors">> Programs</a></li>
-                        <li><a href="./enrollment.html" class="hover:text-brandRed transition-colors">> Enrollment</a></li>
-                        <li><a href="./gallery.html" class="hover:text-brandRed transition-colors">> Gallery</a></li>
-                        <li><a href="./calendar.html" class="hover:text-brandRed transition-colors">> Calendar</a></li>
+                        <li><a href="./index.html" class="hover:text-brandRed transition-colors">&gt; Home</a></li>
+                        <li><a href="./about-us.html" class="hover:text-brandRed transition-colors">&gt; About Us</a></li>
+                        <li><a href="./programs.html" class="hover:text-brandRed transition-colors">&gt; Programs</a></li>
+                        <li><a href="./enrollment.html" class="hover:text-brandRed transition-colors">&gt; Enrollment</a></li>
+                        <li><a href="./gallery.html" class="hover:text-brandRed transition-colors">&gt; Gallery</a></li>
+                        <li><a href="./calendar.html" class="hover:text-brandRed transition-colors">&gt; Calendar</a></li>
                     </ul>
                 </div>
-
-                <!-- Column 3: Contact Us -->
                 <div class="col-span-1">
                     <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
-                    
                     <div class="mb-6">
                         <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Werts</p>
-                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> 
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i>
 <script>
-    var part1 = "swerts";
-    var part2 = "seacadets.org";
-    document.write('<a href="mai' + 'lto:' + part1 + '@' + part2 + '" class="hover:text-white">' + part1 + '@' + part2 + '</a>');
+    var part1 = "swerts"; var part2 = "seacadets.org";
+    document.write('<a href="mai'+'lto:'+part1+'@'+part2+'" class="hover:text-white">'+part1+'@'+part2+'</a>');
 </script>
 <noscript>swerts [at] seacadets [dot] org</noscript>
 </p>
                         <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-415-0781</p>
                     </div>
-                    
                     <div>
                         <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
-                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i> 
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i>
 <script>
-    var part1 = "v.chandrasekharan";
-    var part2 = "seacadets.org";
-    document.write('<a href="mai' + 'lto:' + part1 + '@' + part2 + '" class="hover:text-white">' + part1 + '@' + part2 + '</a>');
+    var part1 = "v.chandrasekharan"; var part2 = "seacadets.org";
+    document.write('<a href="mai'+'lto:'+part1+'@'+part2+'" class="hover:text-white">'+part1+'@'+part2+'</a>');
 </script>
 <noscript>v.chandrasekharan [at] seacadets [dot] org</noscript>
 </p>
                         <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
                     </div>
                 </div>
-
-                <!-- Column 4: Follow Us -->
                 <div class="col-span-1">
                     <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
                     <div class="flex space-x-3 mb-10">
@@ -436,17 +422,13 @@
                         <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                         <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fas fa-anchor"></i></a>
                     </div>
-                    
                     <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="./parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
                     <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg" rel="noopener noreferrer">MAKE A DONATION</a>
                 </div>
             </div>
-            
-            
             <div class="mt-12 pt-8 border-t border-gray-800 text-center mx-auto max-w-5xl">
                 <p class="text-sm leading-relaxed text-gray-400 font-light italic">"Since 1958, the Naval Sea Cadet Corps has been committed to providing American youth with a drug and alcohol free environment to foster their leadership abilities, broaden their horizons through hands-on training and guide them to becoming mature young adults."</p>
             </div>
-            
             <div class="mt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
                 <p>&copy; 2026 El Toro Battalion. All Rights Reserved.</p>
                 <p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
@@ -454,20 +436,15 @@
         </div>
     </footer>
 
-    <!-- Mobile Menu Script -->
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             var menu = document.getElementById('mobile-menu');
             var icon = this.querySelector('i');
             menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
     </script>
+    
 </body>
 </html>
