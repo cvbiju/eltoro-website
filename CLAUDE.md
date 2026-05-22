@@ -152,7 +152,34 @@ GitHub Pages auto-deploy is **disabled** (manual `workflow_dispatch` only).
 
 ---
 
-## Known Tech Debt (Phase C)
+## Replacing the Hero Video
+
+When a new hero background video is provided (typically a `.mov` from iPhone/camera):
+
+1. Place the source file anywhere (e.g. `public/assets/videos/new-hero.mov`)
+2. Convert to web formats with ffmpeg:
+```bash
+# H.264 MP4 — Safari, Chrome (39MB target for a ~10s clip)
+ffmpeg -i new-hero.mov -c:v libx264 -preset slow -crf 28 -movflags +faststart -an \
+  public/assets/videos/hero-background.mp4
+
+# VP9 WebM — Firefox, Android (target ~2Mbps = much smaller)
+ffmpeg -i new-hero.mov -c:v libvpx-vp9 -b:v 2M -maxrate 3M -bufsize 6M \
+  -deadline good -cpu-used 3 -an \
+  public/assets/videos/hero-background.webm
+```
+3. Delete the source `.mov` (it's gitignored anyway: `public/assets/videos/*.mov`)
+4. Run `python3 build.py` — the template already points to `hero-background.mp4/.webm`
+5. Commit the two new video files
+
+**Why these settings**: CRF 28 for H.264 balances quality and size for a background clip
+(nobody scrutinises it). VP9 with a 2Mbps bitrate cap keeps the `.webm` under 10MB for
+fast loads on Firefox/Android. `-an` strips audio (background video has no audio track).
+ffmpeg must be installed: `brew install ffmpeg`.
+
+---
+
+## Known Tech Debt
 
 - Hero video (`index.html`) uses `.mov` — needs conversion to `.mp4`/`.webm` for Firefox
 - Phase C (per-page SEO meta tags, keyboard-accessible nav, `sitemap.xml`) not yet started
