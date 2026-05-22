@@ -15,6 +15,9 @@ db.sqlite3
 wp-content/
 /*.xml
 
+# Original source video (web-ready .mp4 and .webm are committed instead)
+public/assets/videos/*.mov
+
 # Legacy WordPress CSS (Elementor artifact)
 public/post-1107.css
 
