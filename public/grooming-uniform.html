@@ -198,9 +198,12 @@
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
 
                 <!-- Sidebar Navigation -->
-                <div class="col-span-1 border border-gray-200 bg-white rounded-xl shadow-lg p-6 h-min sticky top-32 z-40">
-                    <h3 class="font-heading text-brandBlack font-bold text-2xl mb-6 uppercase border-b-2 border-brandRed pb-3">Contents</h3>
-                    <ul class="flex flex-col space-y-1">
+                <div class="col-span-1 border border-gray-200 bg-white rounded-xl shadow-lg p-6 h-min lg:sticky lg:top-32">
+                    <button id="toc-toggle" class="w-full flex items-center justify-between lg:cursor-default" aria-expanded="false" aria-controls="toc-list">
+                        <h3 class="font-heading text-brandBlack font-bold text-2xl uppercase border-b-2 border-brandRed pb-3 w-full text-left">Contents</h3>
+                        <i id="toc-chevron" class="fas fa-chevron-down text-brandRed ml-3 transition-transform duration-300 lg:hidden"></i>
+                    </button>
+                    <ul id="toc-list" class="hidden lg:flex flex-col space-y-1 mt-4 lg:mt-0">
                         <li><a class="flex items-center text-gray-600 hover:text-brandRed hover:bg-gray-50 hover:pl-2 px-3 py-3 rounded-lg transition-all font-medium text-sm border-l-2 border-transparent hover:border-brandRed" href="#sec1"><i class="fas fa-chevron-right text-xs mr-3 opacity-50"></i> Grooming Standards</a></li>
                         <li><a class="flex items-center text-gray-600 hover:text-brandRed hover:bg-gray-50 hover:pl-2 px-3 py-3 rounded-lg transition-all font-medium text-sm border-l-2 border-transparent hover:border-brandRed" href="#sec7"><i class="fas fa-chevron-right text-xs mr-3 opacity-50"></i> USNSCC Uniform Manual</a></li>
                         <li><a class="flex items-center text-gray-600 hover:text-brandRed hover:bg-gray-50 hover:pl-2 px-3 py-3 rounded-lg transition-all font-medium text-sm border-l-2 border-transparent hover:border-brandRed" href="#sec2"><i class="fas fa-chevron-right text-xs mr-3 opacity-50"></i> Hair Policies</a></li>
@@ -638,5 +641,37 @@
         });
     </script>
     
+<script>
+    (function () {
+        const btn = document.getElementById('toc-toggle');
+        const list = document.getElementById('toc-list');
+        const chevron = document.getElementById('toc-chevron');
+
+        function isMobile() { return window.innerWidth < 1024; }
+
+        btn.addEventListener('click', function () {
+            if (!isMobile()) return;
+            const nowHidden = list.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(!nowHidden));
+            chevron.style.transform = nowHidden ? '' : 'rotate(180deg)';
+        });
+
+        // Resize to desktop → always show list
+        window.addEventListener('resize', function () {
+            if (!isMobile()) list.classList.remove('hidden');
+        });
+
+        // Tapping a nav link on mobile collapses the TOC and jumps to the section
+        list.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                if (!isMobile()) return;
+                list.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+                chevron.style.transform = '';
+            });
+        });
+    })();
+</script>
+
 </body>
 </html>
