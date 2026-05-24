@@ -38,7 +38,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
 
         <!-- ── FOUNDATIONAL ─────────────────────────────────────────────── -->
-        <section id="foundational">
+        <section id="foundational" class="scroll-mt-40">
             <div class="flex items-center gap-4 mb-8">
                 <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-anchor text-white text-xl"></i>
@@ -84,7 +84,7 @@
         </section>
 
         <!-- ── AMERICA 250 ───────────────────────────────────────────────── -->
-        <section id="america-250">
+        <section id="america-250" class="scroll-mt-40">
             <!-- Special banner header -->
             <div class="relative bg-[radial-gradient(ellipse_at_top_left,_#1a2744_0%,_#0a0f1e_100%)] rounded-2xl overflow-hidden mb-8 p-8 md:p-10">
                 <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(190,30,46,0.3)_0%,_transparent_60%)] pointer-events-none"></div>
@@ -144,7 +144,7 @@
         </section>
 
         <!-- ── AT SEA ─────────────────────────────────────────────────────── -->
-        <section id="at-sea">
+        <section id="at-sea" class="scroll-mt-40">
             <div class="flex items-center gap-4 mb-2">
                 <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-ship text-white text-xl"></i>
@@ -291,7 +291,7 @@
         </section>
 
         <!-- ── IN THE AIR ─────────────────────────────────────────────────── -->
-        <section id="in-the-air">
+        <section id="in-the-air" class="scroll-mt-40">
             <div class="flex items-center gap-4 mb-8">
                 <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-plane text-white text-xl"></i>
@@ -347,7 +347,7 @@
         </section>
 
         <!-- ── ON LAND ─────────────────────────────────────────────────────── -->
-        <section id="on-land">
+        <section id="on-land" class="scroll-mt-40">
             <div class="flex items-center gap-4 mb-2">
                 <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-mountain text-white text-xl"></i>
@@ -691,7 +691,7 @@
         </section>
 
         <!-- ── LEADERSHIP ──────────────────────────────────────────────────── -->
-        <section id="leadership">
+        <section id="leadership" class="scroll-mt-40">
             <div class="flex items-center gap-4 mb-8">
                 <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-star text-white text-xl"></i>
@@ -753,7 +753,30 @@
 
 {% block scripts %}
 <script>
-    // Highlight active category nav pill based on scroll position
+    // ── Back to top button ───────────────────────────────────────────────
+    const topBtn = document.createElement('button');
+    topBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    topBtn.setAttribute('aria-label', 'Back to top');
+    topBtn.className = [
+        'fixed bottom-6 right-6 z-50',
+        'w-12 h-12 rounded-full',
+        'bg-brandRed text-white shadow-lg',
+        'flex items-center justify-center',
+        'opacity-0 pointer-events-none',
+        'transition-opacity duration-300',
+        'hover:bg-brandRedHover'
+    ].join(' ');
+    document.body.appendChild(topBtn);
+    window.addEventListener('scroll', function () {
+        const show = window.scrollY > 300;
+        topBtn.classList.toggle('opacity-0', !show);
+        topBtn.classList.toggle('pointer-events-none', !show);
+    }, { passive: true });
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── Highlight active category nav pill based on scroll position
     const sections = document.querySelectorAll('section[id]');
     const links = document.querySelectorAll('.cat-link');
 
