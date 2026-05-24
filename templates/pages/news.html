@@ -89,7 +89,7 @@
                         <p class="text-xs font-semibold uppercase tracking-widest text-brandRed font-sans mb-2">${item.date}</p>
                         <h2 class="font-heading text-2xl font-bold text-brandBlack mb-3 leading-snug normal-case">${item.title}</h2>
                         ${desc}
-                        <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+                        <a href="${item.original_link || item.link}" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-brandRed font-semibold font-sans text-sm hover:underline">
                             Read full story <i class="fas fa-arrow-right text-xs"></i>
                         </a>

@@ -13,9 +13,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ── Step 1: Fast RSS fetch (always runs, ~5s) ──────────────────────────
+      # Preserves enriched fields (original_link, description, image) for
+      # already-processed articles by reading the existing JSON as a cache.
       - name: Fetch RSS feed
         run: python3 scripts/fetch_seacadets_news.py
 
+      # ── Step 2: Check whether any articles still need enrichment ───────────
+      - name: Check if enrichment needed
+        id: check_enrich
+        run: |
+          python3 - <<'EOF'
+          import json, os
+          data = json.load(open("public/seacadets-news.json"))
+          needs = [i for i in data["items"] if not i.get("original_link")]
+          val = "true" if needs else "false"
+          print(f"needs_enrichment={val}")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"needs_enrichment={val}\n")
+          EOF
+
+      # ── Step 3: Playwright enrichment (only when new articles appear) ──────
+      # Installs Chromium and renders each unenriched seacadets.org post to
+      # extract the original article URL and og: meta description/image.
+      # On most nightly runs (no new articles) these three steps are skipped.
+      - name: Install Playwright
+        if: steps.check_enrich.outputs.needs_enrichment == 'true'
+        run: |
+          pip3 install playwright
+          python3 -m playwright install chromium --with-deps
+
+      - name: Enrich articles with original URLs
+        if: steps.check_enrich.outputs.needs_enrichment == 'true'
+        run: python3 scripts/enrich_news_articles.py
+
+      # ── Step 4: Commit if anything changed ────────────────────────────────
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
