@@ -4,6 +4,10 @@ Outputs:
   public/seacadets-news.json      — latest 5 news posts from the RSS feed
   public/seacadets-magazines.json — Seafarer Magazine archive from the REST API
 
+Enriched fields (original_link, description, image) are preserved from the
+existing JSON so that enrich_news_articles.py doesn't need to re-scrape
+articles that have already been processed.
+
 Run manually: python3 scripts/fetch_seacadets_news.py
 Run by GitHub Actions: .github/workflows/fetch-news.yml (nightly)
 """
@@ -29,35 +33,33 @@ MAX_NEWS = 5
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 
-def fetch(url: str) -> bytes:
+def fetch(url):
     req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=15) as resp:
         return resp.read()
 
 
-def strip_html(text: str) -> str:
+def strip_html(text):
     return re.sub(r"<[^>]+>", "", text or "").strip()
 
 
-def decode(text: str) -> str:
+def decode(text):
     return htmllib.unescape(text or "")
-
-
-def clean_description(text: str) -> str:
-    text = decode(strip_html(text))
-    text = re.sub(r"The post .+ appeared first on .+\.\s*$", "", text, flags=re.DOTALL).strip()
-    return text
-
-
-def truncate(text: str, length: int = 220) -> str:
-    return text[:length].rstrip() + "…" if len(text) > length else text
-
-
 
 
 # ── fetch news ───────────────────────────────────────────────────────────────
 
-def fetch_news() -> dict:
+def fetch_news():
+    # Load existing JSON to preserve enriched fields (original_link, description, image)
+    # keyed by seacadets.org permalink so enrichment work is never repeated.
+    enrichment_cache = {}
+    if NEWS_OUTPUT.exists():
+        try:
+            existing = json.loads(NEWS_OUTPUT.read_text())
+            enrichment_cache = {item["link"]: item for item in existing.get("items", [])}
+        except (json.JSONDecodeError, KeyError):
+            pass
+
     root = ET.fromstring(fetch(RSS_URL))
     items = []
     for item in root.find("channel").findall("item")[:MAX_NEWS]:
@@ -71,11 +73,16 @@ def fetch_news() -> dict:
         raw_link = (item.findtext("link", "") or "").strip()
         link = raw_link.split("?")[0] if "?" in raw_link else raw_link
 
+        cached = enrichment_cache.get(link, {})
         items.append({
             "title": decode(strip_html(item.findtext("title", ""))),
             "link": link,
+            # original_link: set by enrich_news_articles.py; null until then.
+            # Falls back to seacadets.org permalink in the template.
+            "original_link": cached.get("original_link", None),
             "date": formatted,
-            "description": truncate(clean_description(item.findtext("description", ""))),
+            "description": cached.get("description", ""),
+            "image": cached.get("image", ""),
         })
 
     return {"updated": datetime.now(timezone.utc).strftime("%B %d, %Y"), "items": items}
@@ -83,7 +90,7 @@ def fetch_news() -> dict:
 
 # ── fetch magazines ──────────────────────────────────────────────────────────
 
-def fetch_magazines() -> dict:
+def fetch_magazines():
     data = json.loads(fetch(MAGAZINES_API))
     content_html = decode(data[0]["content"]["rendered"])
 
@@ -122,7 +129,8 @@ def fetch_magazines() -> dict:
 
 news = fetch_news()
 NEWS_OUTPUT.write_text(json.dumps(news, indent=2))
-print(f"Wrote {len(news['items'])} news items → {NEWS_OUTPUT}")
+unenriched = sum(1 for i in news["items"] if not i.get("original_link"))
+print(f"Wrote {len(news['items'])} news items → {NEWS_OUTPUT}  ({unenriched} need enrichment)")
 
 magazines = fetch_magazines()
 MAGAZINES_OUTPUT.write_text(json.dumps(magazines, indent=2))
