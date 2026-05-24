@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Programs | El Toro Battalion</title>
+    
+<meta name="description" content="Explore 40+ Sea Cadet training programs — at sea, in the air, and on land. From Recruit Training to Advanced SCUBA, Aviation, Cybersecurity, Medical, and Leadership programs.">
+<meta property="og:site_name" content="El Toro Battalion">
+<meta property="og:title" content="Training Programs | El Toro Battalion">
+<meta property="og:description" content="Explore 40+ Sea Cadet training programs — at sea, in the air, and on land.">
+<meta property="og:image" content="https://eltorobattalion.org/assets/images/new-logo-navy.png">
+<meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlack: '#000000',
+                        brandRed: '#BE1E2E',
+                        brandRedHover: '#9A1623',
+                        brandGrayDark: '#1a1a1a',
+                        brandGrayLight: '#f4f4f4'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .nav-item { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .header-bg { background-color: #000000; border-bottom: 2px solid #1a1a1a; }
+        .dropdown:hover .dropdown-menu,
+        .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu {
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.3s ease; position: absolute; background-color: #1a1a1a;
+            min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 100; border-top: 3px solid #BE1E2E;
+        }
+        .dropdown-menu a {
+            color: #ffffff; padding: 12px 20px; text-decoration: none; display: block;
+            font-size: 0.9rem; border-bottom: 1px solid #333;
+            transition: background 0.3s, padding-left 0.3s;
+            font-family: 'Montserrat', sans-serif; text-transform: none; font-weight: 500;
+        }
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus-visible { background-color: #BE1E2E; padding-left: 25px; outline: none; }
+        a:focus-visible, button:focus-visible { outline: 2px solid #BE1E2E; outline-offset: 2px; }
+        .nav-link { position: relative; padding-bottom: 5px; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 0; background-color: #BE1E2E; transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .btn-red {
+            background-color: #BE1E2E; color: white; padding: 12px 24px;
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            font-weight: 600; letter-spacing: 1px; transition: background 0.3s;
+        }
+        .btn-red:hover { background-color: #9A1623; }
+        .btn-red-pulse { position: relative; }
+        .btn-red-pulse::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 4px; box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6);
+            opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none;
+        }
+        .btn-red-pulse:hover::before { opacity: 1; animation: pulse-glow 1.5s infinite; }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6); }
+            50% { box-shadow: 0 0 25px 5px rgba(190, 30, 46, 0.8); }
+            100% { box-shadow: 0 0 15px 2px rgba(190, 30, 46, 0.6); }
+        }
+        .page-header {
+            background-color: #1a1a1a; color: white; padding: 60px 0;
+            text-align: center; border-bottom: 4px solid #BE1E2E;
+        }
+        .page-header h1 { font-size: 3rem; font-weight: 700; letter-spacing: 2px; }
+        .wp-content h1, .wp-content h2, .wp-content h3 { color: #000000; margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .wp-content p { margin-bottom: 1rem; line-height: 1.8; color: #555; }
+        .wp-content a { color: #BE1E2E; text-decoration: none; font-weight: 600; }
+        .wp-content a:hover { text-decoration: underline; }
+        .prose h2 {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: #B41C44 !important; font-size: 2rem; border-bottom: 2px solid #BE1E2E;
+            padding-bottom: 0.5rem; margin-top: 3rem; margin-bottom: 1.5rem;
+        }
+        .prose h4 {
+            font-family: 'Oswald', sans-serif; text-transform: uppercase;
+            color: #000000 !important; font-size: 1.5rem; margin-top: 2rem;
+            margin-bottom: 1rem; font-weight: bold;
+        }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #333; }
+        .prose ul:not(.space-y-4) { list-style-type: disc; padding-left: 2rem; margin-bottom: 1.5rem; }
+        .prose ul:not(.space-y-4) li { margin-bottom: 0.5rem; color: #444; }
+        .prose ul:not(.space-y-4) li svg { display: none; }
+        .exact-sidebar-link {
+            color: #FFFFFF; display: flex; align-items: center; padding: 15px 20px;
+            font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400;
+            border-bottom: 1px solid rgba(255,255,255,0.1); transition: background-color 0.3s ease;
+        }
+        .exact-sidebar-link:hover { background-color: #921635; color: #FFFFFF; text-decoration: none; }
+        .wp-content .exact-sidebar-title { color: #FFFFFF !important; }
+        .wp-content a.exact-sidebar-link { color: #FFFFFF !important; text-decoration: none !important; }
+        .wp-content a.exact-sidebar-link:hover { color: #FFFFFF !important; }
+    </style>
+    
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Honeypot for bots -->
+    <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+    </div>
+
+    <!-- Header -->
+    <header class="header-bg sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex-shrink-0 flex items-center h-full py-2">
+                    <a href="./index.html" class="flex h-full items-center">
+                        <img src="./assets/images/new-logo-navy.png" alt="El Toro Battalion Logo" class="h-16 w-auto object-contain">
+                    </a>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6" aria-label="Main navigation">
+                    <a href="./index.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Home</a>
+                    <a href="./calendar.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Calendar</a>
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="./programs.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" aria-haspopup="true" aria-expanded="false">Programs <i class="fas fa-angle-down ml-1 text-xs" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0" role="menu">
+                            <a href="./programs.html" role="menuitem">Battalion Programs</a>
+                            <a href="./training-programs.html" role="menuitem">Training Programs</a>
+                        </div>
+                    </div>
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="./about-us.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" aria-haspopup="true" aria-expanded="false">About Us <i class="fas fa-angle-down ml-1 text-xs" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0" role="menu">
+                            <a href="./meet-the-officers.html" role="menuitem">Meet the Officers</a>
+                        </div>
+                    </div>
+                    <div class="relative dropdown h-full flex items-center">
+                        <a href="./cadet-mess.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200 cursor-pointer py-2" aria-haspopup="true" aria-expanded="false">Cadet Mess <i class="fas fa-angle-down ml-1 text-xs" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu top-[100%] left-0" role="menu">
+                            <a href="./general-knowledge.html" role="menuitem">General Knowledge</a>
+                            <a href="./physical-fitness.html" role="menuitem">Physical Fitness</a>
+                            <a href="./grooming-uniform.html" role="menuitem">Grooming & Uniform</a>
+                        </div>
+                    </div>
+                    <a href="./parents.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Parents</a>
+                    <a href="./gallery.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Gallery</a>
+                    <a href="./news.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">News</a>
+                    <a href="./enrollment.html" class="text-white hover:text-brandRed nav-link nav-item text-sm font-semibold tracking-wider transition-colors duration-200">Enrollment</a>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red text-sm" rel="noopener noreferrer">Donate</a>
+                </nav>
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brandRed" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-brandBlack border-t border-gray-800">
+            <div class="px-4 py-4 space-y-3">
+                <a href="./index.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Home</a>
+                <a href="./calendar.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Calendar</a>
+                <a href="./programs.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Programs</a>
+                <a href="./training-programs.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Training Programs</a>
+                <a href="./about-us.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">About Us</a>
+                <a href="./meet-the-officers.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Meet the Officers</a>
+                <a href="./cadet-mess.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Cadet Mess</a>
+                <a href="./general-knowledge.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- General Knowledge</a>
+                <a href="./physical-fitness.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Physical Fitness</a>
+                <a href="./grooming-uniform.html" class="block text-gray-400 font-sans text-sm pl-4 border-b border-gray-800 pb-2">- Grooming &amp; Uniform</a>
+                <a href="./parents.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Parents</a>
+                <a href="./gallery.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Gallery</a>
+                <a href="./news.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">News</a>
+                <a href="./enrollment.html" class="block text-white uppercase font-heading text-lg border-b border-gray-800 pb-2">Enrollment</a>
+                <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="block text-brandRed uppercase font-heading text-lg font-bold" rel="noopener noreferrer">Donate</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-gray-50">
+        
+
+    <!-- Page Header -->
+    <div class="relative bg-[radial-gradient(circle_at_center,_#2a2a2a_0%,_#000000_100%)] text-white py-20 text-center border-b-4 border-brandRed overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(190,30,46,0.2)_0%,_transparent_50%)] pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <p class="text-brandRed font-sans text-xs font-bold uppercase tracking-widest mb-3">Summer 2026</p>
+            <h1 class="font-heading text-5xl md:text-6xl font-bold tracking-[0.15em] uppercase mb-4">Training Programs</h1>
+            <p class="text-gray-300 font-sans text-lg max-w-2xl mx-auto">Train at sea, in the air, and on land. Over 40 programs nationwide — choose your next challenge.</p>
+        </div>
+    </div>
+
+    <!-- Quick Facts Bar -->
+    <div class="bg-brandRed text-white">
+        <div class="max-w-5xl mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm font-sans">
+            <div>
+                <p class="text-red-200 text-xs uppercase tracking-widest font-bold mb-0.5">5–6 Day Training</p>
+                <p class="font-bold text-base">$300</p>
+            </div>
+            <div>
+                <p class="text-red-200 text-xs uppercase tracking-widest font-bold mb-0.5">7+ Day Training</p>
+                <p class="font-bold text-base">$350</p>
+            </div>
+            <div>
+                <p class="text-red-200 text-xs uppercase tracking-widest font-bold mb-0.5">Recruit Training</p>
+                <p class="font-bold text-base">$300 · 9 Days</p>
+            </div>
+            <div>
+                <p class="text-red-200 text-xs uppercase tracking-widest font-bold mb-0.5">Included</p>
+                <p class="font-bold text-base">Food &amp; Lodging</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Category Nav -->
+    <div id="category-nav" class="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <nav class="flex gap-1 overflow-x-auto py-3 scrollbar-hide" aria-label="Training categories">
+                <a href="#foundational"   class="cat-link flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest font-sans transition-colors duration-200 text-gray-500 hover:bg-brandRed hover:text-white"><i class="fas fa-anchor"></i> Foundational</a>
+                <a href="#america-250"    class="cat-link flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest font-sans transition-colors duration-200 text-gray-500 hover:bg-brandRed hover:text-white"><i class="fas fa-flag-usa"></i> America 250</a>
+                <a href="#at-sea"         class="cat-link flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest font-sans transition-colors duration-200 text-gray-500 hover:bg-brandRed hover:text-white"><i class="fas fa-ship"></i> At Sea</a>
+                <a href="#in-the-air"     class="cat-link flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest font-sans transition-colors duration-200 text-gray-500 hover:bg-brandRed hover:text-white"><i class="fas fa-plane"></i> In the Air</a>
+                <a href="#on-land"        class="cat-link flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest font-sans transition-colors duration-200 text-gray-500 hover:bg-brandRed hover:text-white"><i class="fas fa-mountain"></i> On Land</a>
+                <a href="#leadership"     class="cat-link flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest font-sans transition-colors duration-200 text-gray-500 hover:bg-brandRed hover:text-white"><i class="fas fa-star"></i> Leadership</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
+        <!-- ── FOUNDATIONAL ─────────────────────────────────────────────── -->
+        <section id="foundational">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-anchor text-white text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-brandBlack leading-none">Foundational Training</h2>
+                    <p class="text-gray-500 font-sans text-sm mt-1">Every Sea Cadet starts here. Required before advancing.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user-shield text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="font-heading text-lg font-bold uppercase text-brandBlack leading-tight">Recruit Training (RT)</h3>
+                                <span class="text-xs bg-brandRed text-white font-bold px-2 py-0.5 rounded font-sans uppercase tracking-wide">Required First</span>
+                            </div>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">The foundation of your Sea Cadet career. Build discipline, military bearing, and teamwork through physical training, drill, and naval traditions. 9 days. Required before attending any Advanced Training.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-anchor text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="font-heading text-lg font-bold uppercase text-brandBlack leading-tight">Navy League Orientation (NLO)</h3>
+                                <span class="text-xs bg-gray-700 text-white font-bold px-2 py-0.5 rounded font-sans uppercase tracking-wide">League Cadets</span>
+                            </div>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">Introduces younger cadets to Sea Cadet basics — drill, teamwork, physical training, and military fundamentals. Required before attending all other League cadet trainings.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── AMERICA 250 ───────────────────────────────────────────────── -->
+        <section id="america-250">
+            <!-- Special banner header -->
+            <div class="relative bg-[radial-gradient(ellipse_at_top_left,_#1a2744_0%,_#0a0f1e_100%)] rounded-2xl overflow-hidden mb-8 p-8 md:p-10">
+                <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(190,30,46,0.3)_0%,_transparent_60%)] pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-flag-usa text-brandRed text-2xl"></i>
+                            <span class="text-red-400 font-sans text-xs font-bold uppercase tracking-widest">Once-in-a-Generation Event</span>
+                        </div>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-white leading-tight mb-3">America 250</h2>
+                        <p class="text-gray-300 font-sans text-sm max-w-xl leading-relaxed">In 2026 the United States celebrates its 250th anniversary. Through Sail 250, Sea Cadets will experience one of the largest maritime events in history — live aboard Navy ships alongside sailors from 40+ countries at five major U.S. ports.</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="text-xs font-bold font-sans bg-white/10 text-gray-200 px-3 py-1 rounded-full">New Orleans</span>
+                            <span class="text-xs font-bold font-sans bg-white/10 text-gray-200 px-3 py-1 rounded-full">Norfolk</span>
+                            <span class="text-xs font-bold font-sans bg-white/10 text-gray-200 px-3 py-1 rounded-full">Baltimore</span>
+                            <span class="text-xs font-bold font-sans bg-white/10 text-gray-200 px-3 py-1 rounded-full">New York City</span>
+                            <span class="text-xs font-bold font-sans bg-white/10 text-gray-200 px-3 py-1 rounded-full">Boston</span>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="bg-white/10 rounded-xl p-5 text-center min-w-[160px]">
+                            <p class="text-gray-300 font-sans text-xs uppercase tracking-widest mb-1">Eligible</p>
+                            <p class="text-white font-heading font-bold text-lg uppercase">Age 15+</p>
+                            <p class="text-gray-300 font-sans text-xs uppercase tracking-widest mt-2 mb-1">Rank</p>
+                            <p class="text-white font-heading font-bold text-lg uppercase">PO2 or Higher</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-ship text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold uppercase text-brandBlack leading-tight mb-1">Opsail / International Naval Review</h3>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">Embark aboard a Navy ship and train alongside sailors from around the world. Take part in ceremonies, ship arrivals, and international maritime events marking America's 250th anniversary.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-2">Earns Opsail/INR Ribbon + America 250 Ribbon</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-binoculars text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold uppercase text-brandBlack leading-tight mb-1">One-Day Experiences</h3>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">Tour ships, explore naval history, attend airshows, and interact with sailors and pilots at select port locations. Open to a wider range of cadets.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-2">Earns America 250 Ribbon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── AT SEA ─────────────────────────────────────────────────────── -->
+        <section id="at-sea">
+            <div class="flex items-center gap-4 mb-2">
+                <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-ship text-white text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-brandBlack leading-none">Training at Sea</h2>
+                    <p class="text-gray-500 font-sans text-sm mt-1">Swim qualifications required in addition to PRT.</p>
+                </div>
+            </div>
+
+            <!-- Seamanship -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Seamanship</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-ship text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">SS John W. Brown</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Train aboard a historic WWII Liberty Ship. Line handling, chart navigation, cargo, steam plant, and bridge watches in Baltimore, MD.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-compass text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Shipboard Operations</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Navigation, watchstanding, damage control, and hands-on shipboard procedures aboard Navy vessels or operational ships.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-anchor text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Small Boat Operations</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Operate military-style small boats used by the Navy and Coast Guard. Docking, line handling, navigation, and crew coordination.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coast Guard -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Coast Guard</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-life-ring text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Coast Guard Shore / Boat Station</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">USCG missions, seamanship, damage control, and introductory law enforcement. Includes underway time. South Portland, ME.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dive -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Dive (SCUBA)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-water text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Basic SCUBA</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Earn your Open Water SCUBA certification. Pool sessions and open water dives build equipment skills and underwater confidence.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">SCUBA Certification</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-water text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Advanced SCUBA</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Deeper dives, underwater navigation, and search-and-recovery. Builds on Basic SCUBA with complex underwater missions.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">Prereq: Basic SCUBA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-fish text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Pride of Michigan</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">10-day Great Lakes dive training. Seamanship + underwater research. Earn Advanced SCUBA or Research Diver certification.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">10 Days · Advanced / Research Diver Cert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sailing -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Sailing</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-wind text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Basic Sailing</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Sail 32- and 41-foot boats on the Chesapeake Bay with ASA-certified instructors. Boat handling, sail trimming, and navigation. Annapolis, MD.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-wind text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Advanced Sailing</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">11 days crewing a 137-foot schooner. Navigate by stars, climb the rigging, and go ashore at Catalina Island. Chula Vista, CA.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">11 Days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-ship text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">USCG Barque Eagle</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Sail a three-masted tall ship. Navigation, ship-handling, and engineering skills put to work on the open water. New York.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── IN THE AIR ─────────────────────────────────────────────────── -->
+        <section id="in-the-air">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-plane text-white text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-brandBlack leading-none">Training in the Air</h2>
+                    <p class="text-gray-500 font-sans text-sm mt-1">Inside look at naval aviation — how aircraft fly, how missions come together.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-plane text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Basic Airman</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Introduction to naval aviation. How aircraft fly, key systems, aviation safety, and the roles behind every mission.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-plane text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Advanced Airman</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Aircraft operations, flight planning, and mission support. Builds on Basic Airman with leadership and problem-solving exercises.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">Prereq: Basic Airman</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-plane text-brandRed"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight">NLCC Aviation</h3>
+                                <span class="text-xs bg-gray-700 text-white font-bold px-2 py-0.5 rounded font-sans uppercase tracking-wide">League</span>
+                            </div>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Introduces Navy League Cadets to the basics of flight, aircraft design concepts, and aviation safety.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── ON LAND ─────────────────────────────────────────────────────── -->
+        <section id="on-land">
+            <div class="flex items-center gap-4 mb-2">
+                <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-mountain text-white text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-brandBlack leading-none">Training on Land</h2>
+                    <p class="text-gray-500 font-sans text-sm mt-1">Building, responding, creating, and problem-solving across high-demand career fields.</p>
+                </div>
+            </div>
+
+            <!-- Maritime Trades -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Maritime Trades</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-industry text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">ATDM</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Accelerated Training in Defense Manufacturing. Hands-on CAD, 3D printing, CNC machining, non-destructive testing, and welding. Navy-backed program.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-tools text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Shipbuilding</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Explore shipbuilding trades, engineering concepts, and hands-on tools. Learn how ships and submarines are designed and built.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-cog text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Submarine Industrial Base</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Inside look at next-generation submarine construction. Train at the Institute for Advanced Learning and Research in Danville, VA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trades -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Trades</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-fire-extinguisher text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Military Sealift Command — Beginning</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Firefighting, damage control, water survival, search and rescue, fall protection, and cargo crane operation at Fort Eustis, Newport News, VA.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-certificate text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Military Sealift Command — Intermediate</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Advanced MSC course taught by professionals. Earn U.S. Coast Guard certifications required to sail aboard an MSC vessel.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">Prereq: MSC Beginning · USCG Cert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Construction & Technical Trades -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Construction &amp; Technical Trades</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-hard-hat text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Seabee</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Basic welding and construction skills. Shop safety, equipment setup, and Seabee missions supporting military and humanitarian operations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-fire text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Welding</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Professional welding at North Central Texas College with certified instructors. Stick, wire, and aluminum methods. Blueprint reading included.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-utensils text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Culinary Arts</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Cook with real chefs, create recipes, and improve food presentation. Earn a food handler certification and compete in a master chef-style challenge.</p>
+                            <p class="text-xs text-brandRed font-bold font-sans mt-1.5">Food Handler Certification</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEM -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">STEM</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-1">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-university text-brandRed"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight">Cybersecurity Camp — Indiana University</h3>
+                                <span class="text-xs bg-brandRed text-white font-bold px-2 py-0.5 rounded font-sans uppercase tracking-wide">Featured</span>
+                            </div>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Week-long immersion at IU Bloomington. Cryptography, network defense, AI labs, and robotics with NAVSEA engineers. Three tracks: Basic Cyber/EW, Advanced Cyber/EW, or Invention Lab. Jul 26 – Aug 1.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-shield-alt text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Cybersecurity</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">How networks work, how cyber threats happen, and how systems are protected. Hands-on digital defense and problem-solving.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Robotics</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Build and operate remotely controlled vehicles. Basic engineering, programming concepts, and mission-based teamwork.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-cogs text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">SeaPerch</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Build an underwater ROV from a low-cost kit. Hands-on marine engineering, robotics, and science with a team focus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Public Safety -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Public Safety</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user-shield text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Police / Master-at-Arms</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Military law enforcement basics. Searching, arresting, crowd control, and building clearing alongside experienced officers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-crosshairs text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Marksmanship</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Firearm safety, responsibility, and shooting disciplines in a structured, supervised environment. Consent form required.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-fire-extinguisher text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Firefighting</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Every sailor is a firefighter. Structural and wildland firefighting with CAL FIRE (CA), or shipboard damage control with Military Sealift Command.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-balance-scale text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Judge Advocate / Law</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Hands-on mock trial. Criminal and military law including the UCMJ. Builds critical thinking, public speaking, and argumentation skills.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Medical</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-heartbeat text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Medical (3 Levels)</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed"><strong class="text-gray-700">NLCC:</strong> First aid &amp; health basics. <strong class="text-gray-700">Basic:</strong> CPR, bleeding control, injury stabilization. <strong class="text-gray-700">Advanced:</strong> Trauma scenarios, triage, and coordinated response.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-ambulance text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">EMT Services</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Introduction to emergency responder patient care, medical equipment use, and team coordination during emergencies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-medkit text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Field Medical</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Provide care in outdoor or limited-resource settings. Quick patient assessment, basic treatment, and safe patient movement during field scenarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Ops -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Special Operations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marked-alt text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Field Operations</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Mission planning and execution in outdoor settings. Land navigation, communications, and small-team operations in realistic scenarios.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-campground text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Wilderness Survival</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Shelter building, firecraft, water procurement, land navigation, and survival planning. Builds resilience in remote environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-mountain text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Rope Rescue</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Knots, rappelling, climbing, and emergency rescue systems. Hands-on confidence-building in challenging terrain.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communications & Operations -->
+            <h3 class="font-heading text-sm font-bold uppercase tracking-widest text-gray-400 mt-8 mb-4 border-b border-gray-200 pb-2">Communications &amp; Operations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-camera text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Photojournalism</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Tell stories through photos, writing, and digital media. Capture Sea Cadet events and build creative communication skills.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-flag text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Ceremonial / Honor Guard</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Color guard, rifle drill, and ceremonial procedures. Present the American flag with pride at events and official ceremonies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-boxes text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Supply &amp; Logistics</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Inventory management, equipment accountability, and logistical planning. Learn the systems that keep operations fully supported.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-broadcast-tower text-brandRed"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Ham Radio</h3>
+                            <p class="text-gray-500 font-sans text-xs leading-relaxed">Operate real radio equipment for long-distance communications. Proper procedures and how to keep comms running when normal systems fail.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LEADERSHIP ──────────────────────────────────────────────────── -->
+        <section id="leadership">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-star text-white text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-brandBlack leading-none">Leadership</h2>
+                    <p class="text-gray-500 font-sans text-sm mt-1">Tools to take on responsibility in your unit, at trainings, and in life.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-landmark text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight">Chiefs' Capitol Hill Day</h3>
+                                <span class="text-xs bg-gray-700 text-white font-bold px-2 py-0.5 rounded font-sans uppercase tracking-wide">CPO Only</span>
+                            </div>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">Represent Sea Cadets in Washington, D.C. Meet with members of Congress and advocate for the program. Competitive selection announced mid-April.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-graduation-cap text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight mb-1">Military Academy Summer Programs</h3>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">Experience life at U.S. service academies. Classes, physical training, and leadership challenges with academy staff — a closer look at academy life.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-card bg-white rounded-xl shadow-md border-l-4 border-brandRed p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-star text-brandRed text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap mb-1">
+                                <h3 class="font-heading text-base font-bold uppercase text-brandBlack leading-tight">Petty Officer Leadership Academy</h3>
+                                <span class="text-xs bg-brandRed text-white font-bold px-2 py-0.5 rounded font-sans uppercase tracking-wide">Required PO2+</span>
+                            </div>
+                            <p class="text-gray-500 font-sans text-sm leading-relaxed">Lead teams, solve problems, communicate clearly, and mentor junior cadets. Required for promotion to Petty Officer Second Class and higher.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── Sign Up CTA ──────────────────────────────────────────────────── -->
+        <section>
+            <div class="bg-brandBlack rounded-2xl p-10 md:p-14 text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(190,30,46,0.25)_0%,_transparent_70%)] pointer-events-none"></div>
+                <div class="relative z-10">
+                    <i class="fas fa-anchor text-brandRed text-4xl mb-5"></i>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold uppercase text-white mb-4">Ready to Sign Up?</h2>
+                    <p class="text-gray-400 font-sans text-base max-w-xl mx-auto mb-3">Cadet billets are filled first-come, first-served. Talk to your Commanding Officer, verify your prerequisites in Quarterdeck, and register before spots fill.</p>
+                    <p class="text-gray-500 font-sans text-sm mb-8">PRT must be current within the last 6 months. Travel and uniform costs are the cadet's responsibility.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://quarterdeck.seacadets.org/secure/login.aspx" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 bg-brandRed hover:bg-brandRedHover text-white font-bold font-sans text-sm uppercase tracking-widest px-8 py-4 transition shadow-lg">
+                            <i class="fas fa-sign-in-alt"></i> Sign Up on Quarterdeck
+                        </a>
+                        <a href="./enrollment.html"
+                           class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold font-sans text-sm uppercase tracking-widest px-8 py-4 transition">
+                            <i class="fas fa-user-plus"></i> Not a Cadet Yet? Enroll
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    </main>
+    
+
+    <!-- Footer -->
+    <footer class="bg-brandBlack text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="col-span-1">
+                    <img src="./assets/images/SCCNewLogo7-1.png" alt="El Toro Logo" class="w-32 mb-6">
+                    <h3 class="font-heading text-xl text-white mb-4 uppercase tracking-wider">El Toro Battalion</h3>
+                    <p class="text-sm leading-loose mb-2"><i class="fas fa-map-marker-alt text-brandRed w-5"></i> Irvine, CA</p>
+                </div>
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Quick Links</h3>
+                    <ul class="space-y-3 text-sm font-semibold">
+                        <li><a href="./index.html" class="hover:text-brandRed transition-colors">&gt; Home</a></li>
+                        <li><a href="./about-us.html" class="hover:text-brandRed transition-colors">&gt; About Us</a></li>
+                        <li><a href="./programs.html" class="hover:text-brandRed transition-colors">&gt; Programs</a></li>
+                        <li><a href="./enrollment.html" class="hover:text-brandRed transition-colors">&gt; Enrollment</a></li>
+                        <li><a href="./gallery.html" class="hover:text-brandRed transition-colors">&gt; Gallery</a></li>
+                        <li><a href="./calendar.html" class="hover:text-brandRed transition-colors">&gt; Calendar</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Contact Us</h3>
+                    <div class="mb-6">
+                        <p class="text-white font-bold mb-2 text-lg">Commanding Officer: Suzy Werts</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i>
+<script>
+    var part1 = "swerts"; var part2 = "seacadets.org";
+    document.write('<a href="mai'+'lto:'+part1+'@'+part2+'" class="hover:text-white">'+part1+'@'+part2+'</a>');
+</script>
+<noscript>swerts [at] seacadets [dot] org</noscript>
+</p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 310-415-0781</p>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold mb-2 text-lg">Executive Officer: Biju Chandrasekharan</p>
+                        <p class="text-base text-gray-300 mb-1"><i class="fas fa-envelope text-brandRed w-6 text-lg"></i>
+<script>
+    var part1 = "v.chandrasekharan"; var part2 = "seacadets.org";
+    document.write('<a href="mai'+'lto:'+part1+'@'+part2+'" class="hover:text-white">'+part1+'@'+part2+'</a>');
+</script>
+<noscript>v.chandrasekharan [at] seacadets [dot] org</noscript>
+</p>
+                        <p class="text-base text-gray-300"><i class="fas fa-phone text-brandRed w-6 text-lg"></i> 949-774-8468</p>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <h3 class="font-heading text-xl text-white mb-6 uppercase tracking-wider border-b-2 border-brandRed pb-2 inline-block">Follow Us</h3>
+                    <div class="flex space-x-3 mb-10">
+                        <a href="https://www.facebook.com/eltoro.battalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/eltorobattalion/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.seacadets.org/" target="_blank" class="w-12 h-12 bg-[#1b2532] flex items-center justify-center text-white hover:bg-brandRed transition-colors rounded-sm text-xl" rel="noopener noreferrer"><i class="fas fa-anchor"></i></a>
+                    </div>
+                    <h3 class="font-heading text-2xl font-semibold text-white mb-6 uppercase tracking-wider"><a href="./parents.html" class="hover:text-brandRed transition-colors">Parents Info</a></h3>
+                    <a href="https://www.gofundme.com/manage/el-toro-battalion-ts-vammen/" target="_blank" class="btn-red w-full flex justify-center py-4 text-center rounded-none font-bold tracking-widest text-lg" rel="noopener noreferrer">MAKE A DONATION</a>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center mx-auto max-w-5xl">
+                <p class="text-sm leading-relaxed text-gray-400 font-light italic">"Since 1958, the Naval Sea Cadet Corps has been committed to providing American youth with a drug and alcohol free environment to foster their leadership abilities, broaden their horizons through hands-on training and guide them to becoming mature young adults."</p>
+            </div>
+            <div class="mt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2026 El Toro Battalion. All Rights Reserved.</p>
+                <p class="mt-4 md:mt-0">U.S. Naval Sea Cadet Corps</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        mobileBtn.addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            var isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+            this.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        // Keyboard-accessible desktop dropdowns
+        document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+            var trigger = dropdown.querySelector('[aria-haspopup]');
+            var menu = dropdown.querySelector('[role="menu"]');
+            var items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+
+            function openMenu() {
+                dropdown.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+            function closeMenu() {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+
+            // Enter / Space / ArrowDown on trigger opens menu
+            trigger.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    openMenu();
+                    items[0] && items[0].focus();
+                }
+            });
+
+            // Arrow keys, Escape, Tab inside menu
+            menu.addEventListener('keydown', function(e) {
+                var idx = items.indexOf(document.activeElement);
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    items[(idx + 1) % items.length].focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (idx === 0) { closeMenu(); trigger.focus(); }
+                    else { items[idx - 1].focus(); }
+                } else if (e.key === 'Escape' || e.key === 'Tab') {
+                    closeMenu();
+                    if (e.key === 'Escape') { e.preventDefault(); trigger.focus(); }
+                }
+            });
+
+            // Close when focus leaves the entire dropdown
+            dropdown.addEventListener('focusout', function(e) {
+                if (!dropdown.contains(e.relatedTarget)) { closeMenu(); }
+            });
+        });
+
+        // Close any open dropdown on Escape from anywhere
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.dropdown.open').forEach(function(d) {
+                    d.classList.remove('open');
+                    d.querySelector('[aria-haspopup]').setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+    </script>
+    
+<script>
+    // Highlight active category nav pill based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.cat-link');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                links.forEach(link => {
+                    const active = link.getAttribute('href') === '#' + id;
+                    link.classList.toggle('bg-brandRed', active);
+                    link.classList.toggle('text-white', active);
+                    link.classList.toggle('text-gray-500', !active);
+                });
+            }
+        });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
