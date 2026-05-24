@@ -386,6 +386,12 @@
 
         topBtn.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Re-open the TOC when returning to the top
+            if (isMobile() && list.classList.contains('hidden')) {
+                list.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                chevron.className = 'fas fa-chevron-up text-brandRed ml-3 transition-transform duration-300 lg:hidden';
+            }
         });
     })();
 </script>
