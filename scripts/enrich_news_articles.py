@@ -179,9 +179,10 @@ def main():
                 item["original_link"] = original
                 print(f"    ✓ original: {original}")
             else:
-                # Fall back to the seacadets.org permalink — at least the page loads.
-                item["original_link"] = item["link"]
-                print(f"    ! no outbound link found; falling back to seacadets.org permalink")
+                # Fall back to the newsroom index — the individual permalinks render blank
+                # (Divi JS required), so the newsroom listing is a better destination.
+                item["original_link"] = "https://www.seacadets.org/newsroom/sea-cadets-in-the-news/"
+                print(f"    ! no outbound link found; falling back to newsroom index")
 
         browser.close()
 
