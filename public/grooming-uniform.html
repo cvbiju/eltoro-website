@@ -199,11 +199,11 @@
 
                 <!-- Sidebar Navigation -->
                 <div class="col-span-1 border border-gray-200 bg-white rounded-xl shadow-lg p-6 h-min lg:sticky lg:top-32">
-                    <button id="toc-toggle" class="w-full flex items-center justify-between lg:cursor-default" aria-expanded="false" aria-controls="toc-list">
+                    <button id="toc-toggle" class="w-full flex items-center justify-between lg:cursor-default" aria-expanded="true" aria-controls="toc-list">
                         <h3 class="font-heading text-brandBlack font-bold text-2xl uppercase border-b-2 border-brandRed pb-3 w-full text-left">Contents</h3>
-                        <i id="toc-chevron" class="fas fa-chevron-down text-brandRed ml-3 transition-transform duration-300 lg:hidden"></i>
+                        <i id="toc-chevron" class="fas fa-chevron-up text-brandRed ml-3 transition-transform duration-300 lg:hidden"></i>
                     </button>
-                    <ul id="toc-list" class="hidden lg:flex flex-col space-y-1 mt-4 lg:mt-0">
+                    <ul id="toc-list" class="flex flex-col space-y-1 mt-4 lg:mt-0">
                         <li><a class="flex items-center text-gray-600 hover:text-brandRed hover:bg-gray-50 hover:pl-2 px-3 py-3 rounded-lg transition-all font-medium text-sm border-l-2 border-transparent hover:border-brandRed" href="#sec1"><i class="fas fa-chevron-right text-xs mr-3 opacity-50"></i> Grooming Standards</a></li>
                         <li><a class="flex items-center text-gray-600 hover:text-brandRed hover:bg-gray-50 hover:pl-2 px-3 py-3 rounded-lg transition-all font-medium text-sm border-l-2 border-transparent hover:border-brandRed" href="#sec7"><i class="fas fa-chevron-right text-xs mr-3 opacity-50"></i> USNSCC Uniform Manual</a></li>
                         <li><a class="flex items-center text-gray-600 hover:text-brandRed hover:bg-gray-50 hover:pl-2 px-3 py-3 rounded-lg transition-all font-medium text-sm border-l-2 border-transparent hover:border-brandRed" href="#sec2"><i class="fas fa-chevron-right text-xs mr-3 opacity-50"></i> Hair Policies</a></li>
@@ -643,8 +643,9 @@
     
 <script>
     (function () {
-        const btn = document.getElementById('toc-toggle');
-        const list = document.getElementById('toc-list');
+        // ── TOC toggle ───────────────────────────────────────────────────────
+        const btn     = document.getElementById('toc-toggle');
+        const list    = document.getElementById('toc-list');
         const chevron = document.getElementById('toc-chevron');
 
         function isMobile() { return window.innerWidth < 1024; }
@@ -653,22 +654,49 @@
             if (!isMobile()) return;
             const nowHidden = list.classList.toggle('hidden');
             btn.setAttribute('aria-expanded', String(!nowHidden));
-            chevron.style.transform = nowHidden ? '' : 'rotate(180deg)';
+            // chevron-up when open, chevron-down when closed
+            chevron.className = 'fas ' + (nowHidden ? 'fa-chevron-down' : 'fa-chevron-up') +
+                                ' text-brandRed ml-3 transition-transform duration-300 lg:hidden';
         });
 
-        // Resize to desktop → always show list
         window.addEventListener('resize', function () {
             if (!isMobile()) list.classList.remove('hidden');
         });
 
-        // Tapping a nav link on mobile collapses the TOC and jumps to the section
+        // Tapping a nav link collapses the TOC so the content is unobstructed
         list.querySelectorAll('a').forEach(function (a) {
             a.addEventListener('click', function () {
                 if (!isMobile()) return;
                 list.classList.add('hidden');
                 btn.setAttribute('aria-expanded', 'false');
-                chevron.style.transform = '';
+                chevron.className = 'fas fa-chevron-down text-brandRed ml-3 transition-transform duration-300 lg:hidden';
             });
+        });
+
+        // ── Back to top button ───────────────────────────────────────────────
+        const topBtn = document.createElement('button');
+        topBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        topBtn.setAttribute('aria-label', 'Back to top');
+        topBtn.className = [
+            'fixed bottom-6 right-6 z-50',
+            'w-12 h-12 rounded-full',
+            'bg-brandRed text-white shadow-lg',
+            'flex items-center justify-center',
+            'opacity-0 pointer-events-none',
+            'transition-opacity duration-300',
+            'hover:bg-brandRedHover focus-visible:outline-none',
+            'focus-visible:ring-2 focus-visible:ring-brandRed focus-visible:ring-offset-2'
+        ].join(' ');
+        document.body.appendChild(topBtn);
+
+        window.addEventListener('scroll', function () {
+            const show = window.scrollY > 300;
+            topBtn.classList.toggle('opacity-0', !show);
+            topBtn.classList.toggle('pointer-events-none', !show);
+        }, { passive: true });
+
+        topBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     })();
 </script>
