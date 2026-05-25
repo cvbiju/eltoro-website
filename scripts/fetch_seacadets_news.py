@@ -24,9 +24,11 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; ETBNewsBot/1.0)"}
 
 RSS_URL = "https://www.seacadets.org/feed/"
 MAGAZINES_API = "https://www.seacadets.org/wp-json/wp/v2/pages?slug=seafarer-magazines&_fields=content"
+NEWSROOM_API = "https://www.seacadets.org/wp-json/wp/v2/pages?slug=newsroom&_fields=content"
 
 NEWS_OUTPUT = REPO_ROOT / "public" / "seacadets-news.json"
 MAGAZINES_OUTPUT = REPO_ROOT / "public" / "seacadets-magazines.json"
+ANNUAL_REPORTS_OUTPUT = REPO_ROOT / "public" / "seacadets-annual-reports.json"
 
 MAX_NEWS = 5
 
@@ -125,6 +127,43 @@ def fetch_magazines():
     return {"updated": datetime.now(timezone.utc).strftime("%B %d, %Y"), "magazines": magazines}
 
 
+# ── fetch annual reports ─────────────────────────────────────────────────────
+
+def fetch_annual_reports():
+    data = json.loads(fetch(NEWSROOM_API))
+    content_html = decode(data[0]["content"]["rendered"])
+
+    # Build div-ID → PDF URL map from jQuery click handlers
+    # Pattern: jQuery("#AnnualReport-4474").on("click", ... window.open("URL.pdf" ...
+    pdf_map = {
+        m.group(1): m.group(2)
+        for m in re.finditer(
+            r'jQuery\("#(AnnualReport-\d+)"\)\.on\("click".*?window\.open\("([^"]+\.pdf)"',
+            content_html,
+            re.DOTALL,
+        )
+    }
+
+    # Parse each report div: id → cover URL + title
+    reports = []
+    for m in re.finditer(
+        r'<div id="(AnnualReport-\d+)"[^>]+class="AnnualReport"[^>]*>.*?'
+        r'background-image:\s*url\([\'"]?([^\'")\s]+)[\'"]?\).*?'
+        r'<h3[^>]*>(.*?)</h3>',
+        content_html,
+        re.DOTALL | re.IGNORECASE,
+    ):
+        div_id = m.group(1)
+        cover_url = m.group(2)
+        title = decode(strip_html(m.group(3))).strip()
+        pdf_url = pdf_map.get(div_id)
+
+        if pdf_url:
+            reports.append({"title": title, "cover": cover_url, "pdf": pdf_url})
+
+    return {"updated": datetime.now(timezone.utc).strftime("%B %d, %Y"), "reports": reports}
+
+
 # ── main ─────────────────────────────────────────────────────────────────────
 
 news = fetch_news()
@@ -135,3 +174,7 @@ print(f"Wrote {len(news['items'])} news items → {NEWS_OUTPUT}  ({unenriched} n
 magazines = fetch_magazines()
 MAGAZINES_OUTPUT.write_text(json.dumps(magazines, indent=2))
 print(f"Wrote {len(magazines['magazines'])} magazines → {MAGAZINES_OUTPUT}")
+
+reports = fetch_annual_reports()
+ANNUAL_REPORTS_OUTPUT.write_text(json.dumps(reports, indent=2))
+print(f"Wrote {len(reports['reports'])} annual reports → {ANNUAL_REPORTS_OUTPUT}")

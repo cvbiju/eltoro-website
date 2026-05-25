@@ -1,0 +1,20 @@
+{
+  "updated": "May 25, 2026",
+  "reports": [
+    {
+      "title": "2025 Annual Report",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2026/03/Sea-Cadets-2025-Annual-Report-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2026/03/Sea-Cadets-2025-Annual-Report.pdf"
+    },
+    {
+      "title": "2024 Annual Report",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/06/Sea-Cadets-2024-Annual-Report-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/06/Sea-Cadets-2024-Annual-Report.pdf"
+    },
+    {
+      "title": "2023 Annual Report",
+      "cover": "https://www.seacadets.org/wp-content/uploads/2025/05/2023-Sea-Cadets-Annual-Report-cover.jpg",
+      "pdf": "https://www.seacadets.org/wp-content/uploads/2025/05/2023-Sea-Cadets-Annual-Report.pdf"
+    }
+  ]
+}
